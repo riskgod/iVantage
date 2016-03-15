@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
   	# $serverURL = "67.58.41.121"  # app assumes app is running on port 3000 and websockets on port 5555
   	# $serverURL = "10.1.1.43"  # app assumes app is running on port 3000 and websockets on port 5555
-  	$serverURL = "127.0.0.1"  # app assumes app is running on port 3000 and websockets on port 5555
+  	$serverURL = "0.0.0.0"  # app assumes app is running on port 3000 and websockets on port 5555
   	# $serverURL = "192.168.6.109"  # app assumes app is running on port 3000 and websockets on port 5555
 
   	@@three_digit_zips = Map_Region_Three_Digits::THREE_DIGIT_ZIPS.symbolize_keys

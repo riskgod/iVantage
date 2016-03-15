@@ -1,0 +1,390 @@
+
+<style>
+
+.ui-btn-inner{
+	font-size: 24px;
+}
+
+	.ui-content {
+		padding: 0px;
+	}
+
+	#screen1L2L {
+		height: 100%;
+		width: 94%;
+		padding: 0% 3%;
+	}
+
+	.top-controls {
+		height: 5%;
+		width: 100%;
+		padding: 2% 1% 2% 1%;
+	}
+
+	.varFilters{
+		height:10%;
+		padding-top: 2%;
+		background-color: white;
+		border-radius: 1em;
+		font-size: 16px;
+		font-weight: bold;
+		text-align: center;
+		margin-bottom: 4%;
+		border: solid 1px #bbbbbb;
+	}
+
+	.varFilters .ui-btn-text{
+		font-size: 20px;
+	}
+
+	.bodyWell {
+		background-color: white;
+		border-radius: 1em;
+		border: solid 1px #bbbbbb;
+		padding-top: 5%;
+		margin: 0%;
+	}
+
+	.slider-block {
+		height: 22%;
+		width: 100%;
+		padding-bottom: 4%;
+	}
+
+	.slider-block .ui-btn-inner {
+		font-size: 24px;
+	}
+
+	.slider-block .ui-collapsible-content {
+		border-bottom-left-radius: 1em;
+		border-bottom-right-radius: 1em;
+		border-left: 2px solid #bbbbbb;
+		border-right:2px solid #bbbbbb;
+		border-bottom:2px solid #bbbbbb;
+	}
+
+	.slider-block .ui-collapsible-inset {
+		margin: 1%;
+	}
+
+	.slider-block .ui-field-contain .ui-controlgroup-controls {
+		width: 92%;
+		display: block;
+	}
+
+	 .slider1-2 .ui-btn-active{
+	 	border: #1f77b4;
+		background-image: linear-gradient(#1f77b4, #1f77b4);
+	}
+
+	.slider1-3 .ui-btn-active{
+	 	border: #ff7f0e;
+		background-image: linear-gradient(#ff7f0e, #ff7f0e);
+	}
+
+	.slider1-4 .ui-btn-active{
+	 	border: #2ca02c;
+		background-image: linear-gradient(#2ca02c, #2ca02c);
+	}
+
+	.slider1-1 .ui-btn-active{
+	 	border: #d62728;
+		background-image: linear-gradient(#d62728, #d62728);
+	}
+
+	 .slider2-2 .ui-btn-active{
+	 	border: #1f77b4;
+		background-image: linear-gradient(#1f77b4, #1f77b4);
+	}
+
+	.slider2-3 .ui-btn-active{
+	 	border: #ff7f0e;
+		background-image: linear-gradient(#ff7f0e, #ff7f0e);
+	}
+
+	.slider2-4 .ui-btn-active{
+	 	border: #2ca02c;
+		background-image: linear-gradient(#2ca02c, #2ca02c);
+	}
+
+	.slider2-1 .ui-btn-active{
+	 	border: #d62728;
+		background-image: linear-gradient(#d62728, #d62728);
+	}
+
+	.subVar .ui-checkbox-on .ui-icon, .ui-radio-on .ui-icon {
+		background-color: #a6a6a6;
+	}
+
+	.varPieChart svg text{
+		font: normal 24px Arial;
+
+	}
+
+	label {
+		font-size: 24px;
+	}
+</style>
+
+<script type="text/javascript">
+	// WebSocket Variables and Methods Hash
+  var ws = new WebSocket('ws://<%= $serverURL %>:5555');
+	var methods = {
+		"statusMessage" : statusMessage // found in websockets.js
+	};
+
+	$(document).ready(function(){
+		amplify.store.sessionStorage('screenID', 'screen1L2L');
+		setupWebSocket();
+
+		$('.sortable').sortable();
+		$('.sortable').disableSelection();
+		$('#update-btn').click(function(){
+			controlPanelValues();
+			// updateMap();
+		});
+	});
+
+	addVarPieChart("varPieChart1");
+	addVarPieChart("varPieChart2");
+
+
+
+
+
+
+</script>
+
+
+<div id="screen1L2L" data-role="page" data-theme="a">
+	<div class="top-controls" data-role="content">
+
+		<div data-role="dropdown" data-theme="a" style="width:30%;">
+			<select name="select-choice-0" id="select-choice-0" data-native-menu="false">
+			   <option>Select Product Type</option>
+			   <option value="HighValueHomes" selected="selected">High Value Homes</option>
+			   <option value="Auto">Auto</option>
+			   <option value="Flood">Flood</option>
+			   <option value="Renter">Renter</option>
+			</select>
+		</div>
+	</div>
+	<div class="varFilters ui-grid-b">
+			<div class="ui-block-a" style="width: 40%; text-align: center;">
+				<h3>PML Optimization Zones<br/></h3>
+				<fieldset data-role="controlgroup" data-iconpos="right" data-type="horizontal" id="PML">
+			        <input type="checkbox" name="PML-1" id="PML-1" checked="checked">
+			        <label for="PML-1">PML</label>
+			        <input type="checkbox" name="PML-2" id="PML-2" checked="checked">
+			        <label for="PML-2">PML Optimization</label>
+			        <input type="checkbox" name="PML-3" id="PML-3" checked="checked">
+			        <label for="PML-3">Regular</label>
+			    </fieldset>
+		    </div>
+
+		    <div class="ui-block-b" style="width: 25%; text-align: center;">
+				<h3>Open to Write Business?</h3>
+			     <fieldset data-role="controlgroup" data-iconpos="right" data-type="horizontal" id="openness">
+			        <input type="checkbox" name="openness-1" id="openness-1" checked="checked">
+			        <label for="openness-1">Open</label>
+			        <input type="checkbox" name="openness-2" id="openness-2" checked="checked">
+			        <label for="openness-2">Closed</label>
+			    </fieldset>
+		    </div>
+
+		    <div class="ui-block-c" style="width: 35%; text-align: center;">
+				<h3>Urbanicity<br/></h3>
+			    <fieldset data-role="controlgroup" data-iconpos="right" data-type="horizontal" id="Urbanicity">
+			        <input type="checkbox" name="Urbanicity-1" id="Urbanicity-1" checked="checked">
+			        <label for="Urbanicity-1">Rural</label>
+			        <input type="checkbox" name="Urbanicity-2" id="Urbanicity-2" checked="checked">
+			        <label for="Urbanicity-2">Urban</label>
+			        <input type="checkbox" name="Urbanicity-3" id="Urbanicity-3" checked="checked">
+			        <label for="Urbanicity-3">Suburban</label>
+			    </fieldset>
+		    </div>
+		</div>
+
+		<!-- Tabs should start here -->
+
+		<!-- Map Tab Menu -->
+		  <div data-role= "content" id="map-tabs" style="height: auto;">
+		    <ul id="map-tab-menu">
+		        <li id="tab-map1" class="selected cluster-tab">
+		          <a id="map1MenuLink" class="selectedLink" href="javascript:void(0);" onClick="animate_1L2L_tabs(this);">Map 1</a>
+		        </li>
+		        <li id="tab-map2" class="unselected cluster-tab">
+		          <a id="map2MenuLink" class="unselectedLink" href="javascript:void(0);" onClick="animate_1L2L_tabs(this);">Map 2</a>
+		        </li>
+		    </ul>
+		  </div>
+
+  <!-- Cluster Tab Contents -->
+  <div id="tab-map-content" data-role="content" style="height:70%">
+    
+  	<!-- Map 1 Content -->
+    <div id="tab-map1-content" class="tab-content-panel" data-role="content" style="display:block;" >
+ 	
+		<div data-role="collapsible-set" data-theme="a" data-content-theme="d" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d" class="varControls ui-block-a" style="width: 62%; padding-left: 5%;">
+			
+			<% $categories.each do |c| %>
+				<div data-role="collapsible" class="slider-block">
+					<h3><span> <%=c.var_name%>
+						<% catArray = c.var_name.split(" ")
+						abbName = ""
+						catArray.each do |l|
+						abbName += l[0]
+						end %>(<%=abbName%>)
+
+
+					</span>
+						<form>
+							<div data-role="field-contain" class="slider1-<%= c.var_id %>">
+								<input type="range" name="slider1-<%= c.var_id %>" id="slider1-<%= c.var_id %>" value="<%=c.default_rank%>" min="0" max="100" data-highlight="true" style="display: none;" onslidestop="varSliderChange();"/>
+							</div>
+						</form>
+					</h3>
+					<div data-role="fieldcontain" data-theme="a" class="subvContent">
+			 			<fieldset data-role="controlgroup">
+							<ul class="sortable subVar" id="subVar1-<%= c.var_id %>">
+								<% $variables.each do |v| %>
+									<% if v.var_parent == c.var_id %>
+										<li> <input type="checkbox" name="checkbox-<%= v.var_id %>" id="checkbox-<%= v.var_id %>" class="custom" <% if v.default_checked %>checked="checked"<% end %> />
+											<label class="sliderLabel" for="checkbox-<%= v.var_id %>"> <%= v.var_name%></label>
+										</li>
+										
+									<%end%>
+								<%end%>
+							</ul>
+						</fieldset>
+					</div>
+				</div>
+
+			<%end%>
+		</div>
+		<div data-role="content" class="ui-block-b" style="width:38%; height: 100%; padding: 0% 3%; text-align: center;">
+			<h3 style="height:10%;"> Category Weights </h3>
+			 <div class="varPieChart ui-grid-solo"id="varPieChart1" style="height: 60%; align: left;">
+				<svg></svg>
+			</div>
+			<div class="ui-grid-solo" style="height:30%;">
+				<a id="update-btn-1a" data-icon="arrow-r" data-iconpos="right" data-theme="b" href="#" data-role="button" data-inline="true" style="text-align: center;">Update Map 1</a>
+				<a id="update-btn-2a" data-icon="arrow-r" data-iconpos="right" data-theme="b" href="#" data-role="button" data-inline="true" style="text-align: center;">Update Map 2</a>
+			</div>
+		</div>
+	</div> <!-- End of map 1 content -->
+
+	<!-- Map 2 Content -->
+
+	<div id="tab-map2-content" class="tab-content-panel ui-grid-a" data-role="content" style="display:none;" >
+ 	
+		<div data-role="collapsible-set" data-theme="a" data-content-theme="d" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d" class="varControls ui-block-a" style="width: 62%; padding-left: 5%;">
+			
+			<% $categories.each do |c| %>
+				<div data-role="collapsible" class="slider-block">
+					<h3><span> <%=c.var_name%>
+						<% catArray = c.var_name.split(" ")
+						abbName = ""
+						catArray.each do |l|
+						abbName += l[0]
+						end %>(<%=abbName%>)
+
+
+					</span>
+						<form>
+							<div data-role="field-contain" class="slider2-<%= c.var_id %>">
+								<input type="range" name="slider2-<%= c.var_id %>" id="slider2-<%= c.var_id %>" value="<%=c.default_rank%>" min="0" max="100" data-highlight="true" style="display: none;" onslidestop="varSliderChange();"/>
+							</div>
+						</form>
+					</h3>
+					<div data-role="fieldcontain" data-theme="a" class="subvContent">
+			 			<fieldset data-role="controlgroup">
+							<ul class="sortable subVar" id="subVar-<%= c.var_id %>">
+								<% $variables.each do |v| %>
+									<% if v.var_parent == c.var_id %>
+										<li> <input type="checkbox" name="checkbox-<%= v.var_id %>" id="checkbox-<%= v.var_id %>" class="custom" <% if v.default_checked %>checked="checked"<% end %> />
+											<label class="sliderLabel" for="checkbox-<%= v.var_id %>"> <%= v.var_name%></label>
+										</li>
+										
+									<%end%>
+								<%end%>
+							</ul>
+						</fieldset>
+					</div>
+				</div>
+
+			<%end%>
+		</div>
+		<div data-role="content" class="ui-block-b" style="width:38%; height: 100%; padding: 0% 3%; text-align: center;">
+			<h3 style="height:10%;"> Category Weights </h3>
+			 <div class="varPieChart ui-grid-solo"id="varPieChart2" style="height: 60%; align: left;">
+				<svg></svg>
+			</div>
+			<div class="ui-grid-solo" style="height:30%;">
+				<a id="update-btn-1b" data-icon="arrow-r" data-iconpos="right" data-theme="b" href="#" data-role="button" data-inline="true" style="text-align: center;">Update Map 1</a>
+				<a id="update-btn-2b" data-icon="arrow-r" data-iconpos="right" data-theme="b" href="#" data-role="button" data-inline="true" style="text-align: center;">Update Map 2</a>
+			</div>
+		</div>
+	</div> <!-- End of map 2 content -->
+</div>
+
+<!-- end of tab content -->
+
+
+</div> <!-- This is the div that closes the page -->
+
+<script>
+
+function getAbbreviatedName(cat){
+	var catArray = cat.split(" ");
+	var abbName = "";
+
+	for(var i=0;i<catArray.length; i++){
+		abbName += catArray[i][0];
+	}
+
+	return abbName;
+}
+
+function refreshVarVal(slider){
+   varPieData = [
+   <% $categories.each do |c| %>
+    {
+      key: getAbbreviatedName("<%= c.var_name %>"),
+      y: Number($("#slider1-<%= c.var_id %>").val())
+    },
+    <%end%>
+  ];
+
+  var temp = varPieData[0];
+  varPieData.shift();
+  varPieData.push(temp);
+}
+
+function refreshVarVal2(slider){
+   varPieData = [
+   <% $categories.each do |c| %>
+    {
+      key: getAbbreviatedName("<%= c.var_name %>"),
+      y: Number($("#slider2-<%= c.var_id %>").val())
+    },
+    <%end%>
+  ];
+
+  var temp = varPieData[0];
+  varPieData.shift();
+  varPieData.push(temp);
+}
+
+refreshVarVal();
+
+$( ".slider1-1" ).on( 'slidestop', function() { refreshVarVal(); addVarPieChart("varPieChart1");});
+$( ".slider1-2" ).on( 'slidestop', function() { refreshVarVal(); addVarPieChart("varPieChart1");});
+$( ".slider1-3" ).on( 'slidestop', function() { refreshVarVal(); addVarPieChart("varPieChart1");});
+$( ".slider1-4" ).on( 'slidestop', function() { refreshVarVal(); addVarPieChart("varPieChart1");});
+
+$( ".slider2-1" ).on( 'slidestop', function() { refreshVarVal2(); addVarPieChart("varPieChart2");});
+$( ".slider2-2" ).on( 'slidestop', function() { refreshVarVal2(); addVarPieChart("varPieChart2");});
+$( ".slider2-3" ).on( 'slidestop', function() { refreshVarVal2(); addVarPieChart("varPieChart2");});
+$( ".slider2-4" ).on( 'slidestop', function() { refreshVarVal2(); addVarPieChart("varPieChart2");});
+</script>

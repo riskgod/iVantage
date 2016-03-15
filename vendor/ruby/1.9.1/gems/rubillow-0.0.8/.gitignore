@@ -1,0 +1,7 @@
+*.gem
+.bundle
+.rvmrc
+pkg/*
+coverage
+doc
+.yardoc

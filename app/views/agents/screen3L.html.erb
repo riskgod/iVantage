@@ -1,0 +1,305 @@
+<style>
+  .ui-dialog .ui-dialog-content {
+    border: 0;
+    padding: .5em 1em;
+    background: #ff0000;
+    overflow: auto;
+    zoom: 1;
+  }
+
+  #tab-menu {
+    width: 90%;
+  	height: auto;
+    margin: 0% 5%;
+  }
+
+  #tab-menu ul {
+    padding-left: 0px;
+  }
+
+  #tab-menu ul li {
+    width: 33%;
+    list-style: none;
+    position: relative;
+    float: left;
+    text-align: center;
+    line-height: 300%;
+    border: solid;
+    border-width: 1px 1px 0 1px;
+    border-color:#ffffff;
+    border-top-left-radius:1em;
+    border-top-right-radius:1em;
+  }
+
+  #tab-menu li a {
+    text-decoration:none;
+    text-shadow: none;
+    color: black;
+    font-size: 22px;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  #tab-menu .unselected .ui-body-a .ui-link:visited {
+    text-shadow: none;
+  }
+
+  #tab-content-container {
+    height: 90%;
+    width: 90%;
+    margin: 0% 5% 0% 5%;
+    background-color: #ffffff;
+    border: 2px solid #ffffff;
+    text-align: center;
+  }
+
+  .tab-content-panel {
+    height: 100%;
+    display: inline-block;
+  }
+
+  #tab-scenario-content {
+    padding-left: 5%;
+    padding-right: 5%;
+    height: 90%;
+    width:100%;
+  }
+
+  .unselected {
+    background-color: #f0f0f0;
+    text-shadow: none;
+  }
+
+  .selected {
+    background-image: linear-gradient( #5393c5,#6facd5 );
+  	text-shadow: none;
+  }
+
+  .ui-overlay-a {
+    background: black;
+  }
+
+  .ui-popup-screen.in {
+    opacity: 0.9;
+  }
+
+  .ui-content {
+  	padding: 0px;
+  }
+
+  .ui-page {
+  	height: 100%;
+  }
+
+  .scenarioSliders label {
+  	text-align: left;
+    font-size: 25px;
+    font-weight: bold;
+  }
+
+  .scenarioSliders {
+  	width:90%;
+  }
+
+  .scenarioSliders .ui-grid-solo {
+  	width:100%;
+  }
+
+  .scenarioSliders .ui-content {
+  	padding: 0px;
+  }
+
+  .scenarioCheckbox .ui-controlgroup-controls {
+  	width:72%;
+  }
+
+  .scenarioCheckbox .ui-btn-inner {
+    font-size: 24px;
+  }
+
+  .ui-popup {
+    padding: 15px;
+  }
+
+  svg text {
+    font-size: 18px;
+  }
+
+</style>
+
+<script type="text/javascript">
+
+	// WebSocket Variables and Methods Hash
+  var ws = new WebSocket('ws://<%= $serverURL %>:5555');
+	var methods = {
+    "createClusterTabs" : createClusterTabs,
+    "showClusterTab" : showClusterTab,
+		"statusMessage" : statusMessage // found in websockets.js
+	};
+
+  /* This function looks up the values of the 3L Scenario Anaylsis sliders and checkboxes,
+     and stores them in a hash. Checkboxes have assigned values (as opposed to 1 for true, 0 for false) */
+  var scenario_cv = {};
+  function getScenarioValues() {
+    scenario_cv = {};
+    scenario_cv['cv1'] = $('#scenSlider1').val();
+    scenario_cv['cv2'] = $('#scenSlider2').val() / 100;
+    scenario_cv['cv3'] = $('#scenSlider3').val() / 10;
+    scenario_cv['cv4'] = $('#scenSlider4').val() / 100;
+    // original values:
+    // scenario_cv['cv5'] = ($('#checkbox-v-2a').is(':checked') ? 0.04 : 0.025);
+    // scenario_cv['cv6'] = ($('#checkbox-v-2b').is(':checked') ? 0.075 : 0.05);
+    // scenario_cv['cv7'] = ($('#checkbox-v-2c').is(':checked') ? 0.4 : 0.3);
+
+    // try new values:
+    // scenario_cv['cv5'] = ($('#checkbox-v-2a').is(':checked') ? 0.037 : 0.025);
+    // scenario_cv['cv6'] = ($('#checkbox-v-2b').is(':checked') ? 0.067 : 0.05);
+    // scenario_cv['cv7'] = ($('#checkbox-v-2c').is(':checked') ? 0.37 : 0.3);
+
+    // try newer values:
+    scenario_cv['cv5'] = ($('#checkbox-v-2a').is(':checked') ? 0.04 : 0.025);
+    scenario_cv['cv6'] = ($('#checkbox-v-2b').is(':checked') ? 0.15 : 0.1);
+    scenario_cv['cv7'] = ($('#checkbox-v-2c').is(':checked') ? 0.4 : 0.25);
+  }
+
+	$(document).ready(function(){
+		amplify.store.sessionStorage('screenID', 'screen3L');
+		setupWebSocket();
+
+    /* This function waits for any of the 3L Scenario Analysis sliders or checkboxes to be clicked ...
+       ... then it calls the add_3L_ScenarioAnalysis_LineCharts 3 times to redraw all 3 charts */
+    $('#tab-scenario-sliders .ui-checkbox').click(function(){
+      // add_3L_ScenarioAnalysis_LineCharts('scenChart1');
+      add_3L_ScenarioAnalysis_LineCharts('scenChart2');
+      // add_3L_ScenarioAnalysis_LineCharts('scenChart3');
+    });
+
+    $('#tab-scenario-sliders .ui-slider').change(function(){
+      // add_3L_ScenarioAnalysis_LineCharts('scenChart1');
+      add_3L_ScenarioAnalysis_LineCharts('scenChart2');
+      // add_3L_ScenarioAnalysis_LineCharts('scenChart3');
+    });
+
+    // add_3L_ScenarioAnalysis_LineCharts('scenChart1');
+    add_3L_ScenarioAnalysis_LineCharts('scenChart2');
+    // add_3L_ScenarioAnalysis_LineCharts('scenChart3');
+
+    setTimeout("update3RProjections('var2')", 2500);
+	});
+
+</script>
+
+<div data-role="page">
+	<div data-role= "content" id="tab-menu">
+		<ul>
+			<li id="tab-scenario" class="selected cluster-tab">
+        <a href="javascript:void(0);" onClick="animate_tab(this);">Scenario Analysis</a>
+      </li>
+		</ul>
+	</div>
+  <div id="tab-content-container" data-role="content">
+    <!-- Scenario Tab Contents -->
+    <div id="tab-scenario-content" class="tab-content-panel" data-role="content">
+      <div id="tab-scenario-sliders" data-role= "content" class="scenarioSliders" style="height:50%; width:90%;">
+        <h3 style="text-align: center; width:100%; height:5%;">&nbsp;</h3>
+
+        <!-- Sliders -->
+        <div class="ui-grid-solo" style="height: 10%;" data-role="fieldcontain">
+          <label for="scenSlider1">
+            <a href="#scenSlider1Tooltip" data-rel="popup" data-inline="true" data-transition="pop" data-theme="a">Annual GDP Growth (%)</a>:
+          </label>
+          <div data-role="popup" id="scenSlider1Tooltip" class="ui-content" data-theme="a" style="max-width:350px;">
+            <p><strong>Annual GDP Growth - </strong>The economy's anticipated growth rate. Greater economic growth increases the potential market size and the number of sales opportunities per agent.</p>
+          </div>
+          <input type="range" name="scenSlider1" id="scenSlider1" value="1.4" min="-10" max="10" data-highlight="true" step="0.1" />
+        </div>
+
+        <div class="ui-grid-solo" style="height: 10%;" data-role="fieldcontain">
+          <label for="scenSlider2">
+            <a href="#scenSlider2Tooltip" data-rel="popup" data-inline="true" data-transition="pop" data-theme="a">Agent Engagement (%)</a>:
+          </label>
+          <div data-role="popup" id="scenSlider2Tooltip" class="ui-content" data-theme="a" style="max-width:350px;">
+            <p><strong>Agent Engagement - </strong>The number of agents who have at least 10 active policies in their book-of-business. The more agents who actively sell products, the more new sales generated each quarter.</p>
+          </div>
+          <input type="range" name="scenSlider2" id="scenSlider2" value="70" min="40" max="100" data-highlight="true" step="1" />
+        </div>
+
+        <div class="ui-grid-solo" style="height: 10%;" data-role="fieldcontain">
+          <label for="scenSlider3">
+            <a href="#scenSlider3Tooltip" data-rel="popup" data-inline="true" data-transition="pop" data-theme="a">Product Count (#)</a>:
+          </label>
+          <div data-role="popup" id="scenSlider3Tooltip" class="ui-content" data-theme="a" style="max-width:350px;">
+            <p><strong>Product Count - </strong>Up to a point, the number of products available to a customer can increase a customer's likelihood to not only remain a customer, but also purchase additional products.</p>
+          </div>
+          <!-- <input type="range" name="scenSlider3" id="scenSlider3" value="1" min="0.75" max="1.25" data-highlight="true" step="0.01" /> -->
+          <input type="range" name="scenSlider3" id="scenSlider3" value="10" min="7" max="12" data-highlight="true" step="1" />
+        </div>
+
+        <div class="ui-grid-solo" style="height: 10%;" data-role="fieldcontain">
+          <label for="scenSlider4">
+            <a href="#scenSlider4Tooltip" data-rel="popup" data-inline="true" data-transition="pop" data-theme="a">Retention Rate / QTR (%)</a>:
+          </label>
+          <div data-role="popup" id="scenSlider4Tooltip" class="ui-content" data-theme="a" style="max-width:350px;">
+            <p><strong>Retention Rate / QTR - </strong>The number of policies agents keep in their book-of-business from quarter-to-quarter. The higher the retention rate the faster policy counts grows over time, assuming constant sales.</p>
+          </div>
+          <input type="range" name="scenSlider4" id="scenSlider4" value="90" min="70" max="100" data-highlight="true" step="1" />
+        </div>
+
+        <!-- Checkboxes -->
+        <div class="ui-grid-solo" data-role="fieldcontain" style="height:15%;">
+          <form>
+            <fieldset data-role="controlgroup">
+
+              <fieldset data-type="horizontal" data-role="controlgroup" class="scenarioCheckbox">
+                <input type="checkbox" name="checkbox-v-2a" id="checkbox-v-2a">
+                <label for="checkbox-v-2a" style="margin:5px 0px;"> &nbsp;</label>
+                <a href="#scenCheckbox1Tooltip" data-role="button" data-rel="popup" data-transition="pop" data-theme="a" style="margin:5px 0px;">Provide agents data to target specific customers</a>
+                <div data-role="popup" id="scenCheckbox1Tooltip" class="ui-content" data-theme="a" style="max-width:450px;" >
+                  <p><strong>Provide agents data to target specific customers - </strong>Provide agents with detailed data to enable them to target and better service specific customers</p>
+                </div>
+              </fieldset>
+
+              <fieldset data-type="horizontal" data-role="controlgroup" class="scenarioCheckbox">
+                <input type="checkbox" name="checkbox-v-2b" id="checkbox-v-2b">
+                <label for="checkbox-v-2b" style="margin:5px 0px;">&nbsp;</label>
+                <a href="#scenCheckbox2Tooltip" data-role="button" data-rel="popup" data-transition="pop" data-theme="a" style="margin:5px 0px;">Create 'Concierge' team to support specific customers</a>
+                <div data-role="popup" id="scenCheckbox2Tooltip" class="ui-content" data-theme="a" style="max-width:350px;" >
+                  <p><strong>Create 'Concierge' team to support specific customers - </strong>Create a team to provide 'white glove' treatment to support top tier customers</p>
+                </div>
+              </fieldset>
+
+              <fieldset data-type="horizontal" data-role="controlgroup" class="scenarioCheckbox">
+                <input type="checkbox" name="checkbox-v-2c" id="checkbox-v-2c">
+                <label for="checkbox-v-2c" style="margin:5px 0px;">&nbsp;</label>
+                <a href="#scenCheckbox3Tooltip" data-role="button" data-rel="popup" data-transition="pop" data-theme="a" style="margin:5px 0px;">Provide Agents incentives to boost sales</a>
+                <div data-role="popup" id="scenCheckbox3Tooltip" class="ui-content" data-theme="a" style="max-width:350px;" >
+                  <p><strong>Provide Agents incentives to boost sales - </strong>Add new incentives to motivate Agents to sell specific products</p>
+                </div>
+              </fieldset>
+
+            </fieldset>
+          </form>
+        </div>
+      </div>
+      <div data-role="content" id="scenarioCharts" style="height:50%;width:90%;position:relative;">
+        <!-- Chart Title -->
+        <h2 style="font-size:25px;display:inline-block;">Home Policies</h2>
+        <!-- Side Buttons (to control 3R) -->
+
+        <div style="position:absolute; margin-left:-18%">
+          <div class="zip-cluster ui-btn ui-shadow ui-btn-corner-all ui-btn-inline ui-btn-up-c" style="margin-top:490px; width:250px; text-align:right; float:right; display:block;" onclick="update3RProjections('var2');">
+            <span>Total Policies</span>
+            <span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span>
+            <span>&nbsp; &nbsp;</span>
+          </div><br>
+
+        </div>
+        <!-- Line Chart -->
+        <div id="scenChart2" data-role="content" style="width:100%;height:90%;">
+          <svg></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

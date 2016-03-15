@@ -1,0 +1,12 @@
+/Users/appledev021/.rvm/rubies/ruby-1.9.3-p551/bin/ruby -r ./siteconf20160303-33518-sb4j0w.rb extconf.rb
+creating Makefile
+
+make  clean
+
+make
+compiling parser.c
+linking shared-object json/ext/parser.bundle
+
+make  install
+/usr/bin/install -c -m 0755 parser.bundle .gem.20160303-33518-vgj0wg/json/ext
+installing default parser libraries

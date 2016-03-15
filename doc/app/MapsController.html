@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+
+<title>class MapsController - Rails Application Documentation</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>app/controllers/maps_controller.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link"><a href="ApplicationController.html">ApplicationController</a>
+  
+</nav>
+
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-i-get_map_KML_blue">#get_map_KML_blue</a>
+    
+    <li><a href="#method-i-get_map_KML_red">#get_map_KML_red</a>
+    
+    <li><a href="#method-i-get_map_KML_selected">#get_map_KML_selected</a>
+    
+    <li><a href="#method-i-get_zillow_deep_search_results">#get_zillow_deep_search_results</a>
+    
+    <li><a href="#method-i-screen1R">#screen1R</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="./doc/README_FOR_APP.html">README_FOR_APP</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./AgentDim.html">AgentDim</a>
+  
+    <li><a href="./AgentsController.html">AgentsController</a>
+  
+    <li><a href="./AgentsHelper.html">AgentsHelper</a>
+  
+    <li><a href="./ApplicationController.html">ApplicationController</a>
+  
+    <li><a href="./ApplicationHelper.html">ApplicationHelper</a>
+  
+    <li><a href="./ChartsController.html">ChartsController</a>
+  
+    <li><a href="./ChartsHelper.html">ChartsHelper</a>
+  
+    <li><a href="./HomeController.html">HomeController</a>
+  
+    <li><a href="./HomeHelper.html">HomeHelper</a>
+  
+    <li><a href="./MapsController.html">MapsController</a>
+  
+    <li><a href="./MapsHelper.html">MapsHelper</a>
+  
+    <li><a href="./SegmentDim.html">SegmentDim</a>
+  
+    <li><a href="./Timeseries.html">Timeseries</a>
+  
+    <li><a href="./TopSegmentsByZip.html">TopSegmentsByZip</a>
+  
+    <li><a href="./VarZipRaw.html">VarZipRaw</a>
+  
+    <li><a href="./Variable3Zip.html">Variable3Zip</a>
+  
+    <li><a href="./VariableDim.html">VariableDim</a>
+  
+    <li><a href="./VariablesController.html">VariablesController</a>
+  
+    <li><a href="./VariablesHelper.html">VariablesHelper</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class MapsController</h1>
+
+  <div id="description" class="description">
+    
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-get_map_KML_blue" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_map_KML_blue</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="get_map_KML_blue-source">
+            <pre><span class="ruby-comment"># File app/controllers/maps_controller.rb, line 28</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">get_map_KML_blue</span>
+
+      <span class="ruby-identifier">color_hue</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:colors_array</span>].<span class="ruby-identifier">to_i</span>
+
+              <span class="ruby-identifier">contents</span> = <span class="ruby-constant">Nokogiri</span><span class="ruby-operator">::</span><span class="ruby-constant">XML</span><span class="ruby-operator">::</span><span class="ruby-constant">Builder</span>.<span class="ruby-identifier">new</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">xml</span><span class="ruby-operator">|</span>
+                <span class="ruby-identifier">xml</span>.<span class="ruby-identifier">kml</span>(<span class="ruby-string">'xmlns'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;http://earth.google.com/kml/2.2&quot;</span>, <span class="ruby-string">'xmlns:atom'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;http://www.w3.org/2005/Atom&quot;</span>) {
+                      <span class="ruby-identifier">xml</span>.<span class="ruby-constant">Document</span> {
+                        <span class="ruby-identifier">xml</span>.<span class="ruby-constant">ScreenOverlay</span> {
+                           <span class="ruby-identifier">xml</span>.<span class="ruby-identifier">name</span> <span class="ruby-string">&quot;Map Legend Blue&quot;</span>
+                           <span class="ruby-identifier">xml</span>.<span class="ruby-constant">Icon</span> {
+                             <span class="ruby-identifier">xml</span>.<span class="ruby-identifier">href</span> <span class="ruby-node">&quot;http://#{$serverURL}:3000/map_legend_blue.png&quot;</span>
+                           }
+                           <span class="ruby-identifier">xml</span>.<span class="ruby-identifier">overlayXY</span>(<span class="ruby-string">'x'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;0&quot;</span>, <span class="ruby-string">'y'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;0&quot;</span>, <span class="ruby-string">'xunits'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;fraction&quot;</span>, <span class="ruby-string">'yunits'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;fraction&quot;</span>)
+                           <span class="ruby-identifier">xml</span>.<span class="ruby-identifier">screenXY</span>(<span class="ruby-string">'x'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;0&quot;</span>, <span class="ruby-string">'y'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;0&quot;</span>, <span class="ruby-string">'xunits'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;fraction&quot;</span>, <span class="ruby-string">'yunits'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;fraction&quot;</span>)
+                           <span class="ruby-identifier">xml</span>.<span class="ruby-identifier">rotationXY</span>(<span class="ruby-string">'x'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;0&quot;</span>, <span class="ruby-string">'y'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;0&quot;</span>, <span class="ruby-string">'xunits'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;fraction&quot;</span>, <span class="ruby-string">'yunits'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;fraction&quot;</span>)
+                           <span class="ruby-identifier">xml</span>.<span class="ruby-identifier">size</span>(<span class="ruby-string">'x'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;0&quot;</span>, <span class="ruby-string">'y'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;0&quot;</span>, <span class="ruby-string">'xunits'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;fraction&quot;</span>, <span class="ruby-string">'yunits'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;fraction&quot;</span>)
+                        }
+                        <span class="ruby-identifier">@@three_digit_zips</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">zip</span>, <span class="ruby-identifier">coordinates</span><span class="ruby-operator">|</span>
+                                  <span class="ruby-identifier">xml</span>.<span class="ruby-constant">Placemark</span> {
+                                    <span class="ruby-identifier">xml</span>.<span class="ruby-constant">Style</span> {
+                                           <span class="ruby-identifier">xml</span>.<span class="ruby-constant">LineStyle</span> {
+                                             <span class="ruby-identifier">xml</span>.<span class="ruby-identifier">color</span> <span class="ruby-string">&quot;eeffffff&quot;</span>                                                                                                <span class="ruby-comment"># Border color</span>
+                                             <span class="ruby-identifier">xml</span>.<span class="ruby-identifier">width</span> <span class="ruby-value">2</span>                                                                                                                 <span class="ruby-comment"># Border width</span>
+                                           }
+                                           <span class="ruby-identifier">xml</span>.<span class="ruby-constant">PolyStyle</span> {
+                                             <span class="ruby-identifier">xml</span>.<span class="ruby-identifier">color</span> <span class="ruby-string">'99'</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">$colors_array</span>[<span class="ruby-identifier">color_hue</span>][<span class="ruby-identifier">rand</span>(<span class="ruby-identifier">$blue_hex_array</span>.<span class="ruby-identifier">length</span>)]     <span class="ruby-comment"># Fill color</span>
+                                           }
+                                    }
+                                    <span class="ruby-identifier">xml</span>.<span class="ruby-identifier">description</span> <span class="ruby-identifier">zip</span>.<span class="ruby-identifier">to_s</span>                                                                                               <span class="ruby-comment"># ZIP code</span>
+                                    <span class="ruby-identifier">xml</span>.<span class="ruby-constant">MultiGeometry</span> {
+                                           <span class="ruby-identifier">xml</span>.<span class="ruby-constant">MultiGeometry</span> {
+                                             <span class="ruby-identifier">xml</span>.<span class="ruby-constant">Polygon</span> {
+                                                 <span class="ruby-identifier">xml</span>.<span class="ruby-identifier">outerBoundaryIs</span> {
+                                                   <span class="ruby-identifier">xml</span>.<span class="ruby-constant">LinearRing</span> {
+                                                    <span class="ruby-identifier">xml</span>.<span class="ruby-identifier">coordinates</span> <span class="ruby-identifier">coordinates</span>                                                             <span class="ruby-comment"># ZIP coordinates</span>
+                                                   }
+                                                 }
+                                             }
+                                           }
+                                    }
+                                              }
+                                      }
+                              }
+             }
+              <span class="ruby-keyword">end</span>
+
+              <span class="ruby-identifier">render</span> <span class="ruby-value">:xml</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">contents</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- get_map_KML_blue-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- get_map_KML_blue-method -->
+
+    
+      <div id="method-i-get_map_KML_red" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_map_KML_red</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="get_map_KML_red-source">
+            <pre><span class="ruby-comment"># File app/controllers/maps_controller.rb, line 78</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">get_map_KML_red</span>
+
+      <span class="ruby-identifier">color_hue</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:colors_array</span>].<span class="ruby-identifier">to_i</span>
+
+              <span class="ruby-identifier">contents</span> = <span class="ruby-constant">Nokogiri</span><span class="ruby-operator">::</span><span class="ruby-constant">XML</span><span class="ruby-operator">::</span><span class="ruby-constant">Builder</span>.<span class="ruby-identifier">new</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">xml</span><span class="ruby-operator">|</span>
+                <span class="ruby-identifier">xml</span>.<span class="ruby-identifier">kml</span>(<span class="ruby-string">'xmlns'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;http://earth.google.com/kml/2.2&quot;</span>, <span class="ruby-string">'xmlns:atom'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;http://www.w3.org/2005/Atom&quot;</span>) {
+                      <span class="ruby-identifier">xml</span>.<span class="ruby-constant">Document</span> {
+                        <span class="ruby-identifier">xml</span>.<span class="ruby-constant">ScreenOverlay</span> {
+                           <span class="ruby-identifier">xml</span>.<span class="ruby-identifier">name</span> <span class="ruby-string">&quot;Map Legend Red&quot;</span>
+                           <span class="ruby-identifier">xml</span>.<span class="ruby-constant">Icon</span> {
+                             <span class="ruby-identifier">xml</span>.<span class="ruby-identifier">href</span> <span class="ruby-node">&quot;http://#{$serverURL}:3000/map_legend_red.png&quot;</span>
+                           }
+                           <span class="ruby-identifier">xml</span>.<span class="ruby-identifier">overlayXY</span>(<span class="ruby-string">'x'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;0&quot;</span>, <span class="ruby-string">'y'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;0&quot;</span>, <span class="ruby-string">'xunits'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;fraction&quot;</span>, <span class="ruby-string">'yunits'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;fraction&quot;</span>)
+                           <span class="ruby-identifier">xml</span>.<span class="ruby-identifier">screenXY</span>(<span class="ruby-string">'x'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;0&quot;</span>, <span class="ruby-string">'y'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;0&quot;</span>, <span class="ruby-string">'xunits'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;fraction&quot;</span>, <span class="ruby-string">'yunits'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;fraction&quot;</span>)
+                           <span class="ruby-identifier">xml</span>.<span class="ruby-identifier">rotationXY</span>(<span class="ruby-string">'x'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;0&quot;</span>, <span class="ruby-string">'y'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;0&quot;</span>, <span class="ruby-string">'xunits'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;fraction&quot;</span>, <span class="ruby-string">'yunits'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;fraction&quot;</span>)
+                           <span class="ruby-identifier">xml</span>.<span class="ruby-identifier">size</span>(<span class="ruby-string">'x'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;0&quot;</span>, <span class="ruby-string">'y'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;0&quot;</span>, <span class="ruby-string">'xunits'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;fraction&quot;</span>, <span class="ruby-string">'yunits'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;fraction&quot;</span>)
+                        }
+                        <span class="ruby-identifier">@@three_digit_zips</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">zip</span>, <span class="ruby-identifier">coordinates</span><span class="ruby-operator">|</span>
+                                  <span class="ruby-identifier">xml</span>.<span class="ruby-constant">Placemark</span> {
+                                    <span class="ruby-identifier">xml</span>.<span class="ruby-constant">Style</span> {
+                                           <span class="ruby-identifier">xml</span>.<span class="ruby-constant">LineStyle</span> {
+                                             <span class="ruby-identifier">xml</span>.<span class="ruby-identifier">color</span> <span class="ruby-string">&quot;eeffffff&quot;</span>                                                                                                <span class="ruby-comment"># Border color</span>
+                                             <span class="ruby-identifier">xml</span>.<span class="ruby-identifier">width</span> <span class="ruby-value">2</span>                                                                                                                 <span class="ruby-comment"># Border width</span>
+                                           }
+                                           <span class="ruby-identifier">xml</span>.<span class="ruby-constant">PolyStyle</span> {
+                                             <span class="ruby-identifier">xml</span>.<span class="ruby-identifier">color</span> <span class="ruby-string">'99'</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">$colors_array</span>[<span class="ruby-identifier">color_hue</span>][<span class="ruby-identifier">rand</span>(<span class="ruby-identifier">$red_hex_array</span>.<span class="ruby-identifier">length</span>)]      <span class="ruby-comment"># Fill color</span>
+                                           }
+                                    }
+                                    <span class="ruby-identifier">xml</span>.<span class="ruby-identifier">description</span> <span class="ruby-identifier">zip</span>.<span class="ruby-identifier">to_s</span>                                                                                               <span class="ruby-comment"># ZIP code</span>
+                                    <span class="ruby-identifier">xml</span>.<span class="ruby-constant">MultiGeometry</span> {
+                                           <span class="ruby-identifier">xml</span>.<span class="ruby-constant">MultiGeometry</span> {
+                                             <span class="ruby-identifier">xml</span>.<span class="ruby-constant">Polygon</span> {
+                                                 <span class="ruby-identifier">xml</span>.<span class="ruby-identifier">outerBoundaryIs</span> {
+                                                   <span class="ruby-identifier">xml</span>.<span class="ruby-constant">LinearRing</span> {
+                                                    <span class="ruby-identifier">xml</span>.<span class="ruby-identifier">coordinates</span> <span class="ruby-identifier">coordinates</span>                                                             <span class="ruby-comment"># ZIP coordinates</span>
+                                                   }
+                                                 }
+                                             }
+                                           }
+                                    }
+                                              }
+                                      }
+                              }
+                }
+              <span class="ruby-keyword">end</span>
+
+              <span class="ruby-identifier">render</span> <span class="ruby-value">:xml</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">contents</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- get_map_KML_red-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- get_map_KML_red-method -->
+
+    
+      <div id="method-i-get_map_KML_selected" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_map_KML_selected</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="get_map_KML_selected-source">
+            <pre><span class="ruby-comment"># File app/controllers/maps_controller.rb, line 128</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">get_map_KML_selected</span>
+      <span class="ruby-identifier">overlay_colors</span> = [<span class="ruby-string">'3399bb00'</span>, <span class="ruby-string">'33cc0077'</span>, <span class="ruby-string">'3300eeff'</span>, <span class="ruby-string">'33ff5500'</span>, <span class="ruby-string">'3311cc00'</span>, <span class="ruby-string">'3300bbff'</span>, <span class="ruby-string">'33eeff00'</span>, <span class="ruby-string">'339900ff'</span>, <span class="ruby-string">'330000ff'</span>, <span class="ruby-string">'3388ff00'</span>, <span class="ruby-string">'3388ff00'</span>, <span class="ruby-string">'3300ffcc'</span>, <span class="ruby-string">'33006600'</span>]
+      <span class="ruby-identifier">clusterNum</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:clusterNum</span>].<span class="ruby-identifier">to_i</span>
+      <span class="ruby-identifier">clusterName</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:clusterName</span>].<span class="ruby-identifier">sub</span>(<span class="ruby-regexp">/-/</span>, <span class="ruby-string">' '</span>).<span class="ruby-identifier">camelize</span>
+      <span class="ruby-identifier">clusterZipList</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:clusterZipList</span>].<span class="ruby-identifier">split</span>(<span class="ruby-string">&quot;,&quot;</span>)
+      <span class="ruby-identifier">clusterColor</span> = (<span class="ruby-identifier">clusterNum</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">overlay_colors</span>.<span class="ruby-identifier">length</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">overlay_colors</span>[<span class="ruby-identifier">clusterNum</span>] <span class="ruby-operator">:</span> <span class="ruby-identifier">overlay_colors</span>[<span class="ruby-identifier">clusterNum</span> <span class="ruby-operator">%</span> <span class="ruby-identifier">overlay_colors</span>.<span class="ruby-identifier">length</span>]
+
+              <span class="ruby-identifier">mapLayerXML</span> = <span class="ruby-constant">Nokogiri</span><span class="ruby-operator">::</span><span class="ruby-constant">XML</span><span class="ruby-operator">::</span><span class="ruby-constant">Builder</span>.<span class="ruby-identifier">new</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">xml</span><span class="ruby-operator">|</span>
+                <span class="ruby-identifier">xml</span>.<span class="ruby-identifier">kml</span>(<span class="ruby-string">'xmlns'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;http://earth.google.com/kml/2.2&quot;</span>, <span class="ruby-string">'xmlns:atom'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;http://www.w3.org/2005/Atom&quot;</span>) {
+                              <span class="ruby-identifier">xml</span>.<span class="ruby-constant">Document</span> {
+                                  <span class="ruby-identifier">clusterZipList</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">zip</span><span class="ruby-operator">|</span>
+                                         <span class="ruby-identifier">xml</span>.<span class="ruby-constant">Placemark</span> {
+                                           <span class="ruby-identifier">xml</span>.<span class="ruby-constant">Style</span> {
+                                                 <span class="ruby-identifier">xml</span>.<span class="ruby-constant">LineStyle</span> {
+                                                   <span class="ruby-identifier">xml</span>.<span class="ruby-identifier">color</span> <span class="ruby-string">&quot;aaffffff&quot;</span>                                                       <span class="ruby-comment"># Border color</span>
+                                                   <span class="ruby-identifier">xml</span>.<span class="ruby-identifier">width</span> <span class="ruby-value">2</span>                                                                                        <span class="ruby-comment"># Border width</span>
+                                                 }
+                                                 <span class="ruby-identifier">xml</span>.<span class="ruby-constant">PolyStyle</span> {
+                                                   <span class="ruby-identifier">xml</span>.<span class="ruby-identifier">color</span> <span class="ruby-identifier">clusterColor</span>                                             <span class="ruby-comment"># Fill color</span>
+                                                 }
+                                           }
+                                           <span class="ruby-identifier">xml</span>.<span class="ruby-identifier">description</span> <span class="ruby-identifier">clusterName</span>                                   <span class="ruby-comment"># Cluster name</span>
+                                           <span class="ruby-identifier">xml</span>.<span class="ruby-constant">MultiGeometry</span> {
+                                                 <span class="ruby-identifier">xml</span>.<span class="ruby-constant">MultiGeometry</span> {
+                                                   <span class="ruby-identifier">xml</span>.<span class="ruby-constant">Polygon</span> {
+                                                      <span class="ruby-identifier">xml</span>.<span class="ruby-identifier">outerBoundaryIs</span> {
+                                                        <span class="ruby-identifier">xml</span>.<span class="ruby-constant">LinearRing</span> {
+                                                                <span class="ruby-identifier">xml</span>.<span class="ruby-identifier">coordinates</span> <span class="ruby-identifier">@@three_digit_zips</span>[<span class="ruby-identifier">zip</span>.<span class="ruby-identifier">to_sym</span>]         <span class="ruby-comment"># ZIP coordinates</span>
+                                                        }
+                                                      }
+                                                   }
+                                                 }
+                                           }
+                                              }
+                                      }
+                        }
+                      }
+              <span class="ruby-keyword">end</span>
+
+      <span class="ruby-identifier">render</span> <span class="ruby-value">:xml</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">mapLayerXML</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- get_map_KML_selected-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- get_map_KML_selected-method -->
+
+    
+      <div id="method-i-get_zillow_deep_search_results" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_zillow_deep_search_results</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="get_zillow_deep_search_results-source">
+            <pre><span class="ruby-comment"># File app/controllers/maps_controller.rb, line 12</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">get_zillow_deep_search_results</span>  <span class="ruby-comment">#Zillow Web Service ID listed in rubillow_config.rb initializer files</span>
+      <span class="ruby-identifier">results</span> = {}
+      <span class="ruby-identifier">propertyResults</span> = <span class="ruby-constant">Rubillow</span><span class="ruby-operator">::</span><span class="ruby-constant">PropertyDetails</span>.<span class="ruby-identifier">deep_search_results</span>({ <span class="ruby-value">:address</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:address</span>].<span class="ruby-identifier">to_s</span>, <span class="ruby-value">:citystatezip</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:zip</span>].<span class="ruby-identifier">to_s</span> })
+
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">propertyResults</span>.<span class="ruby-identifier">success?</span>
+              <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;ZILLOW SUCCESS&quot;</span>
+              <span class="ruby-identifier">results</span>[<span class="ruby-string">&quot;status&quot;</span>] = <span class="ruby-string">&quot;SUCCESS&quot;</span>
+              <span class="ruby-identifier">results</span>[<span class="ruby-string">&quot;property_details&quot;</span>] = <span class="ruby-identifier">propertyResults</span>
+      <span class="ruby-keyword">else</span>
+              <span class="ruby-identifier">results</span>[<span class="ruby-string">&quot;status&quot;</span>] = <span class="ruby-string">&quot;FAIL&quot;</span>
+              <span class="ruby-identifier">results</span>[<span class="ruby-string">&quot;property_details&quot;</span>] = {}
+              <span class="ruby-keyword">end</span>
+
+      <span class="ruby-identifier">render</span> <span class="ruby-value">:json</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">results</span>.<span class="ruby-identifier">to_json</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- get_zillow_deep_search_results-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- get_zillow_deep_search_results-method -->
+
+    
+      <div id="method-i-screen1R" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">screen1R</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="screen1R-source">
+            <pre><span class="ruby-comment"># File app/controllers/maps_controller.rb, line 9</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">screen1R</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- screen1R-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- screen1R-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.2.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

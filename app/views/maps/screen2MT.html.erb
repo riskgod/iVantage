@@ -1,0 +1,195 @@
+<script src="//www.google.com/jsapi?key=ABQIAAAA5El50zA4PeDTEMlv-sXFfRSsTL4WIgxhMZ0ZK_kHjwHeQuOD4xTdBhxbkZWuzyYTVeclkwYHpb17ZQ"></script>
+
+<script type="text/javascript">
+  // Set up Google Earth
+  setupGE();
+  // Initialize map will be called after GE is ready...put anything here that you want to happen the first time the plugin loads
+  function initializeMap() {
+    // add controls (navigation / zoom)
+    ge.getNavigationControl().setVisibility(ge.VISIBILITY_SHOW);
+    drawLayer();
+  }
+
+  function drawLayer(MPstring, APstring, CAstring, CDstring, FilterString) {
+    // define / link 3-digit ZIP code KML
+    // alert('starting to draw Layer: ' + MPstring + ', ' + APstring + ', ' + CAstring + ', ' + CDstring);
+    var USA_link = ge.createLink('');
+    if (MPstring && APstring && CAstring && CDstring && FilterString) {
+      var temp = "http://<%= $serverURL %>:3000/variables/<%= params.has_key?(:colors_array) ? params[:colors_array] : "0" %>/get_map_KML_DB/" + MPstring + "/" + APstring + "/" + CAstring + "/" + CDstring + "/" + FilterString + "/";
+      var USA_href = temp;
+    } else {
+      var USA_href = "http://<%= $serverURL %>:3000/variables/<%= params.has_key?(:colors_array) ? params[:colors_array] : "0" %>/get_map_KML_DB.kml";
+    }
+    var USA_networkLink = ge.createNetworkLink('');
+    USA_link.setHref(USA_href);
+    USA_networkLink.set(USA_link, true, true); // Sets the link, refreshVisibility, and flyToView.
+    ge.getFeatures().appendChild(USA_networkLink);
+
+    /* Un-Comment this code if you want the Maps to automatically zoom into NY, LA, or whatever, after a timeout */
+    // this manually sets the center point and zoom level to LA and Long Island
+    // the lookAt.set() function takes (latitude, longitude, something, something, something, something, then zoom)
+    // var lookAt = ge.getView().copyAsLookAt(ge.ALTITUDE_RELATIVE_TO_GROUND);
+    // if ('<%= params[:map_num] %>' == 1) {
+    //   lookAt.set(34, -118.2448684551622, 0, ge.ALTITUDE_RELATIVE_TO_GROUND, 0, 0, 250000);
+    // } else {
+    //   lookAt.set(40.8, -73.2448684551622, 0, ge.ALTITUDE_RELATIVE_TO_GROUND, 0, 0, 250000);
+    // }
+    // setTimeout(function(){ ge.getOptions().setFlyToSpeed(.2); ge.getView().setAbstractView(lookAt); },10000);
+
+    //set a click listener that affects all placemarks
+    google.earth.addEventListener(
+      ge.getGlobe(), 'click', function(event) {
+      var obj = event.getTarget();
+      if (obj.getType() == 'KmlPlacemark'){
+        event.preventDefault();
+        var placemark = obj;
+        var placemark_desc_active = placemark.getBalloonHtmlUnsafe();
+        var balloon = ge.createHtmlStringBalloon('');
+        balloon.setContentString(placemark_desc_active);
+        // ge.setBalloon(balloon);
+        ge.setBalloon(null);
+        //var textz = kmlEvent.featureData.description;
+        selectZip(event.getTarget().getDescription());
+      }
+    });
+
+  }
+
+  var selectZip = function(zipCode) {
+    var data = {};
+    data["targetNum"] = <%= params[:map_num] %>;
+    data["zipCode"] = zipCode.toString();
+    sendWSMessage('addZip', JSON.stringify(data));
+  };
+
+  var update2MTpies = function(data) {
+    var results = JSON.parse(data);
+    mapnum = <%= params[:map_num] %>;
+    mapnum = mapnum.toString();
+
+    var thedata = [
+      {
+        key: "MP",
+        y: results['map' + mapnum + 'data']['Market Potential']
+      },
+      {
+        key: "AP",
+        y: results['map' + mapnum + 'data']['Agency Presence']
+      },
+      {
+        key: "CA",
+        y: results['map' + mapnum + 'data']['Competitive Assessment']
+      },
+      {
+        key: "CB",
+        y: results['map' + mapnum + 'data']['Customer Behavior']
+      }
+    ];
+    addPieChart("varPieChart1", false, thedata);
+  }
+
+
+  /*****************************************************************************************************************
+    When a button is clicked on 1L2L, the sliders and checkbox values are collected, and this function is called.
+    We first check for 2 things:
+     - which map is intended to change? (e.g., map 1, map 2, or both)
+     - which map are we talking to? (e.g., is this map 1, or map 2>)
+    If 'whichmap' == 3, both maps need to change. The only difference is map 1 gets a 10sec delay, vs 5sec.
+    Otherwise, only update the map if the intended map number matches the actual map number. (+ 5sec delay)
+   *****************************************************************************************************************/
+  var updateMapKML = function(data) {
+
+    var cp_values = JSON.parse(data);
+    var param_mapnum = <%= params[:map_num] %>;
+    param_mapnum = param_mapnum.toString();
+
+    if (cp_values.whichmap.toString() == '3') {
+      if (param_mapnum == '1') {
+        // alert('map 1 right now');
+        removeLastLayer();
+        setTimeout(function(){drawLayer(cp_values.MPstring, cp_values.APstring, cp_values.CAstring, cp_values.CDstring, cp_values.FilterString);},5000);
+      } else {
+        // alert('map 2 right now');
+        removeLastLayer();
+        setTimeout(function(){drawLayer(cp_values.MPstring, cp_values.APstring, cp_values.CAstring, cp_values.CDstring, cp_values.FilterString);},2500);
+      }
+    } else {
+      if (cp_values.whichmap.toString() == param_mapnum) {
+        // alert('lets do just one');
+        removeLastLayer();
+        setTimeout(function(){drawLayer(cp_values.MPstring, cp_values.APstring, cp_values.CAstring, cp_values.CDstring, cp_values.FilterString);},2500);
+      }
+    }
+
+  };
+
+  // WebSocket Variables and Methods Hash
+  var ws = new WebSocket('ws://<%= $serverURL %>:5555');
+  var methods = {
+    "updateMapKML" : updateMapKML,
+    "statusMessage" : statusMessage, // found in websockets.js
+    "update2MTpies" : update2MTpies
+  };
+
+  $(document).ready(function(){
+    amplify.store.sessionStorage('screenID', 'screen2MT-<%= params[:map_num] %>');
+    setupWebSocket();
+    addPieChart("varPieChart1", false, thedata);
+  });
+
+  function recenter2MT(where) {
+    var lookAt = ge.getView().copyAsLookAt(ge.ALTITUDE_RELATIVE_TO_GROUND);
+    if (where == 'losangeles') {
+      lookAt.set(34, -118.2448684551622, 0, ge.ALTITUDE_RELATIVE_TO_GROUND, 0, 0, 250000);
+    } else if (where == 'newyork') {
+      lookAt.set(40.8, -73.2448684551622, 0, ge.ALTITUDE_RELATIVE_TO_GROUND, 0, 0, 250000);
+    } else if (where == 'houston') {
+      lookAt.set(29.697597,-95.450935, 0, ge.ALTITUDE_RELATIVE_TO_GROUND, 0, 0, 350000);
+    } else { // national
+      lookAt.set(38.341656,-97.923889, 0, ge.ALTITUDE_RELATIVE_TO_GROUND, 0, 0, 5750000);
+    }
+
+    ge.getView().setAbstractView(lookAt);
+  }
+
+  function demoZips(which) {
+    if (which == 'malibu') {
+      ziplist = ['91361', '91301', '91362', '91302', '90290', '91364', '90265', '930'];
+    } else if (which == 'longisland') {
+      ziplist = ['11568', '11791', '11797', '11743', '11753', '11771', '11732', '105'];
+    } else if (which == 'manhattan') {
+      ziplist = ['100', '11201', '11231', '11215'];
+    } else if (which == 'OC') {
+      ziplist = ['926'];
+    } else if (which == 'houston') {
+      ziplist = ['770'];
+    }
+    for (i=0; i<ziplist.length; i++) {
+      selectZip(ziplist[i]);
+    }
+  }
+
+</script>
+
+<div id="2mt_controls" style="height:2%; width:100%; background-color:#000000;">
+  &nbsp; <span style="color:#DDEEFF">Zoom: </span>
+  &nbsp; <a href="javascript:recenter2MT('national');">[National]</a>
+  &nbsp; <a href="javascript:recenter2MT('losangeles');">[Los Angeles]</a>
+  <!-- &nbsp; <a href="javascript:recenter2MT('houston');">[Houston]</a> -->
+  &nbsp; <a href="javascript:recenter2MT('newyork');">[New York]</a>
+
+  <span style="margin-left:500px;">&nbsp;</span>
+  &nbsp; <span style="color:#DDEEFF">Clusters: </span>
+  &nbsp; <a href="javascript:demoZips('malibu');">(Malibu)</a>
+  &nbsp; <a href="javascript:demoZips('OC');">(Orange County)</a>
+  <!-- &nbsp; <a href="javascript:demoZips('houston');">(Houston)</a>  -->
+  &nbsp; <a href="javascript:demoZips('longisland');">(NY Suburbs)</a>
+  &nbsp; <a href="javascript:demoZips('manhattan');">(NYC)</a>
+</div>
+
+<div id="map3d" style="height: 98%; width: 100%;"></div>
+
+<div style="position:absolute;right:125px;bottom:125px;height:250px;width:250px;background-color:grey;opacity:0.5;"></div>
+<div id="varPieChart1" style="position:absolute;right:125px;bottom:125px;height:250px;width:250px;z-index:999;">
+    <svg></svg>
+</div>

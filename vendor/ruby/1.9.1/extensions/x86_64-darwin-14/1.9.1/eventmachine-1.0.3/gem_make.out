@@ -1,0 +1,13 @@
+/Users/appledev021/.rvm/rubies/ruby-1.9.3-p551/bin/ruby -r ./siteconf20160303-33518-1xwax01.rb extconf.rb
+creating Makefile
+
+make  clean
+
+make
+compiling mapper.cpp
+compiling rubymain.cpp
+linking shared-object fastfilereaderext.bundle
+
+make  install
+/usr/bin/install -c -m 0755 fastfilereaderext.bundle .gem.20160303-33518-1lafz5h
+installing default fastfilereaderext libraries

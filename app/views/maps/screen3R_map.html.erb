@@ -1,0 +1,224 @@
+<script src="//www.google.com/jsapi?key=ABQIAAAA5El50zA4PeDTEMlv-sXFfRSsTL4WIgxhMZ0ZK_kHjwHeQuOD4xTdBhxbkZWuzyYTVeclkwYHpb17ZQ"></script>
+
+<script type="text/javascript">
+  // Set up Google Earth
+  setupGE();
+  // Initialize map will be called after GE is ready...put anything here that you want to happen the first time the plugin loads
+  function initializeMap() {
+    // add controls (navigation / zoom)
+    ge.getNavigationControl().setVisibility(ge.VISIBILITY_SHOW);
+    ge.getTime().setHistoricalImageryEnabled(true);
+
+    // https://developers.google.com/earth/documentation/time#creating_time_stamps_and_spans
+    if(window.frameElement.id == '3Rframe1') {
+      var timeStamp = ge.createTimeStamp('map_timestamp');
+      timeStamp.getWhen().set('2010-09-21');
+      ge.getTime().setTimePrimitive(timeStamp);
+    } else {
+      var timeStamp = ge.createTimeStamp('map_timestamp');
+      timeStamp.getWhen().set('2012-11-04');
+      ge.getTime().setTimePrimitive(timeStamp);
+    }
+
+    google.earth.addEventListener(ge.getView(), 'viewchangeend', function() {
+      var targetFrame = (window.frameElement.id == '3Rframe1' ? '3Rframe2' : '3Rframe1');
+      var camera = ge.getView().copyAsCamera(ge.ALTITUDE_RELATIVE_TO_GROUND);
+      var lat = camera.getLatitude();
+      var lng = camera.getLongitude();
+      var alt = camera.getAltitude();
+      window.parent.document.getElementById(targetFrame).contentWindow.move3Rmap(lat, lng, alt);
+    });
+
+    //set a click listener that affects all placemarks
+    google.earth.addEventListener(ge.getGlobe(), 'click', function(event) {
+      var lat = event.getLatitude();
+      var lng = event.getLongitude();
+      getReadableAddress(lat, lng);
+    });
+  }
+
+  function drawOneLayer(clusterNum, clusterName, clusterZipList) {
+    var link = ge.createLink('');
+    var href = 'http://<%= $serverURL %>:3000/maps/get_map_KML_selected/' + clusterNum + '/' + clusterName + '/' + clusterZipList ;
+    var networkLink = ge.createNetworkLink('');
+    link.setHref(href);
+    networkLink.set(link, true, true); // Sets the link, refreshVisibility, and flyToView.
+    ge.getFeatures().appendChild(networkLink);
+
+    //set a click listener that affects all placemarks
+    google.earth.addEventListener(ge.getGlobe(), 'click', function(event) {
+      var obj = event.getTarget();
+      if (obj.getType() == 'KmlPlacemark'){
+        var placemark = obj;
+        var balloon = ge.createHtmlStringBalloon('');
+        ge.setBalloon(balloon);
+        clickClusterMap(event.getTarget().getDescription());
+      }
+    });
+  }
+
+  function drawUSOutline() {
+    var link = ge.createLink('');
+    var href = 'http://<%= $serverURL %>:3000/us_outline.kml';
+    var networkLink = ge.createNetworkLink('');
+    link.setHref(href);
+    networkLink.set(link, true, true); // Sets the link, refreshVisibility, and flyToView.
+    ge.getFeatures().appendChild(networkLink);
+  }
+
+  // WebSocket Variables and Methods Hash
+  var ws = new WebSocket('ws://<%= $serverURL %>:5555');
+  var methods = {
+    "createClusterTabs" : addClusterLayers, // found in screen3R.js
+    "statusMessage" : statusMessage // found in websockets.js
+  };
+
+  $(document).ready(function(){
+    amplify.store.sessionStorage('screenID', 'screen3R');
+    setupWebSocket();
+  });
+
+  function move3Rmap(lat, lng, alt) {
+    var lookAt = ge.getView().copyAsLookAt(ge.ALTITUDE_RELATIVE_TO_GROUND);
+    lookAt.set(lat, lng, 0, ge.ALTITUDE_RELATIVE_TO_GROUND, 0, 0, alt);
+    ge.getView().setAbstractView(lookAt);
+  }
+
+  function set3RHistoricalTime(where) {
+    var lookAt = ge.getView().copyAsLookAt(ge.ALTITUDE_RELATIVE_TO_GROUND);
+    if (where == 'seaside') {
+      lookAt.set(39.958307,-74.070388, 0, ge.ALTITUDE_RELATIVE_TO_GROUND, 0, 0, 590);
+    } else if (where == 'longisland') {
+      lookAt.set(40.557406,-73.918894, 0, ge.ALTITUDE_RELATIVE_TO_GROUND, 0, 0, 700);
+    } else if (where == 'mantoloking') {
+      lookAt.set(40.040173,-74.050319, 0, ge.ALTITUDE_RELATIVE_TO_GROUND, 0, 0, 800);
+    } else if (where == 'losangeles') {
+      lookAt.set(34, -118.2448684551622, 0, ge.ALTITUDE_RELATIVE_TO_GROUND, 0, 0, 250000);
+    } else if (where == 'newyork') {
+      lookAt.set(40.8, -73.2448684551622, 0, ge.ALTITUDE_RELATIVE_TO_GROUND, 0, 0, 250000);
+    } else if (where == 'houston') {
+      lookAt.set(29.697597,-95.450935, 0, ge.ALTITUDE_RELATIVE_TO_GROUND, 0, 0, 350000);
+    } else { // national
+      lookAt.set(38.341656,-97.923889, 0, ge.ALTITUDE_RELATIVE_TO_GROUND, 0, 0, 5750000);
+    }
+    ge.getView().setAbstractView(lookAt);
+  }
+
+
+
+
+
+
+
+
+
+
+
+  function drawLayer3R(MPstring, APstring, CAstring, CDstring, FilterString, present_future, projection_value, whichvar, levers3L) {
+
+    // define / link 3-digit ZIP code KML
+    var USA_link = ge.createLink('');
+    var temp = "http://<%= $serverURL %>:3000/variables/<%= params.has_key?(:colors_array) ? params[:colors_array] : "0" %>/get_map_KML_DB/" + MPstring + "/" + APstring + "/" + CAstring + "/" + CDstring + "/" + FilterString + "/" + present_future + "/" + Math.round(projection_value).toString() + "/" + whichvar + "/" + levers3L + "/";
+    var USA_href = temp;
+    USA_networkLink = ge.createNetworkLink('');
+    USA_link.setHref(USA_href);
+    USA_networkLink.set(USA_link, true, true); // Sets the link, refreshVisibility, and flyToView.
+    ge.getFeatures().appendChild(USA_networkLink);
+
+  }
+
+
+
+
+  var update3RMapKML = function(data) {
+
+    // params[:present_future]
+    // results.projection_value (decimal, like 1.000, 0.987, 1.325)
+    // results.whichvar ('var2', 'var3')
+    // variable #25 = Ivantage HVH PIF (goes in AP / Agency Presence)
+    // variable #5 = Count of HVH (goes in MP / Market Potential)
+
+
+
+    var results = JSON.parse(data);
+
+    MPstring = (results.whichvar == 'var3' ? '100-5' : '0-1');
+    APstring = (results.whichvar == 'var2' ? '100-25' : '0-1');
+    CAstring = '0-1';
+    CDstring = '0-1';
+    FilterString = '111111';
+
+    // removeLastLayer();
+    var features = ge.getFeatures();
+    if (features.getLastChild()) {
+      features.removeChild(features.getFirstChild());
+    }
+    // features.removeChild(features.getLastChild());
+    // alert(features.getLastChild());
+    // features.removeChild(features.getFirstChild());
+    drawLayer3R(MPstring, APstring, CAstring, CDstring, FilterString, '<%= params[:present_future] %>', results.projection_value, results.whichvar, results.levers3L);
+    // var features = ge.getFeatures();
+    // alert(features.getLastChild());
+
+
+    // var cp_values = JSON.parse(data);
+    // drawLayer(cp_values.MPstring, cp_values.APstring, cp_values.CAstring, cp_values.CDstring, cp_values.FilterString);
+    // setTimeout("removeFirstLayer()", 8000);
+
+    // we need to send present/future and projection value
+    // we also need to define each string.
+    // those strings will be determined by variable 2 vs variable 3
+
+
+    // var USA_link = ge.createLink('');
+    // var temp = "http://<%= $serverURL %>:3000/variables/<%= params.has_key?(:colors_array) ? params[:colors_array] : "0" %>/get_map_KML_DB/" + MPstring + "/" + APstring + "/" + CAstring + "/" + CDstring + "/" + FilterString + "/<%= params[:present_future] %>/" + results.projection_value.toString() + "/";
+    // var USA_href = temp;
+    // var USA_networkLink = ge.createNetworkLink('');
+    // USA_link.setHref(USA_href);
+    // USA_networkLink.set(USA_link, true, true); // Sets the link, refreshVisibility, and flyToView.
+    // ge.getFeatures().appendChild(USA_networkLink);
+
+    // //set a click listener that affects all placemarks
+    // google.earth.addEventListener(
+    //   ge.getGlobe(), 'click', function(event) {
+    //   var obj = event.getTarget();
+    //   if (obj.getType() == 'KmlPlacemark'){
+    //     // event.preventDefault();
+    //     var placemark = obj;
+    //     // var placemark_desc_active = placemark.getBalloonHtmlUnsafe();
+    //     var balloon = ge.createHtmlStringBalloon('');
+    //     // balloon.setContentString(placemark_desc_active);
+    //     ge.setBalloon(balloon);
+    //     // ge.setBalloon(null);
+    //   }
+
+
+    // });
+
+
+  };
+
+
+
+
+  // WebSocket Variables and Methods Hash
+  var ws = new WebSocket('ws://<%= $serverURL %>:5555');
+  var methods = {
+    "update3RMapKML" : update3RMapKML,
+    "statusMessage" : statusMessage // found in websockets.js
+  };
+
+  $(document).ready(function(){
+    amplify.store.sessionStorage('screenID', 'screen3R');
+    setupWebSocket();
+  });
+
+
+
+
+
+
+</script>
+
+
+<div id="map3d" style="height: 100%; width: 100%;"></div>

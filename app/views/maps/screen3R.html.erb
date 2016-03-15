@@ -1,0 +1,84 @@
+<style>
+  #zillow_data_window {
+    position: absolute;
+    right: 3%;
+    height: 0px;
+    width: 33%;
+    overflow: hidden;
+    text-shadow: none;
+    padding: 0px 10px 0px 10px;
+    border-color: white;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    background-color: lightsteelblue;
+    transition: height 0.5s;
+  }
+
+  #zillow_window_control {
+    width: 55px;
+    display: inline-block;
+    float: right;
+    margin-top: 1px;
+    margin-right: 3%;
+    font-size:14px;
+    text-shadow:none;
+    text-align: center;
+  }
+
+  .zillow-data {
+    font-size: 15px;
+    font-weight: bold;
+  }
+
+  #zillow_address, #zillow_home_type, #zillow_built, #zillow_price, #zillow_sqft, #zillow_lot {
+    font-weight: normal;
+  }
+</style>
+
+<script type="text/javascript">
+  function moveTheMap3R(where, removelayers) {
+    if (removelayers) {
+      var features1 = document.getElementById('3Rframe1').contentWindow.ge.getFeatures();
+      if (features1.getLastChild()) {
+        features1.removeChild(features1.getFirstChild());
+      }
+      var features2 = document.getElementById('3Rframe2').contentWindow.ge.getFeatures();
+      if (features2.getLastChild()) {
+        features2.removeChild(features2.getFirstChild());
+      }
+    }
+    document.getElementById('3Rframe1').contentWindow.set3RHistoricalTime(where);
+    setTimeout(function() {document.getElementById('3Rframe2').contentWindow.set3RHistoricalTime(where);}, 500);
+  }
+</script>
+
+<div id="3r_controls" style="height:2%; width:100%; background-color:#000000;">
+  &nbsp; <span style="color:#DDEEFF">Zoom: </span>
+  &nbsp; <a href="javascript:moveTheMap3R('national', false);">[National]</a>
+  &nbsp; <a href="javascript:moveTheMap3R('losangeles', false);">[Los Angeles]</a>
+  <!-- &nbsp; <a href="javascript:moveTheMap3R('houston', false);">[Houston]</a> -->
+  &nbsp; <a href="javascript:moveTheMap3R('newyork', false);">[New York]</a>
+
+  <span style="margin-left:500px;">&nbsp;</span>
+  &nbsp; <span style="color:#DDEEFF">Pre/Post Cat: </span>
+  &nbsp; <a href="javascript:moveTheMap3R('seaside', true);">[Ortley Beach, NJ]</a> &nbsp;
+  &nbsp; <a href="javascript:moveTheMap3R('mantoloking', true);">[Mantoloking, NJ]</a> &nbsp;
+  &nbsp; <a href="javascript:moveTheMap3R('longisland', true)">[Long Island, NY]</a> &nbsp;
+
+  <a id="zillow_window_control" href="#" onclick="showHideZillowWindow()">(show)</a>
+  <%= image_tag("zillow_logo.png", :height => '15', :style => 'float:right;margin-top:2px;') %>
+
+  <div id="zillow_data_window">
+    <h4><u>Property Details (provided by Zillow)</u></h4>
+    <span class="zillow-data">Address: </span><span id="zillow_address"></span><br>
+    <span class="zillow-data">Home Type: </span><span id="zillow_home_type"></span><br>
+    <span class="zillow-data">Year Built: </span><span id="zillow_built"></span><br>
+    <span class="zillow-data">Value (Zestimate): </span><span id="zillow_price"></span><br>
+    <span class="zillow-data">Finished Square Feet: </span><span id="zillow_sqft"></span><br>
+    <span class="zillow-data">Lot Size (Square Feet): </span><span id="zillow_lot"></span>
+    <div id="test_div"></div>
+  </div>
+</div>
+
+<iframe id="3Rframe1" src="http://<%= $serverURL %>:3000/maps/2/screen3R_map/present" style="height: 1200px; width: 49.5%; display:inline;"></iframe>
+<iframe id="3Rframe2" src="http://<%= $serverURL %>:3000/maps/2/screen3R_map/future" style="height: 1200px; width: 49.5%; display:inline;"></iframe>

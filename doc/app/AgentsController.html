@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+
+<title>class AgentsController - Rails Application Documentation</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>app/controllers/agents_controller.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link"><a href="ApplicationController.html">ApplicationController</a>
+  
+</nav>
+
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-i-get3Lvars">#get3Lvars</a>
+    
+    <li><a href="#method-i-get3LvarsSummary">#get3LvarsSummary</a>
+    
+    <li><a href="#method-i-get_agent_info_for_modal">#get_agent_info_for_modal</a>
+    
+    <li><a href="#method-i-get_agents_for_zips">#get_agents_for_zips</a>
+    
+    <li><a href="#method-i-screen2R">#screen2R</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="./doc/README_FOR_APP.html">README_FOR_APP</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./AgentDim.html">AgentDim</a>
+  
+    <li><a href="./AgentsController.html">AgentsController</a>
+  
+    <li><a href="./AgentsHelper.html">AgentsHelper</a>
+  
+    <li><a href="./ApplicationController.html">ApplicationController</a>
+  
+    <li><a href="./ApplicationHelper.html">ApplicationHelper</a>
+  
+    <li><a href="./ChartsController.html">ChartsController</a>
+  
+    <li><a href="./ChartsHelper.html">ChartsHelper</a>
+  
+    <li><a href="./HomeController.html">HomeController</a>
+  
+    <li><a href="./HomeHelper.html">HomeHelper</a>
+  
+    <li><a href="./MapsController.html">MapsController</a>
+  
+    <li><a href="./MapsHelper.html">MapsHelper</a>
+  
+    <li><a href="./SegmentDim.html">SegmentDim</a>
+  
+    <li><a href="./Timeseries.html">Timeseries</a>
+  
+    <li><a href="./TopSegmentsByZip.html">TopSegmentsByZip</a>
+  
+    <li><a href="./VarZipRaw.html">VarZipRaw</a>
+  
+    <li><a href="./Variable3Zip.html">Variable3Zip</a>
+  
+    <li><a href="./VariableDim.html">VariableDim</a>
+  
+    <li><a href="./VariablesController.html">VariablesController</a>
+  
+    <li><a href="./VariablesHelper.html">VariablesHelper</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class AgentsController</h1>
+
+  <div id="description" class="description">
+    
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-get3Lvars" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get3Lvars</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="get3Lvars-source">
+            <pre><span class="ruby-comment"># File app/controllers/agents_controller.rb, line 43</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">get3Lvars</span>
+  <span class="ruby-identifier">clusterZips</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:clusterZips</span>]
+  <span class="ruby-identifier">clusterZips</span> = <span class="ruby-string">&quot;'&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">clusterZips</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-string">&quot;,&quot;</span>, <span class="ruby-string">&quot;','&quot;</span>) <span class="ruby-operator">+</span> <span class="ruby-string">&quot;'&quot;</span>
+  <span class="ruby-identifier">cluster_vars</span> = <span class="ruby-constant">Variable3Zip</span>.<span class="ruby-identifier">select</span>(<span class="ruby-string">&quot;varid_5, varid_15, varid_23, varid_29, varid_31, varid_32, varid_38, varid_41, zip&quot;</span>).<span class="ruby-identifier">where</span>(<span class="ruby-string">&quot;zip IN(&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">clusterZips</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;)&quot;</span>)
+
+  <span class="ruby-identifier">results</span> = []
+
+  <span class="ruby-identifier">cluster_vars</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">cv</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">temp</span> = {}
+    <span class="ruby-identifier">temp</span>[<span class="ruby-string">'varid_5'</span>] = <span class="ruby-identifier">cv</span>.<span class="ruby-identifier">varid_5</span>
+    <span class="ruby-identifier">temp</span>[<span class="ruby-string">'varid_15'</span>] = <span class="ruby-identifier">cv</span>.<span class="ruby-identifier">varid_15</span>
+    <span class="ruby-identifier">temp</span>[<span class="ruby-string">'varid_38'</span>] = <span class="ruby-identifier">cv</span>.<span class="ruby-identifier">varid_38</span>
+    <span class="ruby-identifier">temp</span>[<span class="ruby-string">'varid_23'</span>] = <span class="ruby-identifier">cv</span>.<span class="ruby-identifier">varid_23</span>
+    <span class="ruby-identifier">temp</span>[<span class="ruby-string">'varid_29'</span>] = <span class="ruby-identifier">cv</span>.<span class="ruby-identifier">varid_29</span>
+    <span class="ruby-identifier">temp</span>[<span class="ruby-string">'varid_31'</span>] = <span class="ruby-identifier">cv</span>.<span class="ruby-identifier">varid_31</span>
+    <span class="ruby-identifier">temp</span>[<span class="ruby-string">'varid_32'</span>] = <span class="ruby-identifier">cv</span>.<span class="ruby-identifier">varid_32</span>
+    <span class="ruby-identifier">temp</span>[<span class="ruby-string">'varid_41'</span>] = <span class="ruby-identifier">cv</span>.<span class="ruby-identifier">varid_41</span>
+    <span class="ruby-identifier">results</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">temp</span>)
+
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">render</span> <span class="ruby-value">:json</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">results</span>.<span class="ruby-identifier">to_json</span>
+
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- get3Lvars-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- get3Lvars-method -->
+
+    
+      <div id="method-i-get3LvarsSummary" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get3LvarsSummary</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>this method is used to get the Total PIF counts for each ZIP Cluster This
+is obviously used on 3L’s summary tab</p>
+          
+
+          
+          <div class="method-source-code" id="get3LvarsSummary-source">
+            <pre><span class="ruby-comment"># File app/controllers/agents_controller.rb, line 72</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">get3LvarsSummary</span>
+  <span class="ruby-identifier">clusterZips</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:clusterZips</span>]  <span class="ruby-comment"># get the list of ZIPs for each cluster, in this format: 1,2-3,4,5-6,7,8,9</span>
+  <span class="ruby-identifier">clusterZips</span> = <span class="ruby-string">&quot;'&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">clusterZips</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-string">&quot;,&quot;</span>, <span class="ruby-string">&quot;','&quot;</span>).<span class="ruby-identifier">gsub</span>(<span class="ruby-string">&quot;-&quot;</span>, <span class="ruby-string">&quot;'-'&quot;</span>) <span class="ruby-operator">+</span> <span class="ruby-string">&quot;'&quot;</span>   <span class="ruby-comment"># add ' around commas</span>
+  <span class="ruby-identifier">clusterCount</span> = <span class="ruby-identifier">clusterZips</span>.<span class="ruby-identifier">count</span> <span class="ruby-string">'-'</span>
+
+  <span class="ruby-comment"># Start with this: '1','2','3'-'4','5'-'6','7','8'-'</span>
+  <span class="ruby-comment"># For each ZIP Cluster:</span>
+  <span class="ruby-comment">#   take the first chunk: '1','2','3', run it through SQL, and push the result (total PIF for that cluster) to &quot;results&quot;</span>
+  <span class="ruby-identifier">results</span> = []
+  <span class="ruby-keyword">for</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword">in</span> <span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-identifier">clusterCount</span> <span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">tempClusterZips</span> = <span class="ruby-identifier">clusterZips</span>[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-identifier">clusterZips</span>.<span class="ruby-identifier">index</span>(<span class="ruby-string">'-'</span>)<span class="ruby-operator">-</span><span class="ruby-value">1</span>]
+    <span class="ruby-identifier">total_pif</span> = <span class="ruby-constant">AgentDim</span>.<span class="ruby-identifier">select</span>(<span class="ruby-string">&quot;sum(pif_allstate_total + pif_ivantage_total) as total_pif&quot;</span>).<span class="ruby-identifier">where</span>(<span class="ruby-string">&quot;\&quot;busZip3\&quot; IN(&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">tempClusterZips</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;)&quot;</span>)
+    <span class="ruby-identifier">temp</span> = {}
+    <span class="ruby-identifier">temp</span>[<span class="ruby-string">'total_pif'</span>] = <span class="ruby-identifier">total_pif</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">total_pif</span>
+    <span class="ruby-identifier">results</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">temp</span>)
+    <span class="ruby-identifier">clusterZips</span> = <span class="ruby-identifier">clusterZips</span>[<span class="ruby-identifier">tempClusterZips</span>.<span class="ruby-identifier">length</span><span class="ruby-operator">+</span><span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-identifier">clusterZips</span>.<span class="ruby-identifier">length</span>]
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">render</span> <span class="ruby-value">:json</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">results</span>.<span class="ruby-identifier">to_json</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- get3LvarsSummary-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- get3LvarsSummary-method -->
+
+    
+      <div id="method-i-get_agent_info_for_modal" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_agent_info_for_modal</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="get_agent_info_for_modal-source">
+            <pre><span class="ruby-comment"># File app/controllers/agents_controller.rb, line 93</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">get_agent_info_for_modal</span>
+
+  <span class="ruby-identifier">agentID</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:agentID</span>]
+  <span class="ruby-identifier">agent_modal_info</span> = <span class="ruby-constant">AgentDim</span>.<span class="ruby-identifier">select</span>(<span class="ruby-string">&quot;agent_id, agent_name, tier_ivantage, tier_allstate, tenure, pif_allstate_auto, pif_allstate_home, pif_allstate_otherpc, pif_allstate_financial, pif_allstate_total, \&quot;busZip5\&quot;, \&quot;busZip3\&quot;, multiline, retention, pif_ivantage_home, pif_ivantage_hvh, pif_ivantage_other, pif_ivantage_total, premium_ivantage_total, agent_city&quot;</span>).<span class="ruby-identifier">where</span>(<span class="ruby-string">&quot;agent_id = \'&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">agentID</span> <span class="ruby-operator">+</span><span class="ruby-string">&quot;\'&quot;</span>)
+
+  <span class="ruby-identifier">results</span> = <span class="ruby-identifier">agent_modal_info</span>
+  <span class="ruby-identifier">render</span> <span class="ruby-value">:json</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">results</span>.<span class="ruby-identifier">to_json</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- get_agent_info_for_modal-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- get_agent_info_for_modal-method -->
+
+    
+      <div id="method-i-get_agents_for_zips" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_agents_for_zips</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>generates an array of hashes (one hash per agent) results =</p>
+<dl class="rdoc-list label-list"><dt>{agent_id, agent_name, tier_ivantage, tier_allstate, tenure}
+<dd></dd><dt>{agent_id, agent_name, tier_ivantage, tier_allstate, tenure}
+<dd></dd><dt>{agent_id, agent_name, tier_ivantage, tier_allstate, tenure}
+<dd></dd></dl>
+          
+
+          
+          <div class="method-source-code" id="get_agents_for_zips-source">
+            <pre><span class="ruby-comment"># File app/controllers/agents_controller.rb, line 17</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">get_agents_for_zips</span>
+  <span class="ruby-identifier">zips</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:zips</span>]
+  <span class="ruby-identifier">zips</span> = <span class="ruby-string">&quot;'&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">zips</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-string">&quot;,&quot;</span>, <span class="ruby-string">&quot;','&quot;</span>) <span class="ruby-operator">+</span> <span class="ruby-string">&quot;'&quot;</span>
+
+  <span class="ruby-identifier">cluster_agents</span> = <span class="ruby-constant">AgentDim</span>.<span class="ruby-identifier">select</span>(<span class="ruby-string">&quot;agent_id, agent_name, tier_ivantage, tier_allstate, tenure, pif_allstate_home, pif_allstate_total, pif_ivantage_total, pif_ivantage_hvh, \&quot;busZip3\&quot;&quot;</span>).<span class="ruby-identifier">where</span>(<span class="ruby-string">&quot;\&quot;busZip3\&quot; IN(&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">zips</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;) or \&quot;busZip5\&quot; IN(&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">zips</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;)&quot;</span>)
+
+  <span class="ruby-identifier">results</span> = {}
+  <span class="ruby-identifier">results</span>[<span class="ruby-string">'clusterID'</span>] = <span class="ruby-identifier">params</span>[<span class="ruby-value">:clusterID</span>]
+  <span class="ruby-identifier">results</span>[<span class="ruby-string">'agents'</span>] = []
+  <span class="ruby-identifier">cluster_agents</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">ca</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">temp</span> = {}
+    <span class="ruby-identifier">temp</span>[<span class="ruby-string">'agent_id'</span>] = <span class="ruby-identifier">ca</span>.<span class="ruby-identifier">agent_id</span>
+    <span class="ruby-identifier">temp</span>[<span class="ruby-string">'agent_name'</span>] = <span class="ruby-identifier">ca</span>.<span class="ruby-identifier">agent_name</span>.<span class="ruby-identifier">titlecase</span>
+    <span class="ruby-identifier">temp</span>[<span class="ruby-string">'tier_ivantage'</span>] = <span class="ruby-identifier">ca</span>.<span class="ruby-identifier">tier_ivantage</span>
+    <span class="ruby-identifier">temp</span>[<span class="ruby-string">'tier_allstate'</span>] = <span class="ruby-identifier">ca</span>.<span class="ruby-identifier">tier_allstate</span>
+    <span class="ruby-identifier">temp</span>[<span class="ruby-string">'tenure'</span>] = <span class="ruby-identifier">ca</span>.<span class="ruby-identifier">tenure</span>
+    <span class="ruby-identifier">temp</span>[<span class="ruby-string">'pif_allstate_home'</span>] = <span class="ruby-identifier">ca</span>.<span class="ruby-identifier">pif_allstate_home</span>
+    <span class="ruby-identifier">temp</span>[<span class="ruby-string">'pif_allstate_total'</span>] = <span class="ruby-identifier">ca</span>.<span class="ruby-identifier">pif_allstate_total</span>
+    <span class="ruby-identifier">temp</span>[<span class="ruby-string">'pif_ivantage_total'</span>] = <span class="ruby-identifier">ca</span>.<span class="ruby-identifier">pif_ivantage_total</span>
+    <span class="ruby-identifier">temp</span>[<span class="ruby-string">'pif_ivantage_hvh'</span>] = <span class="ruby-identifier">ca</span>.<span class="ruby-identifier">pif_ivantage_hvh</span>
+    <span class="ruby-identifier">results</span>[<span class="ruby-string">'agents'</span>].<span class="ruby-identifier">push</span>(<span class="ruby-identifier">temp</span>)
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">render</span> <span class="ruby-value">:json</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">results</span>.<span class="ruby-identifier">to_json</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- get_agents_for_zips-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- get_agents_for_zips-method -->
+
+    
+      <div id="method-i-screen2R" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">screen2R</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="screen2R-source">
+            <pre><span class="ruby-comment"># File app/controllers/agents_controller.rb, line 8</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">screen2R</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- screen2R-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- screen2R-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.2.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

@@ -1,0 +1,207 @@
+#screen2MB {
+	height: 100%;
+	overflow: hidden !important;
+}
+
+h3{
+	font-size: 24px;
+}
+
+.varCategory .ui-btn-inner {
+	font-size: 24px;
+}
+#screen2MB div[class|="ui-block"] {
+	height: 100%;
+}
+
+#selected_zips_container {
+	height: 15%;
+	padding: 1% 1% 0% 1%;
+}
+
+#selected_zips_container .ui-btn {
+	width: 75%;
+}
+
+.zip-box {
+	height: 70%;
+	width: 95%;
+	background-color: white;
+	border-radius: 1em;
+	border: solid 1px #bbbbbb;
+	padding-top: 5%;
+}
+
+.bodyWell {
+		background-color: white;
+		border-radius: 1em;
+		border: solid 1px #bbbbbb;
+		margin: 1%;
+	}
+
+.selected-zip {
+	display: inline-block;
+	border: 1px solid grey;
+	background-color: lightgrey;
+	color: black;
+	margin: 5px;
+	padding: 5px;
+	border-radius: 10px;
+	text-align: center;
+	font-size: 24px;
+}
+
+.selected-zip .ui-icon {
+	display: inline-block;
+	margin-left: 5px;
+	cursor: pointer;
+}
+
+/*.selected-zip-map1 {
+	background-color: #1f77b4;
+}
+
+.selected-zip-map2 {
+	background-color: #d62728;
+}*/
+
+#chart_var_container {
+	height: 75%;
+	padding: 1% 0% 1.3% 1.3%;
+}
+
+.chartVarControl {
+	padding-right: 1.5%;
+	height: 100%;
+	border-right: 3px solid #bbbbbb;
+}
+
+.chart-div {
+	height: 100%;
+	display: inline-block;
+	transition: width 0.7s;
+}
+
+.chart-div select {
+	display: inline-block;
+}
+
+.chart-div svg {
+	position: relative;
+	height: 100%;
+	margin-left: -1%;
+	z-index: 999;
+	transition: margin-left 0.7s;
+}
+
+.chart-div-collapsed svg {
+	margin-left: -2%;
+}
+
+.chart_svg_container {
+	height: 100%;
+}
+
+.chart-var1, .chart-var2, .chart-var3, .chart-var4 {
+	width: 20%;
+	margin-bottom: 10px;
+	/*background-image: linear-gradient( #5393c5,#6facd5);*/
+	background-image: linear-gradient( #999999,#8A8A8A);
+	color: whitesmoke;
+	text-shadow: none;
+	z-index: 999;
+	border: solid 1px #aaaaaa;
+	cursor: pointer;
+	font-size: 24px;
+	padding: 0.5% 0%;
+}
+.chart-var1 {
+	border: solid 4px #ff8100;
+}
+.chart-var2 {
+	border: solid 4px #e9fb00;
+}
+.chart-var3 {
+	border: solid 4px #8106A9;
+}
+.chart-var4 {
+	border: solid 4px #339933;
+}
+
+
+
+.chart-table {
+	height: 90%;
+	width: 100%;
+}
+
+.chart-table-col1 {
+	width: 60px;
+}
+
+.chart-table-row2 {
+	height: 60px;
+}
+
+.chartVarControl .ui-btn-text {
+	font-size: 20px;
+}
+
+.chart-vardrop {
+	border-radius: 10px;
+	text-align: center;
+	background-color: lightgrey;
+}
+
+.chart-vardrop-hover {
+	border: 2px solid grey;
+}
+
+.chart-vardrop-x {
+	height: 100%;
+	width: 99%;
+	padding-top: 1%;
+}
+
+.chart-vardrop-x span {
+	position: relative;
+}
+
+.chart-vardrop-y {
+	height: 100%;
+	width: 100%;
+	margin-left: 10%;
+	position: relative;
+	text-align: center;
+}
+
+
+#chart1-select-listbox .ui-li-divider, .ui-btn-inner, .ui-popup .ui-title{
+	font-size: 20px;
+}
+
+#chart2-select-listbox .ui-li-divider, .ui-btn-inner, .ui-popup .ui-title {
+	font-size: 20px;
+}
+
+.rotate {
+	position: absolute;
+	display: inline-block;
+	margin-left: -25%;
+	-webkit-transform: rotate(270deg);
+}
+.default-axis-label {
+	/*opacity: 0.6;*/
+	font-size: 22px;
+	font-style: bold;
+}
+
+.dropped-var {
+	color: black;
+	opacity: 1;
+	font-size: 18px;
+}
+.nvd3 .nv-discretebar .nv-groups text, .nvd3 .nv-multibarHorizontal .nv-groups text{
+	fill: auto;
+	stroke:none;
+}

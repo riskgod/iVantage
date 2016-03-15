@@ -1,0 +1,42 @@
+/Users/appledev021/.rvm/rubies/ruby-1.9.3-p551/bin/ruby -r ./siteconf20160303-33518-1c7pgbh.rb extconf.rb
+cc -std=c99 -pedantic -c -O3 -fPIC  -Wall -W -Wstrict-prototypes -Wwrite-strings -g -ggdb net.c
+cc -std=c99 -pedantic -c -O3 -fPIC  -Wall -W -Wstrict-prototypes -Wwrite-strings -g -ggdb hiredis.c
+cc -std=c99 -pedantic -c -O3 -fPIC  -Wall -W -Wstrict-prototypes -Wwrite-strings -g -ggdb sds.c
+cc -std=c99 -pedantic -c -O3 -fPIC  -Wall -W -Wstrict-prototypes -Wwrite-strings -g -ggdb async.c
+ar rcs libhiredis.a net.o hiredis.o sds.o async.o
+creating Makefile
+
+make  clean
+
+make
+compiling connection.c
+connection.c: In function '__wait_readable':
+connection.c:88:5: warning: 'rb_thread_select' is deprecated (declared at /Users/appledev021/.rvm/rubies/ruby-1.9.3-p551/include/ruby-1.9.1/ruby/intern.h:390) [-Wdeprecated-declarations]
+     if (rb_thread_select(fd + 1, &fds, NULL, NULL, toptr) < 0) {
+     ^
+connection.c: In function '__wait_writable':
+connection.c:112:5: warning: 'rb_thread_select' is deprecated (declared at /Users/appledev021/.rvm/rubies/ruby-1.9.3-p551/include/ruby-1.9.1/ruby/intern.h:390) [-Wdeprecated-declarations]
+     if (rb_thread_select(fd + 1, NULL, &fds, NULL, toptr) < 0) {
+     ^
+connection.c: In function 'connection_generic_connect':
+connection.c:161:5: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+     int writable = 0;
+     ^
+connection.c:172:5: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+     int optval = 0;
+     ^
+connection.c: In function 'connection_connect':
+connection.c:194:25: warning: variable 'pc' set but not used [-Wunused-but-set-variable]
+     redisParentContext *pc;
+                         ^
+connection.c: In function 'connection_connect_unix':
+connection.c:222:25: warning: variable 'pc' set but not used [-Wunused-but-set-variable]
+     redisParentContext *pc;
+                         ^
+compiling hiredis_ext.c
+compiling reader.c
+linking shared-object hiredis/ext/hiredis_ext.bundle
+
+make  install
+/usr/bin/install -c -m 0755 hiredis_ext.bundle .gem.20160303-33518-1x3efaa/hiredis/ext
+installing default hiredis_ext libraries

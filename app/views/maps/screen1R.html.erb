@@ -1,0 +1,58 @@
+<script src="//www.google.com/jsapi?key=ABQIAAAA5El50zA4PeDTEMlv-sXFfRSsTL4WIgxhMZ0ZK_kHjwHeQuOD4xTdBhxbkZWuzyYTVeclkwYHpb17ZQ"></script>
+
+<script type="text/javascript">
+  // Set up Google Earth
+  setupGE();
+  // Initialize map will be called after GE is ready...put anything here that you want to happen the first time the plugin loads
+  function initializeMap() {
+    // add controls (navigation / zoom)
+    ge.getNavigationControl().setVisibility(ge.VISIBILITY_SHOW);
+    drawLayer();
+  }
+
+  function drawLayer(MPstring, APstring, CAstring, CDstring, FilterString) {
+    // define / link 3-digit ZIP code KML
+    var USA_link = ge.createLink('');
+    if (MPstring && APstring && CAstring && CDstring && FilterString) {
+      var temp = "http://<%= $serverURL %>:3000/variables/<%= params.has_key?(:colors_array) ? params[:colors_array] : "0" %>/get_map_KML_DB/" + MPstring + "/" + APstring + "/" + CAstring + "/" + CDstring + "/" + FilterString + "/";
+      var USA_href = temp;
+    } else {
+      var USA_href = "http://<%= $serverURL %>:3000/variables/<%= params.has_key?(:colors_array) ? params[:colors_array] : "0" %>/get_map_KML_DB.kml";
+    }
+    var USA_networkLink = ge.createNetworkLink('');
+    USA_link.setHref(USA_href);
+    USA_networkLink.set(USA_link, true, true); // Sets the link, refreshVisibility, and flyToView.
+    ge.getFeatures().appendChild(USA_networkLink);
+
+    //set a click listener that affects all placemarks
+    google.earth.addEventListener(
+      ge.getGlobe(), 'click', function(event) {
+      var obj = event.getTarget();
+      if (obj.getType() == 'KmlPlacemark'){
+        // event.preventDefault();
+        var placemark = obj;
+        // var placemark_desc_active = placemark.getBalloonHtmlUnsafe();
+        var balloon = ge.createHtmlStringBalloon('');
+        // balloon.setContentString(placemark_desc_active);
+        ge.setBalloon(balloon);
+        // ge.setBalloon(null);
+      }
+
+
+    });
+  }
+
+  // WebSocket Variables and Methods Hash
+  var ws = new WebSocket('ws://<%= $serverURL %>:5555');
+  var methods = {
+    "updateMapKML" : updateMapKML,
+    "statusMessage" : statusMessage // found in websockets.js
+  };
+
+  $(document).ready(function(){
+    amplify.store.sessionStorage('screenID', 'screen1R');
+    setupWebSocket();
+  });
+</script>
+
+<div id="map3d" style="height: 100%; width: 100%;"></div>

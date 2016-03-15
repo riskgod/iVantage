@@ -1,0 +1,60 @@
+
+<div style="padding: 10px 25px;">
+
+	<h1>Welcome to HD Wall's Home#index</h1>
+	<p>Find me in app/views/home/index.html.erb</p>
+
+
+	<style>
+		table td { text-align: center; }
+		table { margin: 30px; border-spacing: 0px; }
+		a { 
+			cursor: pointer;
+		}
+	</style>
+
+
+	<table border="1" style="height:28px">
+		<tr>
+			<td height="100" width="100"><a href="javascript:window.location='/variables/screen1L2L'">variables/ screen1L2L</a></td>
+			<td width="300"><a href="javascript:window.location='/maps/0/screen1R'">maps/ screen1R</a></td>
+		</tr>
+	</table>
+	<button class="btn btn-primary" onclick="openScreen1L2LOne()">variables/ screen1L2L</button>
+	<button class="btn btn-primary" onclick="openScreen1ROne()">maps/ screen1R</button>
+	<button class="btn btn-primary" onclick="openWindowOne()">All</button>
+
+	<table border="1" style="height:28px">
+		<tr>
+			<td height="100" width="100" rowspan="2"><a href="javascript:window.location='/variables/screen1L2L'">variables/ screen1L2L</a></td>
+			<td height="50" width="100"><a href="javascript:window.location='/maps/0/screen2MT/1'">maps/ screen2MT (B)</a></td>
+			<td height="50" width="100"><a href="javascript:window.location='/maps/0/screen2MT/2'">maps/ screen2MT (R)</a></td>
+			<td height="100" width="100" rowspan="2"><a href="javascript:window.location='/agents/screen2R/'">agents/ screen2R</a></td>
+		</tr>
+		<tr>
+			<td height="50" width="100" colspan="2"><a href="javascript:window.location='/charts/screen2MB'">charts/ screen2MB</a></td>
+		</tr>
+	</table>
+	<button class="btn btn-primary" onclick="openScreen1L2LTwo()">variables/ screen1L2L</button>
+	<button class="btn btn-primary" onclick="openScreen2MT_1Two()">maps/ screen2MT (B)</button>
+	<button class="btn btn-primary" onclick="openScreen2MT_2Two()">maps/ screen2MT (R)</button>
+	<button class="btn btn-primary" onclick="openScreen2RTwo()">agents/ screen2R</button>
+	<button class="btn btn-primary" onclick="openScreen2MBTwo()"s>charts/ screen2MB</button>
+	<button class="btn btn-primary" onclick="openWindowTwo()">All</button>
+
+	<table border="1" style="height:28px">
+		<tr>
+			<td height="100" width="100"><a href="javascript:window.location='/agents/screen3L'">agents/ screen3L</a></td>
+			<td width="300"><a href="javascript:window.location='/maps/2/screen3R'">maps/ screen3R</a></td>
+		</tr>
+	</table>
+	<button class="btn btn-primary" onclick="openScreen3LThree()">agents/ screen3L</button>
+	<button class="btn btn-primary" onclick="openScreen3RThree()">maps/ screen3R</button>
+	<button class="btn btn-primary" onclick="openWindowThree()">All</button>
+
+	<p>KML file: <a href="javascript:window.location='/variables/0/get_map_KML_DB'">variables/0/get_map_KML_DB</a> (blue / default settings)</p>
+	<p>KML file: <a href="javascript:window.location='/variables/2/get_map_KML_DB'">variables/2/get_map_KML_DB</a> (red / default settings)</p>
+	<p>KML file: <a href="javascript:window.location='/variables/0/get_map_KML_DB/50-5,6,7,8,9/40-10,11,12,13/30-14,15,16/20-17,18,19/11010/'">variables/0/get_map_KML_DB/50-5,6,7,8,9/40-10,11,12,13/30-14,15,16/20-17,18,19/11010/</a> (blue / custom settings)</p>
+
+
+</div>

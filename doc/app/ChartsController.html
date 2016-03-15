@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+
+<title>class ChartsController - Rails Application Documentation</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>app/controllers/charts_controller.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link"><a href="ApplicationController.html">ApplicationController</a>
+  
+</nav>
+
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-i-get_timeseries_data_for_zips">#get_timeseries_data_for_zips</a>
+    
+    <li><a href="#method-i-get_variable_values_for_zips">#get_variable_values_for_zips</a>
+    
+    <li><a href="#method-i-screen2MB">#screen2MB</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="./doc/README_FOR_APP.html">README_FOR_APP</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./AgentDim.html">AgentDim</a>
+  
+    <li><a href="./AgentsController.html">AgentsController</a>
+  
+    <li><a href="./AgentsHelper.html">AgentsHelper</a>
+  
+    <li><a href="./ApplicationController.html">ApplicationController</a>
+  
+    <li><a href="./ApplicationHelper.html">ApplicationHelper</a>
+  
+    <li><a href="./ChartsController.html">ChartsController</a>
+  
+    <li><a href="./ChartsHelper.html">ChartsHelper</a>
+  
+    <li><a href="./HomeController.html">HomeController</a>
+  
+    <li><a href="./HomeHelper.html">HomeHelper</a>
+  
+    <li><a href="./MapsController.html">MapsController</a>
+  
+    <li><a href="./MapsHelper.html">MapsHelper</a>
+  
+    <li><a href="./SegmentDim.html">SegmentDim</a>
+  
+    <li><a href="./Timeseries.html">Timeseries</a>
+  
+    <li><a href="./TopSegmentsByZip.html">TopSegmentsByZip</a>
+  
+    <li><a href="./VarZipRaw.html">VarZipRaw</a>
+  
+    <li><a href="./Variable3Zip.html">Variable3Zip</a>
+  
+    <li><a href="./VariableDim.html">VariableDim</a>
+  
+    <li><a href="./VariablesController.html">VariablesController</a>
+  
+    <li><a href="./VariablesHelper.html">VariablesHelper</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class ChartsController</h1>
+
+  <div id="description" class="description">
+    
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-get_timeseries_data_for_zips" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_timeseries_data_for_zips</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="get_timeseries_data_for_zips-source">
+            <pre><span class="ruby-comment"># File app/controllers/charts_controller.rb, line 10</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">get_timeseries_data_for_zips</span>
+  <span class="ruby-identifier">chart</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:chart</span>]
+  <span class="ruby-identifier">varID</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:varID</span>]
+  <span class="ruby-identifier">map1Zips</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:map1_selected</span>].<span class="ruby-identifier">split</span>(<span class="ruby-string">','</span>)
+  <span class="ruby-identifier">map2Zips</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:map2_selected</span>].<span class="ruby-identifier">split</span>(<span class="ruby-string">','</span>)
+  <span class="ruby-identifier">map1Results</span> = {}
+  <span class="ruby-identifier">map2Results</span> = {}
+
+  <span class="ruby-identifier">selectStatement</span> = <span class="ruby-identifier">varID</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;_2012Q1,&quot;</span>  <span class="ruby-operator">+</span> <span class="ruby-identifier">varID</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;_2012Q2,&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">varID</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;_2012Q3,&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">varID</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;_2012Q4,&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">varID</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;_2013Q1&quot;</span>
+  <span class="ruby-identifier">varKeys</span> = <span class="ruby-identifier">selectStatement</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">','</span>)
+
+  <span class="ruby-identifier">map1Zips</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">zip</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">begin</span>
+      <span class="ruby-identifier">tempResults</span> = <span class="ruby-constant">Timeseries</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value">:zip</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot; &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">zip</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot; &quot;</span>)[<span class="ruby-value">0</span>]
+      <span class="ruby-identifier">tempArray</span> = []
+      <span class="ruby-identifier">varKeys</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">tempArray</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">tempResults</span>[<span class="ruby-identifier">key</span>]
+      <span class="ruby-keyword">end</span>
+      <span class="ruby-identifier">map1Results</span>[<span class="ruby-identifier">zip</span>] = <span class="ruby-identifier">tempArray</span>
+    <span class="ruby-keyword">rescue</span> <span class="ruby-constant">Exception</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
+      <span class="ruby-identifier">puts</span> <span class="ruby-identifier">e</span>.<span class="ruby-identifier">message</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;: &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">zip</span>.<span class="ruby-identifier">to_s</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">map2Zips</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">zip</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">begin</span>
+      <span class="ruby-identifier">tempResults</span> = <span class="ruby-constant">Timeseries</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value">:zip</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot; &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">zip</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot; &quot;</span>)[<span class="ruby-value">0</span>]
+      <span class="ruby-identifier">tempArray</span> = []
+      <span class="ruby-identifier">varKeys</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">tempArray</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">tempResults</span>[<span class="ruby-identifier">key</span>]
+      <span class="ruby-keyword">end</span>
+      <span class="ruby-identifier">map2Results</span>[<span class="ruby-identifier">zip</span>] = <span class="ruby-identifier">tempArray</span>
+    <span class="ruby-keyword">rescue</span> <span class="ruby-constant">Exception</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
+      <span class="ruby-identifier">puts</span> <span class="ruby-identifier">e</span>.<span class="ruby-identifier">message</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;: &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">zip</span>.<span class="ruby-identifier">to_s</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">results</span> = {<span class="ruby-string">&quot;chart&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">chart</span>, <span class="ruby-string">&quot;varID&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">varID</span>, <span class="ruby-string">&quot;map1Results&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">map1Results</span>.<span class="ruby-identifier">to_json</span>, <span class="ruby-string">&quot;map2Results&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">map2Results</span>.<span class="ruby-identifier">to_json</span>}
+
+  <span class="ruby-identifier">render</span> <span class="ruby-value">:json</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">results</span>.<span class="ruby-identifier">to_json</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- get_timeseries_data_for_zips-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- get_timeseries_data_for_zips-method -->
+
+    
+      <div id="method-i-get_variable_values_for_zips" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_variable_values_for_zips</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="get_variable_values_for_zips-source">
+            <pre><span class="ruby-comment"># File app/controllers/charts_controller.rb, line 52</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">get_variable_values_for_zips</span>
+  <span class="ruby-identifier">chart</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:chart</span>]
+  <span class="ruby-identifier">axis</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:axis</span>]
+  <span class="ruby-identifier">varID</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:varID</span>]
+  <span class="ruby-identifier">varName</span> = <span class="ruby-identifier">varID</span>[<span class="ruby-value">0</span>,<span class="ruby-value">3</span>] <span class="ruby-operator">!=</span> <span class="ruby-string">&quot;cat&quot;</span> <span class="ruby-operator">?</span> <span class="ruby-constant">VariableDim</span>.<span class="ruby-identifier">select</span>(<span class="ruby-string">&quot;var_name&quot;</span>).<span class="ruby-identifier">where</span>(<span class="ruby-value">:var_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">varID</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">'_'</span>)[<span class="ruby-value">1</span>].<span class="ruby-identifier">to_s</span>)[<span class="ruby-value">0</span>][<span class="ruby-string">&quot;var_name&quot;</span>] <span class="ruby-operator">:</span> <span class="ruby-identifier">varID</span>
+  <span class="ruby-identifier">map1Zips</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:map1_selected</span>].<span class="ruby-identifier">split</span>(<span class="ruby-string">','</span>)
+  <span class="ruby-identifier">map2Zips</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:map2_selected</span>].<span class="ruby-identifier">split</span>(<span class="ruby-string">','</span>)
+  <span class="ruby-identifier">map1Results</span> = {}
+  <span class="ruby-identifier">map2Results</span> = {}
+  <span class="ruby-identifier">allResults</span> = {}
+
+  <span class="ruby-identifier">map1Zips</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">zip</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">begin</span>
+      <span class="ruby-identifier">tempResults</span> = {}
+      <span class="ruby-identifier">tempVarValues</span> = <span class="ruby-identifier">varID</span>[<span class="ruby-value">0</span>,<span class="ruby-value">3</span>] <span class="ruby-operator">!=</span> <span class="ruby-string">&quot;cat&quot;</span> <span class="ruby-operator">?</span> <span class="ruby-constant">Variable3Zip</span>.<span class="ruby-identifier">select</span>(<span class="ruby-identifier">varID</span> <span class="ruby-operator">+</span>  <span class="ruby-string">&quot;, varid_38, varid_39, varid_40, varid_41, varid_42&quot;</span>).<span class="ruby-identifier">where</span>(<span class="ruby-value">:zip</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">zip</span>)[<span class="ruby-value">0</span>] <span class="ruby-operator">:</span> <span class="ruby-constant">Variable3Zip</span>.<span class="ruby-identifier">select</span>(<span class="ruby-string">&quot;varid_38, varid_39, varid_40, varid_41, varid_42&quot;</span>).<span class="ruby-identifier">where</span>(<span class="ruby-value">:zip</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">zip</span>)[<span class="ruby-value">0</span>]
+      <span class="ruby-identifier">tempResults</span>[<span class="ruby-string">&quot;value&quot;</span>] = <span class="ruby-identifier">varID</span>[<span class="ruby-value">0</span>,<span class="ruby-value">3</span>] <span class="ruby-operator">!=</span> <span class="ruby-string">&quot;cat&quot;</span> <span class="ruby-operator">?</span> (<span class="ruby-identifier">zip</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">==</span> <span class="ruby-value">3</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">tempVarValues</span>[<span class="ruby-identifier">varID</span>] <span class="ruby-operator">:</span> <span class="ruby-string">&quot;0.0&quot;</span>) <span class="ruby-operator">:</span> (<span class="ruby-identifier">zip</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">==</span> <span class="ruby-value">3</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">$current_zip_scores</span>[<span class="ruby-identifier">zip</span>.<span class="ruby-identifier">to_s</span>][<span class="ruby-identifier">varID</span>] <span class="ruby-operator">:</span> <span class="ruby-string">&quot;0.0&quot;</span>)
+      <span class="ruby-identifier">tempResults</span>[<span class="ruby-string">&quot;filter_state&quot;</span>] = <span class="ruby-identifier">tempVarValues</span>[<span class="ruby-string">&quot;varid_38&quot;</span>].<span class="ruby-identifier">to_i</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">tempVarValues</span>[<span class="ruby-string">&quot;varid_39&quot;</span>].<span class="ruby-identifier">to_i</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">tempVarValues</span>[<span class="ruby-string">&quot;varid_40&quot;</span>].<span class="ruby-identifier">to_i</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">tempVarValues</span>[<span class="ruby-string">&quot;varid_41&quot;</span>].<span class="ruby-identifier">to_i</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">tempVarValues</span>[<span class="ruby-string">&quot;varid_42&quot;</span>].<span class="ruby-identifier">to_i</span>.<span class="ruby-identifier">to_s</span>
+      <span class="ruby-identifier">map1Results</span>[<span class="ruby-identifier">zip</span>] = <span class="ruby-identifier">tempResults</span>
+    <span class="ruby-keyword">rescue</span> <span class="ruby-constant">Exception</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
+      <span class="ruby-identifier">puts</span> <span class="ruby-identifier">e</span>.<span class="ruby-identifier">message</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;: &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">zip</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">map2Zips</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">zip</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">begin</span>
+      <span class="ruby-identifier">tempResults</span> = {}
+      <span class="ruby-identifier">tempVarValues</span> = <span class="ruby-identifier">varID</span>[<span class="ruby-value">0</span>,<span class="ruby-value">3</span>] <span class="ruby-operator">!=</span> <span class="ruby-string">&quot;cat&quot;</span> <span class="ruby-operator">?</span> <span class="ruby-constant">Variable3Zip</span>.<span class="ruby-identifier">select</span>(<span class="ruby-identifier">varID</span> <span class="ruby-operator">+</span>  <span class="ruby-string">&quot;, varid_38, varid_39, varid_40, varid_41, varid_42&quot;</span>).<span class="ruby-identifier">where</span>(<span class="ruby-value">:zip</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">zip</span>)[<span class="ruby-value">0</span>] <span class="ruby-operator">:</span> <span class="ruby-constant">Variable3Zip</span>.<span class="ruby-identifier">select</span>(<span class="ruby-string">&quot;varid_38, varid_39, varid_40, varid_41, varid_42&quot;</span>).<span class="ruby-identifier">where</span>(<span class="ruby-value">:zip</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">zip</span>)[<span class="ruby-value">0</span>]
+      <span class="ruby-identifier">tempResults</span>[<span class="ruby-string">&quot;value&quot;</span>] = <span class="ruby-identifier">varID</span>[<span class="ruby-value">0</span>,<span class="ruby-value">3</span>] <span class="ruby-operator">!=</span> <span class="ruby-string">&quot;cat&quot;</span> <span class="ruby-operator">?</span> (<span class="ruby-identifier">zip</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">==</span> <span class="ruby-value">3</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">tempVarValues</span>[<span class="ruby-identifier">varID</span>] <span class="ruby-operator">:</span> <span class="ruby-string">&quot;0.0&quot;</span>) <span class="ruby-operator">:</span> (<span class="ruby-identifier">zip</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">==</span> <span class="ruby-value">3</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">$current_zip_scores</span>[<span class="ruby-identifier">zip</span>.<span class="ruby-identifier">to_s</span>][<span class="ruby-identifier">varID</span>] <span class="ruby-operator">:</span> <span class="ruby-string">&quot;0.0&quot;</span>)
+      <span class="ruby-identifier">tempResults</span>[<span class="ruby-string">&quot;filter_state&quot;</span>] = <span class="ruby-identifier">tempVarValues</span>[<span class="ruby-string">&quot;varid_38&quot;</span>].<span class="ruby-identifier">to_i</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">tempVarValues</span>[<span class="ruby-string">&quot;varid_39&quot;</span>].<span class="ruby-identifier">to_i</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">tempVarValues</span>[<span class="ruby-string">&quot;varid_40&quot;</span>].<span class="ruby-identifier">to_i</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">tempVarValues</span>[<span class="ruby-string">&quot;varid_41&quot;</span>].<span class="ruby-identifier">to_i</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">tempVarValues</span>[<span class="ruby-string">&quot;varid_42&quot;</span>].<span class="ruby-identifier">to_i</span>.<span class="ruby-identifier">to_s</span>
+       <span class="ruby-identifier">map2Results</span>[<span class="ruby-identifier">zip</span>] = <span class="ruby-identifier">tempResults</span>
+    <span class="ruby-keyword">rescue</span> <span class="ruby-constant">Exception</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
+      <span class="ruby-identifier">puts</span> <span class="ruby-identifier">e</span>.<span class="ruby-identifier">message</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;: &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">zip</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">puts</span> <span class="ruby-identifier">$current_zip_scores</span>
+  <span class="ruby-identifier">puts</span> <span class="ruby-identifier">$current_zip_scores</span>[<span class="ruby-string">&quot;777&quot;</span>]
+
+  <span class="ruby-identifier">@@three_digit_zips</span>.<span class="ruby-identifier">each_key</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">zip</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">begin</span>
+      <span class="ruby-identifier">tempResults</span> = {}
+      <span class="ruby-identifier">tempVarValues</span> = <span class="ruby-identifier">varID</span>[<span class="ruby-value">0</span>,<span class="ruby-value">3</span>] <span class="ruby-operator">!=</span> <span class="ruby-string">&quot;cat&quot;</span> <span class="ruby-operator">?</span> <span class="ruby-constant">Variable3Zip</span>.<span class="ruby-identifier">select</span>(<span class="ruby-identifier">varID</span> <span class="ruby-operator">+</span>  <span class="ruby-string">&quot;, varid_38, varid_39, varid_40, varid_41, varid_42&quot;</span>).<span class="ruby-identifier">where</span>(<span class="ruby-value">:zip</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">zip</span>)[<span class="ruby-value">0</span>] <span class="ruby-operator">:</span> <span class="ruby-constant">Variable3Zip</span>.<span class="ruby-identifier">select</span>(<span class="ruby-string">&quot;varid_38, varid_39, varid_40, varid_41, varid_42&quot;</span>).<span class="ruby-identifier">where</span>(<span class="ruby-value">:zip</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">zip</span>)[<span class="ruby-value">0</span>]
+      <span class="ruby-identifier">tempResults</span>[<span class="ruby-string">&quot;value&quot;</span>] = <span class="ruby-identifier">varID</span>[<span class="ruby-value">0</span>,<span class="ruby-value">3</span>] <span class="ruby-operator">!=</span> <span class="ruby-string">&quot;cat&quot;</span> <span class="ruby-operator">?</span> (<span class="ruby-identifier">zip</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">==</span> <span class="ruby-value">3</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">tempVarValues</span>[<span class="ruby-identifier">varID</span>] <span class="ruby-operator">:</span> <span class="ruby-string">&quot;0.0&quot;</span>) <span class="ruby-operator">:</span> (<span class="ruby-identifier">zip</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">==</span> <span class="ruby-value">3</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">$current_zip_scores</span>[<span class="ruby-identifier">zip</span>.<span class="ruby-identifier">to_s</span>][<span class="ruby-identifier">varID</span>] <span class="ruby-operator">:</span> <span class="ruby-string">&quot;0.0&quot;</span>)
+      <span class="ruby-identifier">tempResults</span>[<span class="ruby-string">&quot;filter_state&quot;</span>] = <span class="ruby-identifier">tempVarValues</span>[<span class="ruby-string">&quot;varid_38&quot;</span>].<span class="ruby-identifier">to_i</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">tempVarValues</span>[<span class="ruby-string">&quot;varid_39&quot;</span>].<span class="ruby-identifier">to_i</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">tempVarValues</span>[<span class="ruby-string">&quot;varid_40&quot;</span>].<span class="ruby-identifier">to_i</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">tempVarValues</span>[<span class="ruby-string">&quot;varid_41&quot;</span>].<span class="ruby-identifier">to_i</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">tempVarValues</span>[<span class="ruby-string">&quot;varid_42&quot;</span>].<span class="ruby-identifier">to_i</span>.<span class="ruby-identifier">to_s</span>
+      <span class="ruby-identifier">allResults</span>[<span class="ruby-identifier">zip</span>] = <span class="ruby-identifier">tempResults</span>
+    <span class="ruby-keyword">rescue</span> <span class="ruby-constant">Exception</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
+      <span class="ruby-identifier">puts</span> <span class="ruby-identifier">e</span>.<span class="ruby-identifier">message</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;: &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">zip</span>.<span class="ruby-identifier">to_s</span>
+    <span class="ruby-keyword">end</span>
+  }
+
+  <span class="ruby-identifier">results</span> = {<span class="ruby-string">&quot;chart&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">chart</span>, <span class="ruby-string">&quot;axis&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">axis</span>, <span class="ruby-string">&quot;varID&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">varID</span>, <span class="ruby-string">&quot;varName&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">varName</span>, <span class="ruby-string">&quot;map1Results&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">map1Results</span>.<span class="ruby-identifier">to_json</span>, <span class="ruby-string">&quot;map2Results&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">map2Results</span>.<span class="ruby-identifier">to_json</span>, <span class="ruby-string">&quot;allResults&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">allResults</span>.<span class="ruby-identifier">to_json</span>}
+
+  <span class="ruby-identifier">render</span> <span class="ruby-value">:json</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">results</span>.<span class="ruby-identifier">to_json</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- get_variable_values_for_zips-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- get_variable_values_for_zips-method -->
+
+    
+      <div id="method-i-screen2MB" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">screen2MB</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="screen2MB-source">
+            <pre><span class="ruby-comment"># File app/controllers/charts_controller.rb, line 5</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">screen2MB</span>
+  <span class="ruby-ivar">@categories</span> = <span class="ruby-constant">VariableDim</span>.<span class="ruby-identifier">select</span>(<span class="ruby-string">&quot;var_id, var_name, default_rank&quot;</span>).<span class="ruby-identifier">where</span>(<span class="ruby-value">:var_parent</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>).<span class="ruby-identifier">order</span>(<span class="ruby-value">:var_id</span>)
+  <span class="ruby-ivar">@variables</span> = <span class="ruby-constant">VariableDim</span>.<span class="ruby-identifier">select</span>(<span class="ruby-string">&quot;var_parent, var_name, default_rank, var_id&quot;</span>).<span class="ruby-identifier">where</span>(<span class="ruby-string">&quot;control_panel = true AND var_parent &gt; 0&quot;</span>).<span class="ruby-identifier">order</span>(<span class="ruby-value">:var_parent</span>, <span class="ruby-value">:default_rank</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- screen2MB-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- screen2MB-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.2.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

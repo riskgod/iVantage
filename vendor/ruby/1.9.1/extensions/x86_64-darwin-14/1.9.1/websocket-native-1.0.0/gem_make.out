@@ -1,0 +1,12 @@
+/Users/appledev021/.rvm/rubies/ruby-1.9.3-p551/bin/ruby -r ./siteconf20160303-33518-dwucpq.rb extconf.rb
+creating Makefile
+
+make  clean
+
+make
+compiling websocket_native_ext.c
+linking shared-object websocket_native_ext.bundle
+
+make  install
+/usr/bin/install -c -m 0755 websocket_native_ext.bundle .gem.20160303-33518-qr3zwu
+installing default websocket_native_ext libraries

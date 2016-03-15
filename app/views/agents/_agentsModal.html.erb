@@ -1,0 +1,265 @@
+<style>
+	#popupDialog-popup{
+		left: 7.5%;
+		height: 85%;
+		width: 85%;
+	}
+
+	#popupDialog h1 {
+		font-size: 45px;
+	}
+
+	#popupDialog h2 {
+		font-size: 36px;
+	}
+
+	#popupDialog h3 {
+		font-size: 24px;
+	}
+
+	.agent-modal-header {
+		background-color: rgb(0, 113, 188);
+		background-image: linear-gradient(rgb(0, 124, 206), rgb(0, 101, 169));
+		background-origin: padding-box;
+		background-size: auto;
+		border-bottom-color: rgb(0, 113, 188);
+		border-bottom-style: solid;
+		border-bottom-width: 2px;
+		color: white;
+		text-shadow: none;
+		padding-left: 20px;
+		height: 100%;
+	}
+
+	.modal-level-icons {
+		text-align: center;
+		background-size: 100%;
+		background-repeat:no-repeat;
+	}
+
+	#popupDialog svg {
+		height: 100%;
+		width: 100%;
+	}
+
+	#productionModalChart svg text {
+		font-size: 24px;
+		font-weight: bold;
+	}
+</style>
+
+<script>
+
+	function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+
+	function populateAgentModal(name, ivTier, asTier, zip, city, hvhPIF, tenure, multi, retention, ivPremium, ivPIF) {
+		$("#modalAgentName").html(name);
+		$("#modalIvantageTier").html(ivTier);
+		$("#modalAllstateTier").html(asTier);
+		$("#agent_zip_modal").html(zip);
+		$("#agent_city_modal").html(city);
+		$("#agent_hvh_sales").html(hvhPIF);
+		if(hvhPIF == "") {
+			$('#hvh_icon').empty();
+		} else if(parseInt(hvhPIF) > 0) {
+			$('#hvh_icon').html('<%= image_tag("green-house-icon.png", :style => "height:150px;margin-left:4px;margin-bottom:10px;") %>');
+		} else {
+			$('#hvh_icon').html('<%= image_tag("red-house-icon.png", :style => "height:150px;margin-left:50px;margin-bottom:10px;") %>');
+		}
+		$("#agent_tenure_label").html(tenure);
+		$("#agent_multi_label").html(Math.round(multi).toString() + "%");
+		$("#agent_retention_label").html(Math.round(retention).toString() + "%");
+		$("#agent_premium_label").html("$" + numberWithCommas(ivPremium) + " (" + ivPIF.toString() + " policies)");
+
+		//$('#tenureBulletContainer svg').empty();
+		$('#tenureBulletContainer').empty();
+		$('#multilineModalChart svg').empty();
+		$('#retentionModalChart svg').empty();
+		$('#productionModalChart svg').empty();
+	}
+
+	function changeAgentInfo(thisAgentID) {
+		populateAgentModal("-","-","-","-","-","-","-","-","-","-","-");
+
+		amplify.request("getAgentModalInfo", {
+				agentID : thisAgentID
+		}, function(results) {
+			if(results.length > 0) {
+				var tempAgent = results[0];
+			} else {
+				return;
+			}
+
+			console.log(tempAgent);
+
+			populateAgentModal(tempAgent.agent_name, tempAgent.tier_ivantage, tempAgent.tier_allstate, tempAgent.busZip5.toString(), (tempAgent.agent_city != null ? tempAgent.agent_city.toString() : ""), tempAgent.pif_ivantage_hvh.toString(), tempAgent.tenure.toString(), tempAgent.multiline * 100, tempAgent.retention * 100, tempAgent.premium_ivantage_total, tempAgent.pif_ivantage_total);
+
+
+			var tenureImg = tempAgent.tenure == '0-2' ? '<%= image_tag("tenure-02.png", :style => "width:50%;") %>' : (tempAgent.tenure == '3-5' ? '<%= image_tag("tenure-35.png", :style => "width:50%;") %>' : (tempAgent.tenure == '6-10' ? '<%= image_tag("tenure-610.png", :style => "width:50%;") %>' : (tempAgent.tenure == '11+' ? '<%= image_tag("tenure-11.png", :style => "width:50%;") %>' : "")));
+			$('#tenureBulletContainer').html(tenureImg);
+
+			// var tenureInt = tempAgent.tenure == '0-2' ? 1 : (tempAgent.tenure == '3-5' ? 4 : (tempAgent.tenure == '6-10' ? 8 : (tempAgent.tenure == '11+' ? 11 : 0)));
+			//addBulletChart('tenureBulletContainer', 'tenure', tenureInt);
+			addBulletChart('multilineModalChart', 'multiline', tempAgent.multiline * 100);
+			addBulletChart('retentionModalChart', 'retention', tempAgent.retention * 100);
+			addModalPieChart('productionModalChart', tempAgent.pif_ivantage_hvh, tempAgent.pif_ivantage_home, tempAgent.pif_ivantage_other);
+		});
+	}
+
+	function addModalPieChart(chartID, ivHVH, ivHome, ivOther) {
+		if(parseInt(ivHVH) > 0 || parseInt(ivHome) > 0 || parseInt(ivOther) > 0) {
+			var pieData = [{key: "HVH", y: parseInt(ivHVH) }, {key: "Home", y: parseInt(ivHome)}, {key: "Other", y: parseInt(ivOther)}];
+		} else {
+			var pieData = [];
+		}
+
+		nv.addGraph(function() {
+	    var chart = nv.models.pieChart()
+	        .x(function(d) { return d.key })
+	        .y(function(d) { return d.y })
+	        .values(function(d) { return d })
+	        .color(d3.scale.category10().range())
+	        .valueFormat(d3.format(',.0f'))
+	        .showLegend(false);
+
+      d3.select('#' + chartID + ' svg')
+        .datum([pieData])
+        .transition().duration(1200)
+        .call(chart);
+
+	    nv.utils.windowResize(chart.update);
+
+	    return chart;
+		});
+	}
+
+	function addBulletChart(containerID, whichChart, mark) {
+		var dataTenure = {"ranges" : [11], "measures" : [mark], "markers" : [mark]};
+		var dataMulti = {"ranges" : [54, 100], "measures" : [mark], "markers" : [mark]};
+		var dataRetention = {"ranges" : [86, 100], "measures" : [mark], "markers" : [mark]};
+
+		var data = whichChart == "tenure" ? dataTenure : (whichChart == "multiline" ? dataMulti : dataRetention);
+
+		nv.addGraph(function() {
+ 		var chart = nv.models.bulletChart()
+ 			.height(100);
+
+		d3.select('#' + containerID + ' svg')
+			.datum(data)
+			.transition().duration(1000)
+			.call(chart);
+
+			return chart;
+		});
+	}
+
+</script>
+
+<div data-role="popup" id="popupDialog" data-overlay-theme="a" data-theme="a" class="ui-corner-all" style="height:100%">
+	<div data-role="content" style="width:100%;height:100%">
+		<div class="ui-grid-solo" style="height:8%;">
+			<div class="ui-grid-a agent-modal-header">
+				<h1 id="modalAgentName" style="text-align:left;">-</h1>
+			</div>
+		</div>
+		<div class="ui-grid-a" style="height:40%;">
+			<div class="ui-block-a" style="width:40%;height:100%;">
+				<%= image_tag("profile.png", :style => "height:80%;margin:5% 10%") %>
+			</div>
+			<div class="ui-block-b" style="width:60%;height:100%;">
+				<div class="ui-grid-a" style="height:35%;">
+  				<div class="ui-block-a">
+  					<div style="margin-top:50px;">
+							<div style="width:275px;display:inline-block;">
+								<h2 style="display:inline;width:275px;">Agent Level:</h2>
+							</div>
+							<div class="icon_ivantage_tier modal-level-icons">
+								<h2 id="modalIvantageTier"style="margin-top:-7px;">-</h2>
+							</div>
+						</div>
+						<div style="margin-top:50px;">
+							<div style="width:275px;display:inline-block;">
+								<h2 style="display:inline;">Agent Rank:</h2>
+							</div>
+							<div class="icon_allstate_tier modal-level-icons">
+								<h2 id="modalAllstateTier" style="margin-top:-7px;">-</h2>
+							</div>
+						</div>
+  				</div>
+  				<div class="ui-block-b">
+  					<div style="margin-top:50px;">
+							<div style="width:150px;display:inline-block;">
+								<h2 style="display:inline;">Zip:</h2>
+							</div>
+							<h2 id="agent_zip_modal"style="display:inline;">-</h2>
+						</div>
+						<div style="margin-top:50px;">
+							<div style="width:150px;display:inline-block;">
+								<h2 style="display:inline;">City:</h2>
+							</div>
+							<h2 id="agent_city_modal" style="display:inline;">-</h2>
+						</div>
+  				</div>
+				</div>
+				<div class="ui-grid-a" style="height:60%;">
+	  				<div class="ui-block-a" style="width:25%;height:100%;">
+	  					<div id="hvhIndicator" style="height:100%;position:relative;">
+	  						<div style="width:100%;position:absolute;bottom:30%;text-align:center;">
+	  							<div id="hvh_icon"></div>
+	  							<h2 style="display:inline;">Home PIFs: </h2>
+	  							<h2 id="agent_hvh_sales" style="display:inline;">-</h2>
+	  						</div>
+	  					</div>
+	  				</div>
+	  				<div class="ui-block-b" style="width:75%;height:100%;">
+	  					<div style="height:100%;position:relative;">
+	  						<div id="tenureBulletContainer" style="width:95%;position:absolute;bottom:35%;text-align:center;">
+<!-- 	  							<svg></svg> -->
+	  						</div>
+<!-- 	  						<div style="width:100%;position:absolute;bottom:30%;text-align:center;">
+	  							<h2 style="display:inline;">Tenure (years): </h2>
+	  							<h2 id="agent_tenure_label" style="display:inline;">-</h2>
+	  						</div> -->
+							</div>
+	  				</div>
+				</div>
+			</div>
+		</div>
+		<hr>
+		<div class="ui-grid-a" style="height:50%;">
+			<div class="ui-block-a" style="height:100%;">
+				<div class="ui-grid-solo" style="height:50%;">
+					<div id="multilineModalChart" class="ui-block-a" style="height:100%;width:100%;padding:3%;">
+						<h2 style="margin:0px;display:inline;"><u>Multiline:</u> </h2>
+						<h2 id="agent_multi_label" style="margin:0px;display:inline;"></h2>
+						<div style="height:80%;margin-top:3%;">
+							<svg></svg>
+						</div>
+					</div>
+				</div>
+				<div class="ui-grid-solo" style="height:50%;">
+					<div id="retentionModalChart" class="ui-block-a" style="height:100%;width:100%;padding:3%;">
+						<h2 style="margin:0px;display:inline;"><u>Retention:</u> </h2>
+						<h2 id="agent_retention_label" style="margin:0px;display:inline;"></h2>
+						<div style="height:80%;margin-top:3%;">
+							<svg></svg>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="ui-block-b" style="height:100%;">
+				<div id="productionModalChart" class="ui-block-a" style="height:100%;width:100%;padding:3%;text-align:center;position:relative;">
+					<h2 style="margin:0px;"><u>Total Production</u></h2>
+					<div style="height:90%;">
+						<svg></svg>
+					</div>
+					<div style="width:94%;position:absolute;bottom:3%;">
+						<h2 style="display:inline;">Total Premium: </h2>
+						<h2 id="agent_premium_label" style="display:inline;">-</h2>
+  				</div>
+				</div>
+			</div>
+		</div>
+	</div>

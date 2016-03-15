@@ -1,0 +1,12 @@
+/opt/rubies/2.1.2/bin/ruby extconf.rb 
+creating Makefile
+
+make "DESTDIR=" clean
+
+make "DESTDIR="
+compiling websocket_native_ext.c
+linking shared-object websocket_native_ext.bundle
+
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 websocket_native_ext.bundle ./.gem.20140911-54238-15aza3h
+installing default websocket_native_ext libraries

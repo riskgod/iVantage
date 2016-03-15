@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+
+<title>class VariablesController - Rails Application Documentation</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>app/controllers/variables_controller.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link"><a href="ApplicationController.html">ApplicationController</a>
+  
+</nav>
+
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-i-getNextQtrScore">#getNextQtrScore</a>
+    
+    <li><a href="#method-i-get_map_KML_DB">#get_map_KML_DB</a>
+    
+    <li><a href="#method-i-screen1L2L">#screen1L2L</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="./doc/README_FOR_APP.html">README_FOR_APP</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./AgentDim.html">AgentDim</a>
+  
+    <li><a href="./AgentsController.html">AgentsController</a>
+  
+    <li><a href="./AgentsHelper.html">AgentsHelper</a>
+  
+    <li><a href="./ApplicationController.html">ApplicationController</a>
+  
+    <li><a href="./ApplicationHelper.html">ApplicationHelper</a>
+  
+    <li><a href="./ChartsController.html">ChartsController</a>
+  
+    <li><a href="./ChartsHelper.html">ChartsHelper</a>
+  
+    <li><a href="./HomeController.html">HomeController</a>
+  
+    <li><a href="./HomeHelper.html">HomeHelper</a>
+  
+    <li><a href="./MapsController.html">MapsController</a>
+  
+    <li><a href="./MapsHelper.html">MapsHelper</a>
+  
+    <li><a href="./SegmentDim.html">SegmentDim</a>
+  
+    <li><a href="./Timeseries.html">Timeseries</a>
+  
+    <li><a href="./TopSegmentsByZip.html">TopSegmentsByZip</a>
+  
+    <li><a href="./VarZipRaw.html">VarZipRaw</a>
+  
+    <li><a href="./Variable3Zip.html">Variable3Zip</a>
+  
+    <li><a href="./VariableDim.html">VariableDim</a>
+  
+    <li><a href="./VariablesController.html">VariablesController</a>
+  
+    <li><a href="./VariablesHelper.html">VariablesHelper</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class VariablesController</h1>
+
+  <div id="description" class="description">
+    
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-getNextQtrScore" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">getNextQtrScore</span><span
+            class="method-args">(hvh_count, hvh_policies, ivantage_pif, agent_count, gdp_growth, agent_engagement, product_availability, retention_rate, provide_agents_data, baseline_conversion_rate_per_opp, percnt_ivantage_agents)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="getNextQtrScore-source">
+            <pre><span class="ruby-comment"># File app/controllers/variables_controller.rb, line 15</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">getNextQtrScore</span> (<span class="ruby-identifier">hvh_count</span>, <span class="ruby-identifier">hvh_policies</span>, <span class="ruby-identifier">ivantage_pif</span>, <span class="ruby-identifier">agent_count</span>, <span class="ruby-identifier">gdp_growth</span>, <span class="ruby-identifier">agent_engagement</span>, <span class="ruby-identifier">product_availability</span>, <span class="ruby-identifier">retention_rate</span>, <span class="ruby-identifier">provide_agents_data</span>, <span class="ruby-identifier">baseline_conversion_rate_per_opp</span>, <span class="ruby-identifier">percnt_ivantage_agents</span>)
+        <span class="ruby-comment"># hard-coded</span>
+        <span class="ruby-identifier">sum_ivantage_pif</span> = <span class="ruby-value">1155937</span>
+        <span class="ruby-identifier">sum_agent_count</span> = <span class="ruby-value">8240</span>
+        <span class="ruby-identifier">hardcode_95</span> = <span class="ruby-value">0.95</span>
+        <span class="ruby-identifier">hardcode_1</span> = <span class="ruby-value">0.1</span>
+        <span class="ruby-comment"># calculated</span>
+        <span class="ruby-identifier">agent_proxy</span> = (<span class="ruby-identifier">ivantage_pif</span> * <span class="ruby-value">100000</span> <span class="ruby-operator">/</span> <span class="ruby-identifier">sum_ivantage_pif</span>).<span class="ruby-identifier">round</span>(<span class="ruby-value">10</span>) * <span class="ruby-identifier">sum_agent_count</span> <span class="ruby-operator">/</span> <span class="ruby-value">100000</span>
+        <span class="ruby-identifier">new_hvh_in_geo</span> = <span class="ruby-identifier">hvh_count</span> * <span class="ruby-identifier">gdp_growth</span> <span class="ruby-operator">/</span> <span class="ruby-value">100</span> <span class="ruby-operator">/</span> <span class="ruby-value">4</span>
+        <span class="ruby-identifier">churning_hvh</span> = <span class="ruby-identifier">hvh_count</span> * (<span class="ruby-value">1</span><span class="ruby-operator">-</span><span class="ruby-identifier">hardcode_95</span>)
+        <span class="ruby-identifier">total_hvh_opps_in_usa</span> = <span class="ruby-identifier">new_hvh_in_geo</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">churning_hvh</span>
+        <span class="ruby-identifier">new_hvh_per_travel_zone</span> = <span class="ruby-identifier">total_hvh_opps_in_usa</span> * <span class="ruby-identifier">hardcode_1</span>
+        <span class="ruby-identifier">new_hvh_per_agent_travel_zone</span> = <span class="ruby-identifier">new_hvh_per_travel_zone</span> * <span class="ruby-identifier">provide_agents_data</span>
+        <span class="ruby-identifier">sales_conversion_per_opportunity</span> = <span class="ruby-identifier">product_availability</span> * <span class="ruby-identifier">baseline_conversion_rate_per_opp</span>
+        <span class="ruby-identifier">new_hvh_sales_per_active_agent</span> = <span class="ruby-identifier">new_hvh_per_agent_travel_zone</span> * <span class="ruby-identifier">sales_conversion_per_opportunity</span>
+        <span class="ruby-identifier">agents_actively_selling_hvh</span> = <span class="ruby-identifier">agent_proxy</span> * <span class="ruby-identifier">agent_engagement</span> * <span class="ruby-identifier">percnt_ivantage_agents</span>
+        <span class="ruby-identifier">new_hvh_sales</span> = <span class="ruby-identifier">agents_actively_selling_hvh</span> * <span class="ruby-identifier">new_hvh_sales_per_active_agent</span>
+        <span class="ruby-identifier">hvh_policies_lost_to_churn</span> = <span class="ruby-identifier">hvh_policies</span> * (<span class="ruby-value">1</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">retention_rate</span>)
+        <span class="ruby-identifier">hvh_policies_next</span> = <span class="ruby-identifier">hvh_policies</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">new_hvh_sales</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">hvh_policies_lost_to_churn</span>
+        <span class="ruby-identifier">hvh_count_next</span> = <span class="ruby-identifier">hvh_count</span> * (<span class="ruby-value">1</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">gdp_growth</span> <span class="ruby-operator">/</span> <span class="ruby-value">100</span>)
+      <span class="ruby-keyword">return</span> [<span class="ruby-identifier">hvh_count_next</span>.<span class="ruby-identifier">round</span>(<span class="ruby-value">3</span>), <span class="ruby-identifier">hvh_policies_next</span>.<span class="ruby-identifier">round</span>(<span class="ruby-value">3</span>)]
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- getNextQtrScore-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- getNextQtrScore-method -->
+
+    
+      <div id="method-i-get_map_KML_DB" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_map_KML_DB</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="get_map_KML_DB-source">
+            <pre><span class="ruby-comment"># File app/controllers/variables_controller.rb, line 39</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">get_map_KML_DB</span>
+      <span class="ruby-comment"># ------------------------------------------------------------------------------------------------------------------------</span>
+      <span class="ruby-comment"># How this works</span>
+      <span class="ruby-comment">#</span>
+      <span class="ruby-comment"># 1) Define ROC (Rank Order Centroids)</span>
+      <span class="ruby-comment">#</span>
+      <span class="ruby-comment"># 2) Pull from the database:</span>
+      <span class="ruby-comment">#  - categories (e.g., Market Potential, Customer Demographics, etc...)</span>
+      <span class="ruby-comment">#  - variables (variables, their IDs, their parent category, and the default rank (order) for the control panel)</span>
+      <span class="ruby-comment">#  - scores (how variables stack up against each ZIP code)</span>
+      <span class="ruby-comment">#  - zips (list of ZIP codes)</span>
+      <span class="ruby-comment">#</span>
+      <span class="ruby-comment"># 3) Define ordered list of Variables for each Category</span>
+      <span class="ruby-comment">#  - if we have custom parameters in the URL, parse the strings to get that info</span>
+      <span class="ruby-comment">#  - otherwise, grab the defaults from the database</span>
+      <span class="ruby-comment">#</span>
+      <span class="ruby-comment"># 4) Create a nested hash containing all ZIPs and their scores for all variables</span>
+      <span class="ruby-comment">#  - this way, we can call a ZIP by name, then call its corresponding variable by ID</span>
+      <span class="ruby-comment">#</span>
+      <span class="ruby-comment"># 5) Create an Array for each Category containing all ZIPs and their scores for &quot;Only The Selected Variables&quot;</span>
+      <span class="ruby-comment">#</span>
+      <span class="ruby-comment"># 6) Calculate a final score for each Category (integrating ROC)</span>
+      <span class="ruby-comment">#</span>
+      <span class="ruby-comment"># 7) Calculate the final scores for each ZIP</span>
+      <span class="ruby-comment"># 7.5) Adjust final scores for screen 3R</span>
+      <span class="ruby-comment">#</span>
+      <span class="ruby-comment"># 8) Calculate the hex Colors for each ZIP</span>
+      <span class="ruby-comment">#</span>
+      <span class="ruby-comment"># 9) Build the KML file</span>
+<span class="ruby-comment"># ------------------------------------------------------------------------------------------------------------------------</span>
+
+      <span class="ruby-comment"># 1) Define ROC (Rank Order Centroids) weightings</span>
+      <span class="ruby-identifier">roc</span> = []
+      <span class="ruby-identifier">roc</span>[<span class="ruby-value">0</span>] = [<span class="ruby-value">0</span>]
+      <span class="ruby-identifier">roc</span>[<span class="ruby-value">1</span>] = [<span class="ruby-value">1</span>]
+      <span class="ruby-identifier">roc</span>[<span class="ruby-value">2</span>] = [<span class="ruby-value">0.750</span>, <span class="ruby-value">0.250</span>]
+      <span class="ruby-identifier">roc</span>[<span class="ruby-value">3</span>] = [<span class="ruby-value">0.611</span>, <span class="ruby-value">0.278</span>, <span class="ruby-value">0.111</span>]
+      <span class="ruby-identifier">roc</span>[<span class="ruby-value">4</span>] = [<span class="ruby-value">0.521</span>, <span class="ruby-value">0.271</span>, <span class="ruby-value">0.146</span>, <span class="ruby-value">0.063</span>]
+      <span class="ruby-identifier">roc</span>[<span class="ruby-value">5</span>] = [<span class="ruby-value">0.457</span>, <span class="ruby-value">0.257</span>, <span class="ruby-value">0.157</span>, <span class="ruby-value">0.090</span>, <span class="ruby-value">0.040</span>]
+      <span class="ruby-identifier">roc</span>[<span class="ruby-value">6</span>] = [<span class="ruby-value">0.408</span>, <span class="ruby-value">0.242</span>, <span class="ruby-value">0.158</span>, <span class="ruby-value">0.103</span>, <span class="ruby-value">0.061</span>, <span class="ruby-value">0.028</span>]
+      <span class="ruby-identifier">roc</span>[<span class="ruby-value">7</span>] = [<span class="ruby-value">0.370</span>, <span class="ruby-value">0.228</span>, <span class="ruby-value">0.156</span>, <span class="ruby-value">0.109</span>, <span class="ruby-value">0.073</span>, <span class="ruby-value">0.044</span>, <span class="ruby-value">0.020</span>]
+      <span class="ruby-identifier">roc</span>[<span class="ruby-value">8</span>] = [<span class="ruby-value">0.340</span>, <span class="ruby-value">0.215</span>, <span class="ruby-value">0.152</span>, <span class="ruby-value">0.111</span>, <span class="ruby-value">0.079</span>, <span class="ruby-value">0.054</span>, <span class="ruby-value">0.033</span>, <span class="ruby-value">0.016</span>]
+      <span class="ruby-identifier">roc</span>[<span class="ruby-value">9</span>] = [<span class="ruby-value">0.314</span>, <span class="ruby-value">0.203</span>, <span class="ruby-value">0.148</span>, <span class="ruby-value">0.111</span>, <span class="ruby-value">0.083</span>, <span class="ruby-value">0.061</span>, <span class="ruby-value">0.042</span>, <span class="ruby-value">0.026</span>, <span class="ruby-value">0.012</span>]
+      <span class="ruby-identifier">roc</span>[<span class="ruby-value">10</span>] = [<span class="ruby-value">0.293</span>, <span class="ruby-value">0.193</span>, <span class="ruby-value">0.143</span>, <span class="ruby-value">0.110</span>, <span class="ruby-value">0.085</span>, <span class="ruby-value">0.065</span>, <span class="ruby-value">0.048</span>, <span class="ruby-value">0.034</span>, <span class="ruby-value">0.021</span>, <span class="ruby-value">0.010</span>]
+      <span class="ruby-identifier">roc</span>[<span class="ruby-value">11</span>] = [<span class="ruby-value">0.275</span>, <span class="ruby-value">0.184</span>, <span class="ruby-value">0.138</span>, <span class="ruby-value">0.108</span>, <span class="ruby-value">0.085</span>, <span class="ruby-value">0.067</span>, <span class="ruby-value">0.052</span>, <span class="ruby-value">0.039</span>, <span class="ruby-value">0.027</span>, <span class="ruby-value">0.017</span>, <span class="ruby-value">0.008</span>]
+      <span class="ruby-identifier">roc</span>[<span class="ruby-value">12</span>] = [<span class="ruby-value">0.259</span>, <span class="ruby-value">0.175</span>, <span class="ruby-value">0.134</span>, <span class="ruby-value">0.106</span>, <span class="ruby-value">0.085</span>, <span class="ruby-value">0.068</span>, <span class="ruby-value">0.054</span>, <span class="ruby-value">0.043</span>, <span class="ruby-value">0.032</span>, <span class="ruby-value">0.023</span>, <span class="ruby-value">0.015</span>, <span class="ruby-value">0.007</span>]
+      <span class="ruby-identifier">roc</span>[<span class="ruby-value">13</span>] = [<span class="ruby-value">0.245</span>, <span class="ruby-value">0.168</span>, <span class="ruby-value">0.129</span>, <span class="ruby-value">0.104</span>, <span class="ruby-value">0.084</span>, <span class="ruby-value">0.069</span>, <span class="ruby-value">0.056</span>, <span class="ruby-value">0.045</span>, <span class="ruby-value">0.036</span>, <span class="ruby-value">0.027</span>, <span class="ruby-value">0.019</span>, <span class="ruby-value">0.012</span>, <span class="ruby-value">0.006</span>]
+      <span class="ruby-identifier">roc</span>[<span class="ruby-value">14</span>] = [<span class="ruby-value">0.232</span>, <span class="ruby-value">0.161</span>, <span class="ruby-value">0.125</span>, <span class="ruby-value">0.101</span>, <span class="ruby-value">0.083</span>, <span class="ruby-value">0.069</span>, <span class="ruby-value">0.057</span>, <span class="ruby-value">0.047</span>, <span class="ruby-value">0.038</span>, <span class="ruby-value">0.030</span>, <span class="ruby-value">0.023</span>, <span class="ruby-value">0.017</span>, <span class="ruby-value">0.011</span>, <span class="ruby-value">0.005</span>]
+      <span class="ruby-identifier">roc</span>[<span class="ruby-value">15</span>] = [<span class="ruby-value">0.221</span>, <span class="ruby-value">0.155</span>, <span class="ruby-value">0.121</span>, <span class="ruby-value">0.099</span>, <span class="ruby-value">0.082</span>, <span class="ruby-value">0.069</span>, <span class="ruby-value">0.058</span>, <span class="ruby-value">0.048</span>, <span class="ruby-value">0.040</span>, <span class="ruby-value">0.033</span>, <span class="ruby-value">0.026</span>, <span class="ruby-value">0.020</span>, <span class="ruby-value">0.014</span>, <span class="ruby-value">0.009</span>, <span class="ruby-value">0.004</span>]
+      <span class="ruby-identifier">roc</span>[<span class="ruby-value">16</span>] = [<span class="ruby-value">0.211</span>, <span class="ruby-value">0.149</span>, <span class="ruby-value">0.118</span>, <span class="ruby-value">0.097</span>, <span class="ruby-value">0.081</span>, <span class="ruby-value">0.069</span>, <span class="ruby-value">0.058</span>, <span class="ruby-value">0.049</span>, <span class="ruby-value">0.041</span>, <span class="ruby-value">0.034</span>, <span class="ruby-value">0.028</span>, <span class="ruby-value">0.023</span>, <span class="ruby-value">0.017</span>, <span class="ruby-value">0.013</span>, <span class="ruby-value">0.008</span>, <span class="ruby-value">0.004</span>]
+      <span class="ruby-identifier">roc</span>[<span class="ruby-value">17</span>] = [<span class="ruby-value">0.202</span>, <span class="ruby-value">0.144</span>, <span class="ruby-value">0.114</span>, <span class="ruby-value">0.094</span>, <span class="ruby-value">0.080</span>, <span class="ruby-value">0.068</span>, <span class="ruby-value">0.058</span>, <span class="ruby-value">0.050</span>, <span class="ruby-value">0.042</span>, <span class="ruby-value">0.036</span>, <span class="ruby-value">0.030</span>, <span class="ruby-value">0.025</span>, <span class="ruby-value">0.020</span>, <span class="ruby-value">0.015</span>, <span class="ruby-value">0.011</span>, <span class="ruby-value">0.007</span>, <span class="ruby-value">0.003</span>]
+      <span class="ruby-identifier">roc</span>[<span class="ruby-value">18</span>] = [<span class="ruby-value">0.194</span>, <span class="ruby-value">0.139</span>, <span class="ruby-value">0.111</span>, <span class="ruby-value">0.092</span>, <span class="ruby-value">0.078</span>, <span class="ruby-value">0.067</span>, <span class="ruby-value">0.058</span>, <span class="ruby-value">0.050</span>, <span class="ruby-value">0.043</span>, <span class="ruby-value">0.037</span>, <span class="ruby-value">0.031</span>, <span class="ruby-value">0.026</span>, <span class="ruby-value">0.022</span>, <span class="ruby-value">0.017</span>, <span class="ruby-value">0.014</span>, <span class="ruby-value">0.010</span>, <span class="ruby-value">0.006</span>, <span class="ruby-value">0.003</span>]
+      <span class="ruby-identifier">roc</span>[<span class="ruby-value">19</span>] = [<span class="ruby-value">0.187</span>, <span class="ruby-value">0.134</span>, <span class="ruby-value">0.108</span>, <span class="ruby-value">0.090</span>, <span class="ruby-value">0.077</span>, <span class="ruby-value">0.067</span>, <span class="ruby-value">0.058</span>, <span class="ruby-value">0.050</span>, <span class="ruby-value">0.044</span>, <span class="ruby-value">0.038</span>, <span class="ruby-value">0.033</span>, <span class="ruby-value">0.028</span>, <span class="ruby-value">0.023</span>, <span class="ruby-value">0.019</span>, <span class="ruby-value">0.016</span>, <span class="ruby-value">0.012</span>, <span class="ruby-value">0.009</span>, <span class="ruby-value">0.006</span>, <span class="ruby-value">0.003</span>]
+      <span class="ruby-identifier">roc</span>[<span class="ruby-value">20</span>] = [<span class="ruby-value">0.180</span>, <span class="ruby-value">0.130</span>, <span class="ruby-value">0.105</span>, <span class="ruby-value">0.088</span>, <span class="ruby-value">0.076</span>, <span class="ruby-value">0.066</span>, <span class="ruby-value">0.057</span>, <span class="ruby-value">0.050</span>, <span class="ruby-value">0.044</span>, <span class="ruby-value">0.038</span>, <span class="ruby-value">0.033</span>, <span class="ruby-value">0.029</span>, <span class="ruby-value">0.025</span>, <span class="ruby-value">0.021</span>, <span class="ruby-value">0.017</span>, <span class="ruby-value">0.014</span>, <span class="ruby-value">0.011</span>, <span class="ruby-value">0.008</span>, <span class="ruby-value">0.005</span>, <span class="ruby-value">0.003</span>]
+
+
+      <span class="ruby-keyword">if</span>(<span class="ruby-identifier">params</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-value">:filters</span>))
+              <span class="ruby-identifier">filters</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:filters</span>]
+
+              <span class="ruby-identifier">filters1_include_array</span> = []
+              <span class="ruby-identifier">filters1_exclude_array</span> = []
+              <span class="ruby-identifier">filters2_include_array</span> = []
+              <span class="ruby-identifier">filters2_exclude_array</span> = []
+              <span class="ruby-keyword">if</span> <span class="ruby-identifier">filters</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-string">&quot;1&quot;</span>
+                      <span class="ruby-identifier">filters1_include_array</span>.<span class="ruby-identifier">push</span> <span class="ruby-string">&quot;varid_38 = 1&quot;</span>
+              <span class="ruby-keyword">else</span>
+                      <span class="ruby-identifier">filters1_exclude_array</span>.<span class="ruby-identifier">push</span> <span class="ruby-string">&quot;varid_38 = 0&quot;</span>
+              <span class="ruby-keyword">end</span>
+              <span class="ruby-keyword">if</span> <span class="ruby-identifier">filters</span>[<span class="ruby-value">1</span>] <span class="ruby-operator">==</span> <span class="ruby-string">&quot;1&quot;</span>
+                      <span class="ruby-identifier">filters1_include_array</span>.<span class="ruby-identifier">push</span> <span class="ruby-string">&quot;varid_39 = 1&quot;</span>
+              <span class="ruby-keyword">else</span>
+                      <span class="ruby-identifier">filters1_exclude_array</span>.<span class="ruby-identifier">push</span> <span class="ruby-string">&quot;varid_39 = 0&quot;</span>
+              <span class="ruby-keyword">end</span>
+              <span class="ruby-keyword">if</span> <span class="ruby-identifier">filters</span>[<span class="ruby-value">2</span>] <span class="ruby-operator">==</span> <span class="ruby-string">&quot;1&quot;</span>
+                      <span class="ruby-identifier">filters1_include_array</span>.<span class="ruby-identifier">push</span> <span class="ruby-string">&quot;varid_40 = 1&quot;</span>
+              <span class="ruby-keyword">else</span>
+                      <span class="ruby-identifier">filters1_exclude_array</span>.<span class="ruby-identifier">push</span> <span class="ruby-string">&quot;varid_40 = 0&quot;</span>
+              <span class="ruby-keyword">end</span>
+              <span class="ruby-keyword">if</span> <span class="ruby-identifier">filters</span>[<span class="ruby-value">3</span>] <span class="ruby-operator">==</span> <span class="ruby-string">&quot;1&quot;</span>
+                      <span class="ruby-identifier">filters2_include_array</span>.<span class="ruby-identifier">push</span> <span class="ruby-string">&quot;varid_41 = 1&quot;</span>
+              <span class="ruby-keyword">else</span>
+                      <span class="ruby-identifier">filters2_exclude_array</span>.<span class="ruby-identifier">push</span> <span class="ruby-string">&quot;varid_41 = 0&quot;</span>
+              <span class="ruby-keyword">end</span>
+              <span class="ruby-keyword">if</span> <span class="ruby-identifier">filters</span>[<span class="ruby-value">4</span>] <span class="ruby-operator">==</span> <span class="ruby-string">&quot;1&quot;</span>
+                      <span class="ruby-identifier">filters2_include_array</span>.<span class="ruby-identifier">push</span> <span class="ruby-string">&quot;varid_42 = 1&quot;</span>
+              <span class="ruby-keyword">else</span>
+                      <span class="ruby-identifier">filters2_exclude_array</span>.<span class="ruby-identifier">push</span> <span class="ruby-string">&quot;varid_42 = 0&quot;</span>
+              <span class="ruby-keyword">end</span>
+
+              <span class="ruby-identifier">where_clause</span> = <span class="ruby-string">&quot;(&quot;</span>
+              <span class="ruby-comment"># First set of filters (3)</span>
+              <span class="ruby-keyword">if</span> <span class="ruby-identifier">filters1_include_array</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">filters1_exclude_array</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
+                      <span class="ruby-identifier">filters1_exclude_array</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span>
+                              <span class="ruby-identifier">where_clause</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">f</span>
+                              <span class="ruby-identifier">where_clause</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot; and &quot;</span>
+                      <span class="ruby-keyword">end</span>
+                      <span class="ruby-identifier">where_clause</span> = <span class="ruby-identifier">where_clause</span>[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">-6</span>]
+              <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">filters1_include_array</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">filters1_exclude_array</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
+                      <span class="ruby-identifier">filters1_include_array</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span>
+                              <span class="ruby-identifier">where_clause</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">f</span>
+                              <span class="ruby-identifier">where_clause</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot; or &quot;</span>
+                      <span class="ruby-keyword">end</span>
+                      <span class="ruby-identifier">where_clause</span> = <span class="ruby-identifier">where_clause</span>[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">-5</span>]
+              <span class="ruby-keyword">else</span>
+                      <span class="ruby-identifier">where_clause</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;(&quot;</span>
+                      <span class="ruby-identifier">filters1_include_array</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span>
+                              <span class="ruby-identifier">where_clause</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">f</span>
+                              <span class="ruby-identifier">where_clause</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot; or &quot;</span>
+                      <span class="ruby-keyword">end</span>
+                      <span class="ruby-identifier">where_clause</span> = <span class="ruby-identifier">where_clause</span>[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">-5</span>]
+                      <span class="ruby-identifier">where_clause</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;) and &quot;</span>
+                      <span class="ruby-identifier">filters1_exclude_array</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span>
+                              <span class="ruby-identifier">where_clause</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">f</span>
+                              <span class="ruby-identifier">where_clause</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot; and &quot;</span>
+                      <span class="ruby-keyword">end</span>
+                      <span class="ruby-identifier">where_clause</span> = <span class="ruby-identifier">where_clause</span>[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">-6</span>]
+              <span class="ruby-keyword">end</span>
+              <span class="ruby-identifier">where_clause</span>  <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;) and (&quot;</span>
+              <span class="ruby-comment"># Second set of filters (2)</span>
+              <span class="ruby-keyword">if</span> <span class="ruby-identifier">filters2_include_array</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">filters2_exclude_array</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
+                      <span class="ruby-identifier">filters2_exclude_array</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span>
+                              <span class="ruby-identifier">where_clause</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">f</span>
+                              <span class="ruby-identifier">where_clause</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot; and &quot;</span>
+                      <span class="ruby-keyword">end</span>
+                      <span class="ruby-identifier">where_clause</span> = <span class="ruby-identifier">where_clause</span>[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">-6</span>]
+              <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">filters2_include_array</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">filters2_exclude_array</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
+                      <span class="ruby-identifier">filters2_include_array</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span>
+                              <span class="ruby-identifier">where_clause</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">f</span>
+                              <span class="ruby-identifier">where_clause</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot; or &quot;</span>
+                      <span class="ruby-keyword">end</span>
+                      <span class="ruby-identifier">where_clause</span> = <span class="ruby-identifier">where_clause</span>[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">-5</span>]
+              <span class="ruby-keyword">else</span>
+                      <span class="ruby-identifier">where_clause</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">filters2_include_array</span>[<span class="ruby-value">0</span>]
+                      <span class="ruby-identifier">where_clause</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot; and &quot;</span>
+                      <span class="ruby-identifier">where_clause</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">filters2_exclude_array</span>[<span class="ruby-value">0</span>]
+              <span class="ruby-keyword">end</span>   
+              <span class="ruby-identifier">where_clause</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;)&quot;</span>
+              <span class="ruby-identifier">print</span> <span class="ruby-string">&quot; -------------&quot;</span>
+              <span class="ruby-identifier">print</span> <span class="ruby-identifier">where_clause</span>
+              <span class="ruby-identifier">print</span> <span class="ruby-string">&quot; -------------&quot;</span>
+
+
+
+
+
+              <span class="ruby-comment"># include_array = []</span>
+              <span class="ruby-comment"># exclude_array = []</span>
+              <span class="ruby-comment"># if filters[0] == &quot;1&quot;</span>
+              <span class="ruby-comment">#     include_array.push &quot;varid_39 = 1&quot;</span>
+              <span class="ruby-comment"># else</span>
+              <span class="ruby-comment">#     exclude_array.push &quot;varid_39 = 0&quot;</span>
+              <span class="ruby-comment"># end</span>
+              <span class="ruby-comment"># if filters[1] == &quot;1&quot;</span>
+              <span class="ruby-comment">#     include_array.push &quot;varid_40 = 1&quot;</span>
+              <span class="ruby-comment"># else</span>
+              <span class="ruby-comment">#     exclude_array.push &quot;varid_40 = 0&quot;</span>
+              <span class="ruby-comment"># end</span>
+              <span class="ruby-comment"># if filters[2] == &quot;1&quot;</span>
+              <span class="ruby-comment">#     include_array.push &quot;varid_41 = 1&quot;</span>
+              <span class="ruby-comment"># else</span>
+              <span class="ruby-comment">#     exclude_array.push &quot;varid_41 = 0&quot;</span>
+              <span class="ruby-comment"># end</span>
+              <span class="ruby-comment"># if filters[3] == &quot;1&quot;</span>
+              <span class="ruby-comment">#     include_array.push &quot;varid_42 = 1&quot;</span>
+              <span class="ruby-comment"># else</span>
+              <span class="ruby-comment">#     exclude_array.push &quot;varid_42 = 0&quot;</span>
+              <span class="ruby-comment"># end</span>
+              <span class="ruby-comment"># if filters[4] == &quot;1&quot;</span>
+              <span class="ruby-comment">#     include_array.push &quot;varid_43 = 1&quot;</span>
+              <span class="ruby-comment"># else</span>
+              <span class="ruby-comment">#     exclude_array.push &quot;varid_43 = 0&quot;</span>
+              <span class="ruby-comment"># end</span>
+
+              <span class="ruby-comment"># where_clause = &quot;&quot;</span>
+              <span class="ruby-comment"># include_count = 0</span>
+              <span class="ruby-comment"># exclude_count = 0</span>
+
+              <span class="ruby-comment"># if include_array.length &gt; 1</span>
+              <span class="ruby-comment">#     where_clause += &quot;(&quot;</span>
+              <span class="ruby-comment"># end</span>
+              <span class="ruby-comment"># if include_array.length &gt; 0</span>
+              <span class="ruby-comment">#     include_array.each do |i|</span>
+              <span class="ruby-comment">#             if include_count != 0</span>
+              <span class="ruby-comment">#                     where_clause += &quot; or &quot;</span>
+              <span class="ruby-comment">#             end</span>
+              <span class="ruby-comment">#             where_clause += i</span>
+              <span class="ruby-comment">#             include_count += 1</span>
+              <span class="ruby-comment">#     end</span>
+              <span class="ruby-comment"># end</span>
+              <span class="ruby-comment"># if include_array.length &gt; 1</span>
+              <span class="ruby-comment">#     where_clause += &quot;)&quot;</span>
+              <span class="ruby-comment"># end</span>
+              <span class="ruby-comment"># if include_array.length &gt; 0 and exclude_array.length &gt; 0</span>
+              <span class="ruby-comment">#     where_clause += &quot; and &quot;</span>
+              <span class="ruby-comment"># end</span>
+              <span class="ruby-comment"># if exclude_array.length &gt; 1</span>
+              <span class="ruby-comment">#     where_clause += &quot;(&quot;</span>
+              <span class="ruby-comment"># end</span>
+              <span class="ruby-comment"># if exclude_array.length &gt; 0</span>
+              <span class="ruby-comment">#     exclude_array.each do |e|</span>
+              <span class="ruby-comment">#             if exclude_count != 0</span>
+              <span class="ruby-comment">#                     where_clause += &quot; and &quot;</span>
+              <span class="ruby-comment">#             end</span>
+              <span class="ruby-comment">#             where_clause += e</span>
+              <span class="ruby-comment">#             exclude_count += 1</span>
+              <span class="ruby-comment">#     end</span>
+              <span class="ruby-comment"># end</span>
+              <span class="ruby-comment"># if exclude_array.length &gt; 1</span>
+              <span class="ruby-comment">#     where_clause += &quot;)&quot;</span>
+              <span class="ruby-comment"># end</span>
+              <span class="ruby-comment"># where_clause = &quot;varid_39 = 1 or varid_40 = 1 or varid_41 = 1 or varid_42 = 1 or varid_43 = 1&quot;</span>
+
+
+
+
+              <span class="ruby-identifier">scores</span> = <span class="ruby-constant">Variable3Zip</span>.<span class="ruby-identifier">select</span>(<span class="ruby-string">&quot;zip, varid_5, varid_6, varid_7, varid_8, varid_9, varid_10, varid_11, varid_12, varid_13, varid_14, varid_15, varid_16, varid_17, varid_18, varid_19, varid_20, varid_21, varid_22, varid_23, varid_24, varid_25, varid_26, varid_27, varid_28, varid_29, varid_30, varid_31, varid_32, varid_33, varid_34, varid_35, varid_36, varid_37, varid_38, varid_39, varid_40, varid_41, varid_42&quot;</span>).<span class="ruby-identifier">where</span>(<span class="ruby-identifier">where_clause</span>)
+      <span class="ruby-keyword">else</span>
+              <span class="ruby-identifier">scores</span> = <span class="ruby-constant">Variable3Zip</span>.<span class="ruby-identifier">select</span>(<span class="ruby-string">&quot;zip, varid_5, varid_6, varid_7, varid_8, varid_9, varid_10, varid_11, varid_12, varid_13, varid_14, varid_15, varid_16, varid_17, varid_18, varid_19, varid_20, varid_21, varid_22, varid_23, varid_24, varid_25, varid_26, varid_27, varid_28, varid_29, varid_30, varid_31, varid_32, varid_33, varid_34, varid_35, varid_36, varid_37, varid_38, varid_39, varid_40, varid_41, varid_42&quot;</span>)
+      <span class="ruby-keyword">end</span>
+
+
+      <span class="ruby-comment"># 2) Pull from the database</span>
+      <span class="ruby-comment"># scores = Variable3Zip.select(&quot;zip, varid_5, varid_6, varid_7, varid_8, varid_9, varid_10, varid_11, varid_12, varid_13, varid_14, varid_15, varid_16, varid_17, varid_18, varid_19, varid_20, varid_21, varid_22, varid_23, varid_24, varid_25, varid_26, varid_27, varid_28, varid_29, varid_30, varid_31, varid_32, varid_33, varid_34, varid_35, varid_36, varid_37, varid_38, varid_39, varid_40, varid_41, varid_42, varid_43, varid_44, varid_45, varid_46, varid_47, varid_48, varid_49, varid_50&quot;)</span>
+      <span class="ruby-keyword">if</span>(<span class="ruby-identifier">params</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-value">:filters</span>))
+              <span class="ruby-identifier">zips</span> = <span class="ruby-constant">Variable3Zip</span>.<span class="ruby-identifier">select</span>(<span class="ruby-string">&quot;zip&quot;</span>).<span class="ruby-identifier">where</span>(<span class="ruby-identifier">where_clause</span>).<span class="ruby-identifier">order</span>(<span class="ruby-value">:zip</span>)
+      <span class="ruby-keyword">else</span>
+              <span class="ruby-identifier">zips</span> = <span class="ruby-constant">Variable3Zip</span>.<span class="ruby-identifier">select</span>(<span class="ruby-string">&quot;zip&quot;</span>).<span class="ruby-identifier">order</span>(<span class="ruby-value">:zip</span>)
+      <span class="ruby-keyword">end</span>
+
+      <span class="ruby-identifier">zips_array</span> = []
+      <span class="ruby-identifier">zips</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">z</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">zips_array</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">z</span>.<span class="ruby-identifier">zip</span>
+      <span class="ruby-keyword">end</span>
+
+
+      <span class="ruby-comment"># 3) Define ordered list of Variables for each Category</span>
+      <span class="ruby-keyword">if</span>(<span class="ruby-identifier">params</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-value">:cat1_vars</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">params</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-value">:cat2_vars</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">params</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-value">:cat3_vars</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">params</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-value">:cat4_vars</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">params</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-value">:filters</span>))
+              <span class="ruby-comment"># split &quot;50-117,118,119,120&quot; into array: [&quot;50&quot;, &quot;117,118,119,120&quot;]</span>
+              <span class="ruby-identifier">cat1Vars</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:cat1_vars</span>].<span class="ruby-identifier">split</span> <span class="ruby-string">&quot;-&quot;</span>
+              <span class="ruby-identifier">cat2Vars</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:cat2_vars</span>].<span class="ruby-identifier">split</span> <span class="ruby-string">&quot;-&quot;</span>
+              <span class="ruby-identifier">cat3Vars</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:cat3_vars</span>].<span class="ruby-identifier">split</span> <span class="ruby-string">&quot;-&quot;</span>
+              <span class="ruby-identifier">cat4Vars</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:cat4_vars</span>].<span class="ruby-identifier">split</span> <span class="ruby-string">&quot;-&quot;</span>
+              <span class="ruby-comment"># assign weights (always the first variable in the array)</span>
+              <span class="ruby-identifier">cat_weights</span> = []
+              <span class="ruby-identifier">cat_weights</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">cat1Vars</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">to_i</span>
+              <span class="ruby-identifier">cat_weights</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">cat2Vars</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">to_i</span>
+              <span class="ruby-identifier">cat_weights</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">cat3Vars</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">to_i</span>
+              <span class="ruby-identifier">cat_weights</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">cat4Vars</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">to_i</span>
+              <span class="ruby-comment"># split &quot;117,118,119,120&quot; into array: [&quot;117&quot;, &quot;118&quot;, &quot;119&quot;, &quot;120&quot;]</span>
+              <span class="ruby-identifier">cat1</span> = <span class="ruby-identifier">cat1Vars</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">split</span> <span class="ruby-string">&quot;,&quot;</span>
+              <span class="ruby-identifier">cat2</span> = <span class="ruby-identifier">cat2Vars</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">split</span> <span class="ruby-string">&quot;,&quot;</span>
+              <span class="ruby-identifier">cat3</span> = <span class="ruby-identifier">cat3Vars</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">split</span> <span class="ruby-string">&quot;,&quot;</span>
+              <span class="ruby-identifier">cat4</span> = <span class="ruby-identifier">cat4Vars</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">split</span> <span class="ruby-string">&quot;,&quot;</span>
+
+
+      <span class="ruby-keyword">else</span>
+              <span class="ruby-identifier">cat_weights</span> = []
+              <span class="ruby-keyword">for</span> <span class="ruby-identifier">j</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">3</span> <span class="ruby-keyword">do</span>
+                      <span class="ruby-identifier">cat_weights</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">$categories</span>[<span class="ruby-identifier">j</span>].<span class="ruby-identifier">default_rank</span>.<span class="ruby-identifier">to_i</span>
+              <span class="ruby-keyword">end</span>
+              <span class="ruby-identifier">cat1_obj</span> = <span class="ruby-constant">VariableDim</span>.<span class="ruby-identifier">select</span>(<span class="ruby-string">&quot;var_id&quot;</span>).<span class="ruby-identifier">where</span>(<span class="ruby-string">&quot;var_parent = 1 and control_panel = TRUE&quot;</span>).<span class="ruby-identifier">order</span>(<span class="ruby-value">:default_rank</span>)
+              <span class="ruby-identifier">cat2_obj</span> = <span class="ruby-constant">VariableDim</span>.<span class="ruby-identifier">select</span>(<span class="ruby-string">&quot;var_id&quot;</span>).<span class="ruby-identifier">where</span>(<span class="ruby-string">&quot;var_parent = 2 and control_panel = TRUE&quot;</span>).<span class="ruby-identifier">order</span>(<span class="ruby-value">:default_rank</span>)
+              <span class="ruby-identifier">cat3_obj</span> = <span class="ruby-constant">VariableDim</span>.<span class="ruby-identifier">select</span>(<span class="ruby-string">&quot;var_id&quot;</span>).<span class="ruby-identifier">where</span>(<span class="ruby-string">&quot;var_parent = 3 and control_panel = TRUE&quot;</span>).<span class="ruby-identifier">order</span>(<span class="ruby-value">:default_rank</span>)
+              <span class="ruby-identifier">cat4_obj</span> = <span class="ruby-constant">VariableDim</span>.<span class="ruby-identifier">select</span>(<span class="ruby-string">&quot;var_id&quot;</span>).<span class="ruby-identifier">where</span>(<span class="ruby-string">&quot;var_parent = 4 and control_panel = TRUE&quot;</span>).<span class="ruby-identifier">order</span>(<span class="ruby-value">:default_rank</span>)
+
+              <span class="ruby-identifier">cat1</span> = []
+              <span class="ruby-identifier">cat1_obj</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span>
+                      <span class="ruby-identifier">cat1</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">c</span>.<span class="ruby-identifier">var_id</span>
+              <span class="ruby-keyword">end</span>
+              <span class="ruby-identifier">cat2</span> = []
+              <span class="ruby-identifier">cat2_obj</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span>
+                      <span class="ruby-identifier">cat2</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">c</span>.<span class="ruby-identifier">var_id</span>
+              <span class="ruby-keyword">end</span>
+              <span class="ruby-identifier">cat3</span> = []
+              <span class="ruby-identifier">cat3_obj</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span>
+                      <span class="ruby-identifier">cat3</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">c</span>.<span class="ruby-identifier">var_id</span>
+              <span class="ruby-keyword">end</span>
+              <span class="ruby-identifier">cat4</span> = []
+              <span class="ruby-identifier">cat4_obj</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span>
+                      <span class="ruby-identifier">cat4</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">c</span>.<span class="ruby-identifier">var_id</span>
+              <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">end</span>
+
+      <span class="ruby-comment"># 4) Create a nested hash containing all ZIPs and their scores for all variables</span>
+      <span class="ruby-comment">#  - {010 =&gt; {117 =&gt; 0.15, 118 =&gt; 0.23, 119 =&gt; 0.75}, 011 =&gt; {117 =&gt; 0.18, 118 =&gt; 0.31, 119 =&gt; 0.40}}</span>
+      <span class="ruby-identifier">all_scores</span> = {}
+      <span class="ruby-identifier">scores</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">score</span><span class="ruby-operator">|</span>
+              <span class="ruby-identifier">temp</span> = {}
+              <span class="ruby-identifier">score</span>.<span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">attr_name</span>, <span class="ruby-identifier">attr_value</span><span class="ruby-operator">|</span>
+                      <span class="ruby-keyword">if</span>(<span class="ruby-identifier">attr_name</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">!=</span> <span class="ruby-string">&quot;zip&quot;</span>)
+                              <span class="ruby-identifier">temp</span>[<span class="ruby-identifier">attr_name</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">&quot;_&quot;</span>)[<span class="ruby-value">1</span>].<span class="ruby-identifier">to_i</span>] = <span class="ruby-identifier">attr_value</span>
+                      <span class="ruby-keyword">end</span>
+              <span class="ruby-keyword">end</span>
+              <span class="ruby-identifier">all_scores</span>[<span class="ruby-identifier">score</span>.<span class="ruby-identifier">zip</span>] = <span class="ruby-identifier">temp</span>
+      <span class="ruby-keyword">end</span>
+
+
+      <span class="ruby-comment"># 5) Create an Array for each Category containing all ZIPs and their scores for only the selected variables</span>
+      <span class="ruby-comment">#  - [[010, 0.5, 0.6, 0.7, 0.8], [011, 0.3, 0.4, 0.5], [012, 0.7, 0.8, 0.9]]</span>
+      <span class="ruby-identifier">cat1_scores</span> = []
+      <span class="ruby-identifier">zips</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">zip</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">temp</span> = []
+        <span class="ruby-identifier">temp</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">zip</span>.<span class="ruby-identifier">zip</span>
+        <span class="ruby-identifier">cat1</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">var</span><span class="ruby-operator">|</span>
+                      <span class="ruby-identifier">temp</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">all_scores</span>[<span class="ruby-identifier">zip</span>.<span class="ruby-identifier">zip</span>][<span class="ruby-identifier">var</span>.<span class="ruby-identifier">to_i</span>].<span class="ruby-identifier">to_f</span>
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-identifier">cat1_scores</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">temp</span>
+      <span class="ruby-keyword">end</span>
+
+      <span class="ruby-identifier">cat2_scores</span> = []
+      <span class="ruby-identifier">zips</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">zip</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">temp</span> = []
+        <span class="ruby-identifier">temp</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">zip</span>.<span class="ruby-identifier">zip</span>
+        <span class="ruby-identifier">cat2</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">var</span><span class="ruby-operator">|</span>
+                      <span class="ruby-identifier">temp</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">all_scores</span>[<span class="ruby-identifier">zip</span>.<span class="ruby-identifier">zip</span>][<span class="ruby-identifier">var</span>.<span class="ruby-identifier">to_i</span>].<span class="ruby-identifier">to_f</span>
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-identifier">cat2_scores</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">temp</span>
+      <span class="ruby-keyword">end</span>
+
+      <span class="ruby-identifier">cat3_scores</span> = []
+      <span class="ruby-identifier">zips</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">zip</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">temp</span> = []
+        <span class="ruby-identifier">temp</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">zip</span>.<span class="ruby-identifier">zip</span>
+        <span class="ruby-identifier">cat3</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">var</span><span class="ruby-operator">|</span>
+                      <span class="ruby-identifier">temp</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">all_scores</span>[<span class="ruby-identifier">zip</span>.<span class="ruby-identifier">zip</span>][<span class="ruby-identifier">var</span>.<span class="ruby-identifier">to_i</span>].<span class="ruby-identifier">to_f</span>
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-identifier">cat3_scores</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">temp</span>
+      <span class="ruby-keyword">end</span>
+
+      <span class="ruby-identifier">cat4_scores</span> = []
+      <span class="ruby-identifier">zips</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">zip</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">temp</span> = []
+        <span class="ruby-identifier">temp</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">zip</span>.<span class="ruby-identifier">zip</span>
+        <span class="ruby-identifier">cat4</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">var</span><span class="ruby-operator">|</span>
+                      <span class="ruby-identifier">temp</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">all_scores</span>[<span class="ruby-identifier">zip</span>.<span class="ruby-identifier">zip</span>][<span class="ruby-identifier">var</span>.<span class="ruby-identifier">to_i</span>].<span class="ruby-identifier">to_f</span>
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-identifier">cat4_scores</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">temp</span>
+      <span class="ruby-keyword">end</span>
+
+      <span class="ruby-comment"># 6) Calculate a final score for each Category (integrating ROC)</span>
+      <span class="ruby-comment">#  - [[010, 0.5, 0.6, 0.7, 0.8], [011, 0.6, 0.7, 0.8, 0.9]]</span>
+      <span class="ruby-identifier">cat_scores</span> = []
+      <span class="ruby-identifier">zips</span>.<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">zip</span>, <span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">temp</span> = []
+        <span class="ruby-identifier">temp</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">zip</span>.<span class="ruby-identifier">zip</span>
+        <span class="ruby-identifier">additup</span> = <span class="ruby-value">0</span>
+        <span class="ruby-keyword">for</span> <span class="ruby-identifier">j</span> <span class="ruby-keyword">in</span> <span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-identifier">cat1_scores</span>[<span class="ruby-identifier">i</span>].<span class="ruby-identifier">length</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>
+                      <span class="ruby-identifier">additup</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">cat1_scores</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span>] * <span class="ruby-identifier">roc</span>[<span class="ruby-identifier">cat1</span>.<span class="ruby-identifier">length</span>][<span class="ruby-identifier">j</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>]
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-identifier">temp</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">additup</span>
+        <span class="ruby-identifier">additup</span> = <span class="ruby-value">0</span>
+        <span class="ruby-keyword">for</span> <span class="ruby-identifier">j</span> <span class="ruby-keyword">in</span> <span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-identifier">cat2_scores</span>[<span class="ruby-identifier">i</span>].<span class="ruby-identifier">length</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>
+                      <span class="ruby-identifier">additup</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">cat2_scores</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span>] * <span class="ruby-identifier">roc</span>[<span class="ruby-identifier">cat2</span>.<span class="ruby-identifier">length</span>][<span class="ruby-identifier">j</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>]
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-identifier">temp</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">additup</span>
+        <span class="ruby-identifier">additup</span> = <span class="ruby-value">0</span>
+        <span class="ruby-keyword">for</span> <span class="ruby-identifier">j</span> <span class="ruby-keyword">in</span> <span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-identifier">cat3_scores</span>[<span class="ruby-identifier">i</span>].<span class="ruby-identifier">length</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>
+                      <span class="ruby-identifier">additup</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">cat3_scores</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span>] * <span class="ruby-identifier">roc</span>[<span class="ruby-identifier">cat3</span>.<span class="ruby-identifier">length</span>][<span class="ruby-identifier">j</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>]
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-identifier">temp</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">additup</span>
+        <span class="ruby-identifier">additup</span> = <span class="ruby-value">0</span>
+        <span class="ruby-keyword">for</span> <span class="ruby-identifier">j</span> <span class="ruby-keyword">in</span> <span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-identifier">cat4_scores</span>[<span class="ruby-identifier">i</span>].<span class="ruby-identifier">length</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>
+                      <span class="ruby-identifier">additup</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">cat4_scores</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span>] * <span class="ruby-identifier">roc</span>[<span class="ruby-identifier">cat4</span>.<span class="ruby-identifier">length</span>][<span class="ruby-identifier">j</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>]
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-identifier">temp</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">additup</span>
+        <span class="ruby-identifier">cat_scores</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">temp</span>
+      <span class="ruby-keyword">end</span>
+
+      <span class="ruby-comment"># 7) Calculate the final scores for each ZIP</span>
+      <span class="ruby-identifier">final_scores</span> = {}
+      <span class="ruby-identifier">weight_total</span> = <span class="ruby-value">0</span>
+      <span class="ruby-identifier">cat_weights</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">weight</span><span class="ruby-operator">|</span>
+              <span class="ruby-identifier">weight_total</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">weight</span>
+      <span class="ruby-keyword">end</span>
+
+      <span class="ruby-identifier">zips</span>.<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">zip</span>, <span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">additup</span> = <span class="ruby-value">0</span>
+        <span class="ruby-keyword">for</span> <span class="ruby-identifier">j</span> <span class="ruby-keyword">in</span> <span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">4</span>
+             <span class="ruby-identifier">$current_zip_scores</span>[<span class="ruby-identifier">zip</span>.<span class="ruby-identifier">zip</span>][<span class="ruby-string">&quot;cat&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">j</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;_score&quot;</span>] = <span class="ruby-identifier">cat_scores</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span>].<span class="ruby-identifier">round</span>(<span class="ruby-value">2</span>)
+                      <span class="ruby-identifier">additup</span> <span class="ruby-operator">+=</span> (<span class="ruby-identifier">cat_scores</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span>] * (<span class="ruby-identifier">cat_weights</span>[<span class="ruby-identifier">j</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>].<span class="ruby-identifier">to_f</span> <span class="ruby-operator">/</span> <span class="ruby-identifier">weight_total</span>.<span class="ruby-identifier">to_f</span>))
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-identifier">$current_zip_scores</span>[<span class="ruby-identifier">zip</span>.<span class="ruby-identifier">zip</span>][<span class="ruby-string">&quot;agg_score&quot;</span>] = <span class="ruby-identifier">additup</span>.<span class="ruby-identifier">round</span>(<span class="ruby-value">2</span>)
+        <span class="ruby-identifier">final_scores</span>[<span class="ruby-identifier">zip</span>.<span class="ruby-identifier">zip</span>] = <span class="ruby-identifier">additup</span>
+      <span class="ruby-keyword">end</span>
+
+      <span class="ruby-comment"># 7.5) Adjust final scores for screen 3R</span>
+      <span class="ruby-keyword">if</span>(<span class="ruby-identifier">params</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-value">:present_future</span>))
+
+        <span class="ruby-identifier">present_final_scores</span> = {}
+        <span class="ruby-identifier">future_final_scores</span> = {}
+
+        <span class="ruby-comment"># print params[:present_future] + &quot; ---------------- &quot;</span>
+        <span class="ruby-comment"># params[:present_future]</span>
+        <span class="ruby-comment"># params[:projected_value]</span>
+        <span class="ruby-comment"># if (present &amp;&amp; val &lt;= 1) OR (future &amp;&amp; val &gt;= 1), SAME</span>
+        <span class="ruby-comment"># if (present &amp;&amp; val &gt; 1) OR (future &amp;&amp; val &lt; 1), DECREASE</span>
+
+        <span class="ruby-identifier">pres_fut</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:present_future</span>]
+        <span class="ruby-comment"># val = params[:projected_value].to_f / 100  # % change</span>
+        <span class="ruby-identifier">val</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:projected_value</span>].<span class="ruby-identifier">to_f</span> <span class="ruby-operator">/</span> <span class="ruby-value">100</span> * <span class="ruby-value">1</span>        <span class="ruby-comment"># % change</span>
+
+        <span class="ruby-identifier">levers3L</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:levers3L</span>].<span class="ruby-identifier">split</span>(<span class="ruby-string">&quot;,&quot;</span>)
+        <span class="ruby-identifier">levers3L</span>[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">3</span>].<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">lever</span>, <span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+             <span class="ruby-keyword">if</span> <span class="ruby-identifier">i</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">i</span> <span class="ruby-operator">==</span> <span class="ruby-value">3</span>
+                     <span class="ruby-identifier">levers3L</span>[<span class="ruby-identifier">i</span>] = <span class="ruby-identifier">levers3L</span>[<span class="ruby-identifier">i</span>].<span class="ruby-identifier">to_f</span><span class="ruby-operator">/</span><span class="ruby-value">1000</span>
+             <span class="ruby-keyword">else</span>
+                     <span class="ruby-identifier">levers3L</span>[<span class="ruby-identifier">i</span>] = <span class="ruby-identifier">levers3L</span>[<span class="ruby-identifier">i</span>].<span class="ruby-identifier">to_f</span><span class="ruby-operator">/</span><span class="ruby-value">10</span>
+             <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-identifier">levers3L</span>[<span class="ruby-value">4</span><span class="ruby-operator">..</span><span class="ruby-value">6</span>].<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">lever</span>, <span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+             <span class="ruby-identifier">levers3L</span>[<span class="ruby-identifier">i</span><span class="ruby-operator">+</span><span class="ruby-value">4</span>] = <span class="ruby-identifier">levers3L</span>[<span class="ruby-identifier">i</span><span class="ruby-operator">+</span><span class="ruby-value">4</span>].<span class="ruby-identifier">to_f</span>
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-comment"># sliders</span>
+        <span class="ruby-identifier">gdp_growth</span> = <span class="ruby-identifier">levers3L</span>[<span class="ruby-value">0</span>]
+        <span class="ruby-identifier">agent_engagement</span> = <span class="ruby-identifier">levers3L</span>[<span class="ruby-value">1</span>]
+        <span class="ruby-identifier">product_availability</span> = <span class="ruby-identifier">levers3L</span>[<span class="ruby-value">2</span>]
+        <span class="ruby-identifier">retention_rate</span> = <span class="ruby-identifier">levers3L</span>[<span class="ruby-value">3</span>]
+        <span class="ruby-comment"># checkboxes</span>
+        <span class="ruby-identifier">provide_agents_data</span> = (<span class="ruby-identifier">levers3L</span>[<span class="ruby-value">4</span>] <span class="ruby-operator">==</span> <span class="ruby-value">0</span> <span class="ruby-operator">?</span> <span class="ruby-value">0.025</span> <span class="ruby-operator">:</span> <span class="ruby-value">0.04</span>)
+        <span class="ruby-identifier">baseline_conversion_rate_per_opp</span> = (<span class="ruby-identifier">levers3L</span>[<span class="ruby-value">5</span>] <span class="ruby-operator">==</span> <span class="ruby-value">0</span> <span class="ruby-operator">?</span> <span class="ruby-value">0.1</span> <span class="ruby-operator">:</span> <span class="ruby-value">0.15</span>)
+        <span class="ruby-identifier">percnt_ivantage_agents</span> = (<span class="ruby-identifier">levers3L</span>[<span class="ruby-value">6</span>] <span class="ruby-operator">==</span> <span class="ruby-value">0</span> <span class="ruby-operator">?</span> <span class="ruby-value">0.25</span> <span class="ruby-operator">:</span> <span class="ruby-value">0.4</span>)
+        <span class="ruby-identifier">$varvals</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">v</span><span class="ruby-operator">|</span>
+
+             <span class="ruby-comment"># if v.zip == '70'</span>
+               <span class="ruby-identifier">startvar</span> = <span class="ruby-identifier">v</span>.<span class="ruby-identifier">hvh_policies</span>
+               <span class="ruby-comment"># print &quot;Start: &quot; + v.hvh_policies.to_s + &quot;, &quot;</span>
+                <span class="ruby-identifier">results</span> = <span class="ruby-identifier">getNextQtrScore</span>(<span class="ruby-identifier">v</span>.<span class="ruby-identifier">hvh_count</span>, <span class="ruby-identifier">v</span>.<span class="ruby-identifier">hvh_policies</span>, <span class="ruby-identifier">v</span>.<span class="ruby-identifier">ivantage_pif</span>, <span class="ruby-identifier">v</span>.<span class="ruby-identifier">agent_count</span>, <span class="ruby-identifier">gdp_growth</span>, <span class="ruby-identifier">agent_engagement</span>, <span class="ruby-identifier">product_availability</span>, <span class="ruby-identifier">retention_rate</span>, <span class="ruby-identifier">provide_agents_data</span>, <span class="ruby-identifier">baseline_conversion_rate_per_opp</span>, <span class="ruby-identifier">percnt_ivantage_agents</span>)
+                <span class="ruby-value">9</span>.<span class="ruby-identifier">times</span> <span class="ruby-keyword">do</span>
+                      <span class="ruby-identifier">results</span> = <span class="ruby-identifier">getNextQtrScore</span>(<span class="ruby-identifier">results</span>[<span class="ruby-value">0</span>], <span class="ruby-identifier">results</span>[<span class="ruby-value">1</span>], <span class="ruby-identifier">v</span>.<span class="ruby-identifier">ivantage_pif</span>, <span class="ruby-identifier">v</span>.<span class="ruby-identifier">agent_count</span>, <span class="ruby-identifier">gdp_growth</span>, <span class="ruby-identifier">agent_engagement</span>, <span class="ruby-identifier">product_availability</span>, <span class="ruby-identifier">retention_rate</span>, <span class="ruby-identifier">provide_agents_data</span>, <span class="ruby-identifier">baseline_conversion_rate_per_opp</span>, <span class="ruby-identifier">percnt_ivantage_agents</span>)
+                <span class="ruby-keyword">end</span>
+                <span class="ruby-identifier">endvar</span> = <span class="ruby-identifier">results</span>[<span class="ruby-value">1</span>]
+                <span class="ruby-comment"># print &quot;End: &quot; + results[1].to_s</span>
+                <span class="ruby-comment"># if endvar &gt; startvar</span>
+                <span class="ruby-comment">#   print &quot; ... going UP! \n&quot;</span>
+                <span class="ruby-comment"># else</span>
+                <span class="ruby-comment">#   print &quot; ... (down) \n&quot;</span>
+                <span class="ruby-comment"># end</span>
+             <span class="ruby-comment"># end</span>
+
+             <span class="ruby-comment"># print v.zip</span>
+             <span class="ruby-comment"># print v.zip.length</span>
+             <span class="ruby-comment"># print &quot;:&quot;</span>
+
+
+             <span class="ruby-identifier">present_final_scores</span>[<span class="ruby-identifier">v</span>.<span class="ruby-identifier">zip</span>] = (<span class="ruby-identifier">startvar</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span> <span class="ruby-operator">?</span> <span class="ruby-constant">Math</span><span class="ruby-operator">::</span><span class="ruby-identifier">log2</span>(<span class="ruby-identifier">startvar</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">startvar</span>)
+             <span class="ruby-identifier">future_final_scores</span>[<span class="ruby-identifier">v</span>.<span class="ruby-identifier">zip</span>] = (<span class="ruby-identifier">endvar</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span> <span class="ruby-operator">?</span> <span class="ruby-constant">Math</span><span class="ruby-operator">::</span><span class="ruby-identifier">log2</span>(<span class="ruby-identifier">endvar</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">endvar</span>)
+
+             <span class="ruby-keyword">if</span> <span class="ruby-identifier">pres_fut</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;present&quot;</span>
+               <span class="ruby-identifier">final_scores</span>[<span class="ruby-identifier">v</span>.<span class="ruby-identifier">zip</span>] = (<span class="ruby-identifier">startvar</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span> <span class="ruby-operator">?</span> <span class="ruby-constant">Math</span><span class="ruby-operator">::</span><span class="ruby-identifier">log2</span>(<span class="ruby-identifier">startvar</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">startvar</span>)
+               <span class="ruby-comment"># print final_scores[v.zip]</span>
+               <span class="ruby-comment"># print startvar</span>
+             <span class="ruby-keyword">else</span>
+               <span class="ruby-identifier">final_scores</span>[<span class="ruby-identifier">v</span>.<span class="ruby-identifier">zip</span>] = (<span class="ruby-identifier">endvar</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span> <span class="ruby-operator">?</span> <span class="ruby-constant">Math</span><span class="ruby-operator">::</span><span class="ruby-identifier">log2</span>(<span class="ruby-identifier">endvar</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">endvar</span>)
+               <span class="ruby-comment"># print endvar</span>
+             <span class="ruby-keyword">end</span>
+
+          <span class="ruby-comment"># print &quot;   &quot;</span>
+
+
+        <span class="ruby-keyword">end</span>
+
+
+
+
+
+
+        <span class="ruby-comment"># This block of code overwrites the Scenario Analysis value</span>
+        <span class="ruby-comment"># instead of taking the value from the slider, it just checks if it's supposed to trend up or down</span>
+        <span class="ruby-comment"># It also checks which variable is being selected, because the value needs to be fine-tuned to match the output</span>
+        <span class="ruby-comment"># If you don't want to overwrite &quot;val&quot; anymore, just comment this out.</span>
+        <span class="ruby-comment"># whichvar = params[:whichvar]</span>
+        <span class="ruby-comment"># # print whichvar</span>
+        <span class="ruby-comment"># if whichvar == 'var2'</span>
+        <span class="ruby-comment">#    val = val &lt; 1 ? 0.55 : 1.28</span>
+        <span class="ruby-comment"># else</span>
+        <span class="ruby-comment">#    # val = val &lt; 1 ? 0.0001 : 68</span>
+        <span class="ruby-comment">#    val = val &lt; 1 ? 0.55 : 1.58</span>
+        <span class="ruby-comment"># end</span>
+
+
+
+        <span class="ruby-comment"># print &quot;present min: &quot;</span>
+        <span class="ruby-comment"># print present_final_scores.values.min</span>
+        <span class="ruby-comment"># print &quot;present max: &quot;</span>
+        <span class="ruby-comment"># print present_final_scores.values.max</span>
+        <span class="ruby-comment"># print &quot;future min: &quot;</span>
+        <span class="ruby-comment"># print future_final_scores.values.min</span>
+        <span class="ruby-comment"># print &quot;future max: &quot;</span>
+        <span class="ruby-comment"># print future_final_scores.values.max</span>
+
+        <span class="ruby-identifier">$min</span> = <span class="ruby-identifier">present_final_scores</span>.<span class="ruby-identifier">values</span>.<span class="ruby-identifier">min</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">future_final_scores</span>.<span class="ruby-identifier">values</span>.<span class="ruby-identifier">min</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">present_final_scores</span>.<span class="ruby-identifier">values</span>.<span class="ruby-identifier">min</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">future_final_scores</span>.<span class="ruby-identifier">values</span>.<span class="ruby-identifier">min</span>
+        <span class="ruby-identifier">$max</span> = <span class="ruby-identifier">present_final_scores</span>.<span class="ruby-identifier">values</span>.<span class="ruby-identifier">max</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">future_final_scores</span>.<span class="ruby-identifier">values</span>.<span class="ruby-identifier">max</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">present_final_scores</span>.<span class="ruby-identifier">values</span>.<span class="ruby-identifier">max</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">future_final_scores</span>.<span class="ruby-identifier">values</span>.<span class="ruby-identifier">max</span>
+
+
+
+        <span class="ruby-comment"># $max = final_scores.values.max</span>
+        <span class="ruby-comment"># $min = final_scores.values.min * (1-(1-val).abs)</span>
+
+        <span class="ruby-comment"># $max = whichvar == 'var2' ? 0.25 : 0.6</span>
+
+
+
+
+        <span class="ruby-comment"># even_dist_pct = 0.99                                                       # even distribution %</span>
+        <span class="ruby-comment"># rel_dist_pct = 0.01                                                        # relative distribution %</span>
+
+        <span class="ruby-comment"># # I know these are long/confusing formulas. Please see the spreadsheet that explains it all.</span>
+        <span class="ruby-comment"># smallest_min = $min + ((((final_scores.values.sum * val) - final_scores.values.sum) * even_dist_pct) / final_scores.count) + ((((final_scores.values.sum * val) - final_scores.values.sum) * rel_dist_pct) * ($min / final_scores.values.sum))</span>
+        <span class="ruby-comment"># step = (($max + ((((final_scores.values.sum * val) - final_scores.values.sum) * even_dist_pct) / final_scores.count) +((((final_scores.values.sum * val) - final_scores.values.sum) * rel_dist_pct) * ($max / final_scores.values.sum)) - smallest_min)) / 100</span>
+
+        <span class="ruby-comment"># if pres_fut == &quot;present&quot;</span>
+
+        <span class="ruby-comment">#    if val &lt; 1</span>
+        <span class="ruby-comment">#      zips.each do |z|</span>
+        <span class="ruby-comment">#              # final_scores[z.zip] = (final_scores[z.zip] - smallest_min) / step / 100</span>
+        <span class="ruby-comment">#              final_scores[z.zip] = final_scores[z.zip] &gt; $max ? 1 : (final_scores[z.zip] - smallest_min) / step / 100</span>
+        <span class="ruby-comment">#      end</span>
+        <span class="ruby-comment">#    else</span>
+        <span class="ruby-comment">#      zips.each do |z|</span>
+        <span class="ruby-comment">#              # final_scores[z.zip] = final_scores[z.zip] / step / 100</span>
+        <span class="ruby-comment">#              final_scores[z.zip] = final_scores[z.zip] &gt; $max ? 1 : final_scores[z.zip] / step / 100</span>
+        <span class="ruby-comment">#      end</span>
+        <span class="ruby-comment">#    end</span>
+        <span class="ruby-comment"># else</span>
+        <span class="ruby-comment">#    zips.each do |z|</span>
+        <span class="ruby-comment">#      # final_scores[z.zip] = ((final_scores[z.zip] + ((((final_scores.values.sum * val) - final_scores.values.sum) * even_dist_pct) / final_scores.count) + ((((final_scores.values.sum * val) - final_scores.values.sum) * rel_dist_pct) * (final_scores[z.zip] / final_scores.values.sum))) - smallest_min) / step / 100</span>
+        <span class="ruby-comment">#      final_scores[z.zip] = final_scores[z.zip] &gt; $max ? 1 : ((final_scores[z.zip] + ((((final_scores.values.sum * val) - final_scores.values.sum) * even_dist_pct) / final_scores.count) + ((((final_scores.values.sum * val) - final_scores.values.sum) * rel_dist_pct) * (final_scores[z.zip] / final_scores.values.sum))) - smallest_min) / step / 100</span>
+        <span class="ruby-comment">#    end</span>
+        <span class="ruby-comment"># end</span>
+
+
+
+
+
+
+        <span class="ruby-comment"># if (pres_fut == &quot;present&quot; &amp;&amp; val &gt; 1) || (pres_fut == &quot;future&quot; &amp;&amp; val &lt; 1)</span>
+        <span class="ruby-comment">#    zips.each do |z|</span>
+        <span class="ruby-comment">#      final_scores[z.zip] = (1-(1-val).abs) * final_scores[z.zip]</span>
+        <span class="ruby-comment">#    end</span>
+        <span class="ruby-comment"># end</span>
+      <span class="ruby-keyword">else</span>
+        <span class="ruby-identifier">$max</span> = <span class="ruby-identifier">final_scores</span>.<span class="ruby-identifier">values</span>.<span class="ruby-identifier">max</span>
+        <span class="ruby-identifier">$min</span> = <span class="ruby-identifier">final_scores</span>.<span class="ruby-identifier">values</span>.<span class="ruby-identifier">min</span>
+      <span class="ruby-keyword">end</span>
+
+
+      <span class="ruby-comment"># 8) Calculate the hex Colors for each ZIP</span>
+      <span class="ruby-comment">#  - Color arrays</span>
+      <span class="ruby-identifier">blue_hex_array</span> = [<span class="ruby-string">'4C0000'</span>, <span class="ruby-string">'660000'</span>, <span class="ruby-string">'800000'</span>, <span class="ruby-string">'990000'</span>, <span class="ruby-string">'B20000'</span>, <span class="ruby-string">'CC0000'</span>, <span class="ruby-string">'E60000'</span>, <span class="ruby-string">'FF0000'</span>, <span class="ruby-string">'FF1919'</span>, <span class="ruby-string">'FF3333'</span>, <span class="ruby-string">'FF4D4D'</span>, <span class="ruby-string">'FF6666'</span>, <span class="ruby-string">'FF8080'</span>, <span class="ruby-string">'FF9999'</span>, <span class="ruby-string">'FFB2B2'</span>, <span class="ruby-string">'FFCCCC'</span>, <span class="ruby-string">'FFE6E6'</span>].<span class="ruby-identifier">reverse</span>
+      <span class="ruby-identifier">red_hex_array</span> = [<span class="ruby-string">'00004C'</span>, <span class="ruby-string">'000066'</span>, <span class="ruby-string">'000080'</span>, <span class="ruby-string">'000099'</span>, <span class="ruby-string">'0000B2'</span>, <span class="ruby-string">'0000CC'</span>, <span class="ruby-string">'0000E6'</span>, <span class="ruby-string">'0000FF'</span>, <span class="ruby-string">'1919FF'</span>, <span class="ruby-string">'3333FF'</span>, <span class="ruby-string">'4D4DFF'</span>, <span class="ruby-string">'6666FF'</span>, <span class="ruby-string">'8080FF'</span>, <span class="ruby-string">'9999FF'</span>, <span class="ruby-string">'B2B2FF'</span>, <span class="ruby-string">'CCCCFF'</span>, <span class="ruby-string">'E6E6FF'</span>].<span class="ruby-identifier">reverse</span>
+      <span class="ruby-comment">#  - Max, Min, Range, Step</span>
+
+      <span class="ruby-comment"># $max = final_scores.values.max</span>
+      <span class="ruby-comment"># $min = final_scores.values.min</span>
+
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">$max</span>.<span class="ruby-identifier">blank?</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">$min</span>.<span class="ruby-identifier">blank?</span>
+              <span class="ruby-identifier">range</span> = <span class="ruby-value">0</span>
+      <span class="ruby-keyword">else</span>
+              <span class="ruby-identifier">range</span> = <span class="ruby-identifier">$max</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">$min</span>
+      <span class="ruby-keyword">end</span>
+
+      <span class="ruby-identifier">step</span> = (<span class="ruby-identifier">range</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">/</span> <span class="ruby-identifier">blue_hex_array</span>.<span class="ruby-identifier">length</span>.<span class="ruby-identifier">to_f</span>)
+      <span class="ruby-comment">#  - get Color Hue from URL parameter</span>
+      <span class="ruby-identifier">color_hue</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:colors_array</span>].<span class="ruby-identifier">to_i</span>
+      <span class="ruby-comment">#  - Blue vs Red</span>
+      <span class="ruby-identifier">final_colors</span> = {}
+
+      <span class="ruby-identifier">zips</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">zip</span><span class="ruby-operator">|</span>
+              <span class="ruby-identifier">color_index</span> = ((<span class="ruby-identifier">final_scores</span>[<span class="ruby-identifier">zip</span>.<span class="ruby-identifier">zip</span>].<span class="ruby-identifier">to_f</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">$min</span>.<span class="ruby-identifier">to_f</span>) <span class="ruby-operator">/</span> <span class="ruby-identifier">step</span>).<span class="ruby-identifier">to_i</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>
+              <span class="ruby-identifier">color_index</span> = <span class="ruby-identifier">color_index</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">0</span> <span class="ruby-operator">?</span> <span class="ruby-value">0</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">color_index</span>
+              <span class="ruby-comment"># if (color_index &lt; 1)</span>
+              <span class="ruby-keyword">if</span> (<span class="ruby-identifier">final_scores</span>[<span class="ruby-identifier">zip</span>.<span class="ruby-identifier">zip</span>] <span class="ruby-operator">==</span> <span class="ruby-value">0</span>)
+                      <span class="ruby-identifier">final_colors</span>[<span class="ruby-identifier">zip</span>.<span class="ruby-identifier">zip</span>] = <span class="ruby-string">'DONOTDISPLAY'</span>
+              <span class="ruby-keyword">else</span>
+                      <span class="ruby-keyword">if</span>(<span class="ruby-identifier">color_hue</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>)
+                              <span class="ruby-identifier">final_colors</span>[<span class="ruby-identifier">zip</span>.<span class="ruby-identifier">zip</span>] = <span class="ruby-identifier">blue_hex_array</span>[<span class="ruby-identifier">color_index</span>]
+                      <span class="ruby-keyword">else</span>
+                              <span class="ruby-identifier">final_colors</span>[<span class="ruby-identifier">zip</span>.<span class="ruby-identifier">zip</span>] = <span class="ruby-identifier">red_hex_array</span>[<span class="ruby-identifier">color_index</span>]
+                      <span class="ruby-keyword">end</span>
+              <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">end</span>
+
+      <span class="ruby-comment"># 9) Build the KML file</span>
+      <span class="ruby-identifier">contents</span> = <span class="ruby-constant">Nokogiri</span><span class="ruby-operator">::</span><span class="ruby-constant">XML</span><span class="ruby-operator">::</span><span class="ruby-constant">Builder</span>.<span class="ruby-identifier">new</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">xml</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">xml</span>.<span class="ruby-identifier">kml</span>(<span class="ruby-string">'xmlns'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;http://earth.google.com/kml/2.2&quot;</span>, <span class="ruby-string">'xmlns:atom'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;http://www.w3.org/2005/Atom&quot;</span>) {
+              <span class="ruby-identifier">xml</span>.<span class="ruby-constant">Document</span> {
+                <span class="ruby-identifier">xml</span>.<span class="ruby-constant">ScreenOverlay</span> {
+                    <span class="ruby-identifier">xml</span>.<span class="ruby-identifier">name</span> (<span class="ruby-identifier">color_hue</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span> <span class="ruby-operator">?</span> <span class="ruby-string">&quot;Map Legend Blue&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-string">&quot;Map Legend Red&quot;</span>)
+                    <span class="ruby-identifier">xml</span>.<span class="ruby-constant">Icon</span> {
+                      <span class="ruby-identifier">xml</span>.<span class="ruby-identifier">href</span> <span class="ruby-node">&quot;http://#{$serverURL}:3000/map_legend_&quot;</span> <span class="ruby-operator">+</span> (<span class="ruby-identifier">color_hue</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span> <span class="ruby-operator">?</span> <span class="ruby-string">&quot;blue&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-string">&quot;red&quot;</span>) <span class="ruby-operator">+</span> <span class="ruby-string">&quot;.png&quot;</span>
+                    }
+                    <span class="ruby-identifier">xml</span>.<span class="ruby-identifier">overlayXY</span>(<span class="ruby-string">'x'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;0&quot;</span>, <span class="ruby-string">'y'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;0&quot;</span>, <span class="ruby-string">'xunits'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;fraction&quot;</span>, <span class="ruby-string">'yunits'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;fraction&quot;</span>)
+                    <span class="ruby-identifier">xml</span>.<span class="ruby-identifier">screenXY</span>(<span class="ruby-string">'x'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;0&quot;</span>, <span class="ruby-string">'y'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;0&quot;</span>, <span class="ruby-string">'xunits'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;fraction&quot;</span>, <span class="ruby-string">'yunits'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;fraction&quot;</span>)
+                    <span class="ruby-identifier">xml</span>.<span class="ruby-identifier">rotationXY</span>(<span class="ruby-string">'x'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;0&quot;</span>, <span class="ruby-string">'y'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;0&quot;</span>, <span class="ruby-string">'xunits'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;fraction&quot;</span>, <span class="ruby-string">'yunits'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;fraction&quot;</span>)
+                    <span class="ruby-identifier">xml</span>.<span class="ruby-identifier">size</span>(<span class="ruby-string">'x'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;0&quot;</span>, <span class="ruby-string">'y'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;0&quot;</span>, <span class="ruby-string">'xunits'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;fraction&quot;</span>, <span class="ruby-string">'yunits'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;fraction&quot;</span>)
+                }
+                <span class="ruby-identifier">@@three_digit_zips</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">zip</span>, <span class="ruby-identifier">coordinates</span><span class="ruby-operator">|</span>
+                    <span class="ruby-keyword">if</span> <span class="ruby-identifier">zips_array</span>.<span class="ruby-identifier">include?</span> <span class="ruby-identifier">zip</span>.<span class="ruby-identifier">to_s</span>
+                            <span class="ruby-keyword">if</span> (<span class="ruby-identifier">final_colors</span>[<span class="ruby-identifier">zip</span>.<span class="ruby-identifier">to_s</span>] <span class="ruby-operator">!=</span> <span class="ruby-string">'DONOTDISPLAY'</span>)
+                            <span class="ruby-comment"># if (final_colors[zip.to_s] not in(blue_hex_array[0], blue_hex_array[1])</span>
+
+                                  <span class="ruby-identifier">xml</span>.<span class="ruby-constant">Placemark</span> {
+                                    <span class="ruby-identifier">xml</span>.<span class="ruby-constant">Style</span> {
+                                           <span class="ruby-identifier">xml</span>.<span class="ruby-constant">LineStyle</span> {
+                                             <span class="ruby-identifier">xml</span>.<span class="ruby-identifier">s</span> <span class="ruby-string">&quot;aaffffff&quot;</span>                                            <span class="ruby-comment"># Border color</span>
+                                             <span class="ruby-identifier">xml</span>.<span class="ruby-identifier">width</span> <span class="ruby-value">1</span>                                                         <span class="ruby-comment"># Border width</span>
+                                           }
+                                           <span class="ruby-identifier">xml</span>.<span class="ruby-constant">PolyStyle</span> {                                               <span class="ruby-comment"># Fill color</span>
+                                             <span class="ruby-identifier">xml</span>.<span class="ruby-identifier">color</span> <span class="ruby-string">'99'</span> <span class="ruby-operator">+</span> (<span class="ruby-identifier">final_colors</span>[<span class="ruby-identifier">zip</span>.<span class="ruby-identifier">to_s</span>].<span class="ruby-identifier">nil?</span> <span class="ruby-operator">?</span> <span class="ruby-string">'ffffff'</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">final_colors</span>[<span class="ruby-identifier">zip</span>.<span class="ruby-identifier">to_s</span>])
+                                           }
+                                    }
+                                    <span class="ruby-identifier">xml</span>.<span class="ruby-identifier">description</span> <span class="ruby-identifier">zip</span>.<span class="ruby-identifier">to_s</span>                                       <span class="ruby-comment"># ZIP code</span>
+                                    <span class="ruby-identifier">xml</span>.<span class="ruby-constant">MultiGeometry</span> {
+                                           <span class="ruby-identifier">xml</span>.<span class="ruby-constant">MultiGeometry</span> {
+                                             <span class="ruby-identifier">xml</span>.<span class="ruby-constant">Polygon</span> {
+                                                 <span class="ruby-identifier">xml</span>.<span class="ruby-identifier">outerBoundaryIs</span> {
+                                                   <span class="ruby-identifier">xml</span>.<span class="ruby-constant">LinearRing</span> {
+                                                    <span class="ruby-identifier">xml</span>.<span class="ruby-identifier">coordinates</span> <span class="ruby-identifier">coordinates</span>             <span class="ruby-comment"># ZIP coordinates</span>
+                                                   }
+                                                 }
+                                             }
+                                           }
+                                    }
+                                      }
+
+                              <span class="ruby-keyword">end</span>
+                      <span class="ruby-keyword">end</span>
+                }
+              }
+        }
+      <span class="ruby-keyword">end</span>
+
+      <span class="ruby-identifier">render</span> <span class="ruby-value">:xml</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">contents</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- get_map_KML_DB-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- get_map_KML_DB-method -->
+
+    
+      <div id="method-i-screen1L2L" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">screen1L2L</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="screen1L2L-source">
+            <pre><span class="ruby-comment"># File app/controllers/variables_controller.rb, line 11</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">screen1L2L</span>
+
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- screen1L2L-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- screen1L2L-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.2.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

@@ -1,0 +1,307 @@
+<style>
+ #varTab-menu {
+    width: 90%;
+  	height: 100%;
+  	padding-right:0px;
+  /*  margin: 0% 5%;*/
+  }
+
+  #varTabs .ui-content {
+  	padding: 0px;
+  }
+
+  #varTabs {
+  	width:10%;
+  }
+
+  #varTab-content-container{
+  	width: 70%;
+  }
+
+  #varTab-menu ul {
+    padding-left: 0px;
+  }
+
+  #varTab-menu ul li {
+    width: 100%;
+    list-style: none;
+    position: relative;
+    /*height:125px;*/
+    /*line-height: 300%;*/
+    padding-top:40px;
+    padding-bottom:40px;
+    border: solid;
+    border-width: 1px 1px 0 1px;
+    border-color:#ffffff;
+    border-top-left-radius:1em;
+    border-bottom-left-radius:1em;
+  }
+
+  #varTab-menu li a {
+  	position:relative;
+  	/*background-color:#00FF00;*/
+  	padding-right:10px;
+  	padding-left:10px;
+  	padding:5px;
+    text-decoration:none;
+    text-shadow: none;
+    color: black;
+    font-size: 22px;
+    font-weight: bold;
+    display: inline-block;
+    -webkit-transform: rotate(270deg);
+  }
+
+  #varTab-menu .unselected .ui-body-a .ui-link:visited {
+    text-shadow: none;
+  }
+
+  .tab-content-panel {
+    display: none;
+    height: 100%;
+    width: 95%;
+    position: absolute;
+  }
+
+  #tab-MP-content {
+    display: block;
+  }
+
+  .unselected {
+    background-color: #f0f0f0;
+    text-shadow: none;
+  }
+
+  .selected {
+    background-image: linear-gradient( #5393c5,#6facd5 );
+  	text-shadow: none;
+  }
+
+  .rsquaredVal {
+    position: absolute;
+    margin-left: 100px;
+  }
+  .zip-box {
+    overflow-y: auto;
+  }
+</style>
+
+
+<script type="text/javascript">
+	// WebSocket Variables and Methods Hash
+  var ws = new WebSocket('ws://<%= $serverURL %>:5555');
+	var methods = {
+		"addZip" : addZip,
+    "updateMapKML" : setFilterStatus,
+		"statusMessage" : statusMessage // found in websockets.js
+	};
+
+	$(document).ready(function(){
+		amplify.store.sessionStorage('screenID', 'screen2MB');
+    amplify.store.sessionStorage('filter_state', '11111');
+		setupScreen2MB();
+		reCalcStyle();
+		setupWebSocket();
+	});
+</script>
+
+<div id="screen2MB" data-role="page" data-theme="b">
+	<div id="selected_zips_container" class="ui-grid-a">
+		<div class="ui-block-a">
+			<div class="ui-grid-b" style="height:100%;">
+				<div class="ui-block-a" style="width:20%;text-align:center;">
+					<h3>Map 1<br>Selected ZIPs</h3>
+				</div>
+				<div class="ui-block-b" style="width:60%;">
+					<div id="zip-box-map1" class="zip-box"></div>
+				</div>
+				<div class="chooseBtn ui-block-c" style="width:20%;">
+					<button id="choose-btn-1" type="button" data-theme="a">Choose</button>
+				</div>
+			</div>
+		</div>
+		<div class="ui-block-b">
+			<div class="ui-grid-b" style="height:100%;">
+				<div class="ui-block-a" style="width:20%;text-align:center;">
+					<h3>Map 2<br>Selected ZIPs</h3>
+				</div>
+				<div class="ui-block-b" style="width:60%;">
+					<div id="zip-box-map2" class="zip-box"></div>
+				</div>
+				<div class="chooseBtn ui-block-c" style="width:20%;">
+					<button id="choose-btn-2" type="button" data-theme="a">Choose</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="chart_var_container" class="bodyWell ui-grid-a">
+		<div class="chartVarControl ui-block-a" style="width:25%;text-align:center;">
+			<div class = "ui-grid-solo" style="height:8%;text-align: center;">
+				<fieldset data-role="controlgroup" data-type="horizontal" style="bottom:0px;">
+	 				<input type="radio" name="radio-choice" id="radio-choice-1" value="choice-1" checked="checked" />
+	 				<label for="radio-choice-1" onclick="if(!$(this).hasClass('ui-radio-on')){toggleCharts();}">1 Chart</label>
+					<input type="radio" name="radio-choice" id="radio-choice-2" value="choice-2" />
+					<label for="radio-choice-2" onclick="if(!$(this).hasClass('ui-radio-on')){toggleCharts();}">2 Charts</label>
+				</fieldset>
+			</div>
+
+			<div data-role="content" id="varTab-menu" class="ui-grid-a">
+				<div data-role="content" class="ui-block-a" id="varTabs">
+					<ul>
+
+					  <% $categories.each_with_index do |c, i=1| %>
+					    <% catArray = c.var_name.split(" ")
+						   abbName = ""
+						   catArray.each do |l|
+						   abbName += l[0]
+						   end %>
+					      <li id="tab-<%=abbName%>" class="<% if abbName == 'MP' %>selected<% else %>unselected<% end %> var-tab">
+					      	<a href="javascript:void(0);" onClick="animate_2MB_tabs(this);"><%=abbName%></a>
+					      </li>
+					  <% end %>
+
+					</ul>
+				</div>
+				<div data-role="content" class="ui-block-b" id="varTab-content-container">
+					<div id="tab-MP-content" class="tab-content-panel" data-role= "content">
+							<% j = 1 %>
+							<% @categories.each do |c| %>
+								<% if c.var_name=="Market Potential" %>
+                  <div class="chart-var1 ui-body-a chart-var" id="cat1_score"><span>Market Potential Index Score</span></div>
+									<% @variables.each do |v| %>
+										<% if v.var_parent == c.var_id && j < 8 %>
+											<div class="chart-var1 ui-body-a chart-var" id="varid_<%= v.var_id%>"><span><%=v.var_name%></span></div>
+											<% j = j + 1 %>
+										<%end%>
+									<%end%>
+								<%end%>
+						<%end%>
+					</div>
+				    <div id="tab-AP-content" class="tab-content-panel" data-role= "content">
+				    	<% j = 1 %>
+				    	<% @categories.each do |c| %>
+								<% if c.var_name=="Agency Presence" %>
+                  <div class="chart-var2 ui-body-a chart-var" id="cat2_score"><span>Agency Presence Index Score</span></div>
+									<% @variables.each do |v| %>
+										<% if v.var_parent == c.var_id && j < 8 %>
+											<div class="chart-var2 ui-body-a chart-var" id="varid_<%= v.var_id%>"><span><%=v.var_name%></span></div>
+											<% j = j + 1 %>
+										<%end%>
+									<%end%>
+								<%end%>
+						<%end%>
+				    </div>
+				    <div id="tab-CA-content" class="tab-content-panel" data-role= "content">
+				    	 <% j = 1 %>
+				    	 <% @categories.each do |c| %>
+								<% if c.var_name=="Competitive Assessment" %>
+                  <div class="chart-var3 ui-body-a chart-var" id="cat3_score"><span>Competitive Assessment Index Score</span></div>
+									<% @variables.each do |v| %>
+										<% if v.var_parent == c.var_id && j < 8 %>
+											<div class="chart-var3 ui-body-a chart-var" id="varid_<%= v.var_id%>"><span><%=v.var_name%></span></div>
+											<% j = j + 1 %>
+										<%end%>
+									<%end%>
+								<%end%>
+						<%end%>
+				    </div>
+				    <div id="tab-CB-content" class="tab-content-panel" data-role= "content">
+				    	 <% j = 1 %>
+				    	 <% @categories.each do |c| %>
+								<% if c.var_name=="Customer Behavior" %>
+                  <div class="chart-var4 ui-body-a chart-var" id="cat4_score"><span>Customer Behavior Index Score</span></div>
+									<% @variables.each do |v| %>
+										<% if v.var_parent == c.var_id && j < 8 %>
+											<div class="chart-var4 ui-body-a chart-var" id="varid_<%= v.var_id%>"><span><%=v.var_name%></span></div>
+											<% j = j + 1 %>
+										<%end%>
+									<%end%>
+								<%end%>
+						<%end%>
+				    </div>
+				</div>
+			</div>
+		</div>
+
+		<div class="ui-block-b" style="width:74%;padding-top:0%;margin-left:1%;">
+			<div id="chart1" class="chooseBtn chart-div" style="width:100%;">
+				<select id="chart1-select" data-theme="a" data-native-menu="false" onchange="selectChart('chart1', this.value)">
+					<option class="chooseBtn">Select Chart Type</option>
+					<optgroup label="Zip Code Scatter Plots">
+            <option value="scatterplot-all-noR2">Scatter Plot - All Zips</option>
+            <option value="scatterplot-all">Scatter Plot - All Zips (w/ R2)</option>
+            <option value="scatterplot-selected-noR2">Scatter Plot - Selected Zips</option>
+					</optgroup>
+          <optgroup label="Cluster Time Series">
+            <option value="TS-Total">Total PIF</option>
+            <option value="TS-PC">PC PIF</option>
+            <option value="TS-AF">AF PIF</option>
+            <option value="TS-Multi">% Multi-Line</option>
+            <option value="TS-Retention">% Retention</option>
+          </optgroup>
+				</select>
+				<table class="chart-table">
+					<tr>
+						<td>
+							<div id="chart1-y" class="chart-vardrop chart-vardrop-y">
+								<div class="rotate">
+									<span class='default-axis-label'><i>Drop Y-Axis Var Here</i></span>
+								</div>
+							</div>
+						</td>
+						<td id="chart1_svg_container" class="chart_svg_container">
+							<svg></svg>
+						</td>
+					</tr>
+					<tr class="chart-table-row2">
+						<td class="chart-table-col1"></td>
+						<td>
+							<div id="chart1-x" class="chart-vardrop chart-vardrop-x">
+								<span class='default-axis-label'><i>Drop X-Axis Var Here</i></span>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div id="chart2" class="chart-div" style="display:none;width:49%;">
+				<select id="chart2-select" data-theme="a" data-native-menu="false" onchange="selectChart('chart2', this.value)">
+					<option>Select Chart Type</option>
+					<optgroup label="Scatter">
+            <option value="scatterplot-all-noR2">Scatter Plot - All Zips</option>
+            <option value="scatterplot-all">Scatter Plot - All Zips (w/ R2)</option>
+            <option value="scatterplot-selected-noR2">Scatter Plot - Selected Zips</option>
+					</optgroup>
+          <optgroup label="Time Series">
+            <option value="TS-Total">Total PIF</option>
+            <option value="TS-PC">PC PIF</option>
+            <option value="TS-AF">AF PIF</option>
+            <option value="TS-Multi">% Multi-Line</option>
+            <option value="TS-Retention">% Retention</option>
+          </optgroup>
+				</select>
+				<table class="chart-table">
+					<tr>
+						<td>
+							<div id="chart2-y" class="chart-vardrop chart-vardrop-y">
+								<div class="rotate">
+									<span class='default-axis-label'><i>Drop Y-Axis Var Here</i></span>
+								</div>
+							</div>
+						</td>
+						<td id="chart2_svg_container" class="chart_svg_container">
+							<svg></svg>
+						</td>
+					</tr>
+					<tr class="chart-table-row2">
+						<td class="chart-table-col1"></td>
+						<td>
+							<div id="chart2-x" class="chart-vardrop chart-vardrop-x">
+								<span class='default-axis-label'><i>Drop X-Axis Var Here</i></span>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>

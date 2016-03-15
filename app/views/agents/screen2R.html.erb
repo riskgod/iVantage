@@ -1,0 +1,456 @@
+<style>
+
+  .ui-btn-text{
+    font-size: 20px;
+  }
+  legend {
+    padding-right: none;
+  }
+
+  .ui-page {
+    height: 100%;
+  }
+
+  .ui-dialog .ui-dialog-content {
+    border: 0;
+    padding: .5em 1em;
+    background: #ff0000;
+    overflow: auto;
+    zoom: 1;
+  }
+
+  #popupDialog-screen {
+    background: black;
+    opacity: 0.9;
+  }
+
+  .summaryWell {
+    background-color: white;
+    border-radius: 1em;
+    border: solid 1px #bbbbbb;
+    padding-top: 5%;
+    padding-bottom: 4%;
+    margin: 1%;
+  }
+
+    .ui-field-contain .ui-body .ui-br {
+      margin-top: 0px;
+    }
+
+    .ui-content {
+      padding:0px;
+    }
+
+  #tab-menu ul li {
+    list-style: none;
+    position: relative;
+    float: left;
+    width:300px;
+    height: 15%;
+    text-align: center;
+    line-height: 300%;
+    border: solid;
+    border-width: 1px 1px 0 1px;
+    border-color:#ffffff;
+    border-top-left-radius:1em;
+    border-top-right-radius:1em;
+  }
+
+  #tab-menu {
+    margin-left: 0%;
+  }
+
+  #tab-menu span[class~="ui-icon"] {
+    display: inline-block;
+    float: right;
+    margin: 15px 15px 0px 0px;
+  }
+
+  #tab-menu li a {
+    text-decoration:none;
+    text-shadow: none;
+    color: black;
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  #tab-content {
+    background-color: #ffffff;
+    border-bottom-left-radius: 1em;
+    border-bottom-right-radius: 1em;
+    border-top-right-radius: 1em;
+    border: solid 1px #bbbbbb;
+    width:96%;
+    margin-left:1%;
+    margin-right:1%;
+    padding: 1%;
+    clear:both;
+  }
+
+  .tab-content-panel {
+    height: 90%;
+    display: none;
+  }
+
+  .unselected {
+      background-color: #f0f0f0;
+      text-shadow: none;
+  }
+
+  .selected {
+    background-image: linear-gradient( #5393c5,#6facd5 );
+    color: whitesmoke!important;
+    text-shadow: none;
+  }
+
+  .unselectedLink {
+    color: grey!important;
+    font-weight: bold;
+  }
+
+  .selectedLink {
+      color:whitesmoke !important;
+  }
+
+  .filterLabel {
+    color: black;
+    font-weight: bold;
+    font-size: 24px;
+  }
+
+  .PIFheader{
+    text-align: center;
+    background-color: #F2F2F2;
+    padding-top: 1%;
+
+  }
+
+  .agentTitle{
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  .agentPicture{
+    width:10%;
+  }
+
+  .agentCaption{
+    width:40%;
+    font-size:22px;
+  }
+
+  .agent_filter_table {
+    width:1250px;
+  }
+
+  .axisDropdown .ui-select {
+    width:23%;
+    padding-right: 1%;
+  }
+
+  .axisDropdown {
+    margin-left: 2.8%;
+
+  }
+
+  .axisDropdown .ui-controlgroup-controls {
+    width: 100%;
+  }
+
+  .icon_allstate_tier, .icon_ivantage_tier {
+    display: inline-block;
+    width:44px;
+    height:36px;
+    text-align: center;
+    padding-left:0px;
+    padding-top:8px;
+    font-size:22px;
+  }
+
+  .icon_allstate_tier {
+    color: #ffffff;
+    background-image:url('/assets/Allstate1.png');
+  }
+
+  .icon_ivantage_tier {
+    color: #000000;
+    background-image:url('/assets/Ivantage1.png');
+  }
+
+  .clusterTabInput {
+    font-size:25px;
+    border-width: 0px;
+    border-style:none;
+    background-color:transparent;
+    width:250px;
+  }
+
+  .tick:not(.zero), .nv-y text {
+    opacity: 0;
+  }
+
+</style>
+
+<script type="text/javascript">
+  var the_agents = {};
+
+  function drawSummaryCharts() {
+    // Check to see if there is at least one cluster selected
+    var clearCharts = true;
+    for(var tmp in zip_clusters) {
+      clearCharts = false;
+      break;
+    }
+
+    // If no clusters selected, clear the chart areas (this will prevent artifacts when clusters are removed)
+    if(clearCharts) {
+      $('#summaryWell_chart_container svg').empty();
+    }
+
+    // Draw each chart
+    addSummaryBar('summaryChart1', 'agentCount');
+    addSummaryBar('summaryChart2', 'avgAllstatePIF');
+    addSummaryBar('summaryChart3', 'avgIvantagePIF');
+    addSummaryBar('summaryChart4', 'avgHVHPIF');
+
+    // Remove the pesky x-axis tick
+    setTimeout("$('.nv-x line').css('opacity','0');", 1000);
+  }
+
+  function drawClusterAgents(clusterID) {
+    var checked_ivantage_tiers = [];
+    var checked_allstate_tiers = [];
+    var checked_tenures = [];
+    var checked_hvhFilter = [];
+
+    // Get filter states
+    $('#agentFiltersForm-' + clusterID + ' #ivantageTier-' + clusterID + ' input:checked').each(function(index, obj) {
+      checked_ivantage_tiers.push($(obj).val());
+    });
+    $('#agentFiltersForm-' + clusterID + ' #allstateTier-' + clusterID + ' input:checked').each(function(index, obj) {
+      checked_allstate_tiers.push($(obj).val());
+    });
+    $('#agentFiltersForm-' + clusterID + ' #tenure-' + clusterID + ' input:checked').each(function(index, obj) {
+      checked_tenures.push($(obj).val());
+    });
+    $('#agentFiltersForm-' + clusterID + ' #hvhFilter-' + clusterID + ' input:checked').each(function(index, obj) {
+      checked_hvhFilter.push($(obj).val());
+    });
+
+    // Get current hash key for cluster
+    var clusterKey = zip_clusters_mapping[clusterID];
+
+    // Filter agent list for cluster and recalculate values for summary charts for cluster
+    var filteredAgentsForCluster = [];
+    var ivantagePIFCluster = 0;
+    var allstatePIFCluster = 0;
+    var hvhPIFCluster = 0;
+
+    for(var i=0;i<the_agents[clusterKey].allAgents.length;i++) {
+      var currentAgent = the_agents[clusterKey].allAgents[i];
+      // Determine tenure number for filter comparison
+      var tenure_number = (currentAgent.tenure == '0-2' ? 1 : (currentAgent.tenure == '3-5' ? 2 : (currentAgent.tenure == '6-10' ? 3 : (currentAgent.tenure != null) ? 4 : ""))).toString();
+      // Determine if agent meets HVH prior history criteria
+      var hvhFilterForAgent = false;
+      if(checked_hvhFilter.length == 2) { // both buttons selected --> all agents pass
+        hvhFilterForAgent = true;
+      } else if(checked_hvhFilter.length == 1) {
+        if(checked_hvhFilter[0] == 1 && currentAgent.pif_ivantage_hvh > 0) { // prior history selected --> agent must have > 0
+          hvhFilterForAgent = true;
+        } else if(checked_hvhFilter[0] == 0 && currentAgent.pif_ivantage_hvh == 0) { // no prior history selected --> agent must have 0
+          hvhFilterForAgent = true;
+        }
+      }
+      // Check all filter conditions and add agent if pass
+      if(checked_ivantage_tiers.indexOf(currentAgent.tier_ivantage) != -1 && checked_allstate_tiers.indexOf(currentAgent.tier_allstate) != -1 && checked_tenures.indexOf(tenure_number) != -1 && hvhFilterForAgent) {
+        filteredAgentsForCluster.push(currentAgent);
+        ivantagePIFCluster += currentAgent.pif_ivantage_total;
+        allstatePIFCluster += currentAgent.pif_allstate_total;
+        hvhPIFCluster += currentAgent.pif_ivantage_hvh;
+      }
+    }
+
+    // Set filtered agents and updated chart values for cluster
+    the_agents[clusterKey]['filteredAgents'] = filteredAgentsForCluster;
+    the_agents[clusterKey]['summaryChartVals']['agentCount'] = filteredAgentsForCluster.length;
+    the_agents[clusterKey]['summaryChartVals']['avgIvantagePIF'] = Math.round(ivantagePIFCluster / filteredAgentsForCluster.length);
+    the_agents[clusterKey]['summaryChartVals']['avgAllstatePIF'] = Math.round(allstatePIFCluster / filteredAgentsForCluster.length);
+    the_agents[clusterKey]['summaryChartVals']['avgHVHPIF'] = Math.round(hvhPIFCluster / filteredAgentsForCluster.length * 10) / 10;
+
+    // Update list of agents displayed in the tab
+    var updated_agents_html = "";
+    for (var i=0; i<filteredAgentsForCluster.length; i++) {
+      updated_agents_html += "<div data-role='content' class='ui-block-" + (i%2 == 0 ? "a" : "c") + " agentPicture' style='width:10%;'><a href='#popupDialog' data-rel='popup' data-position-to='window' data-transition='pop' data-inline='true' data-theme='b' id='Agent " + filteredAgentsForCluster[i]['agent_name'] + "' onclick='changeAgentInfo(" + filteredAgentsForCluster[i]['agent_id'] + ");'><img src='/assets/profile.png'></a></div> <div data-role='content' class='ui-block-" + (i%2 == 0 ? "b" : "d") + " agentCaption' style='width:40%;'><span class='agentTitle'>" + filteredAgentsForCluster[i]['agent_name'] + "</span><p><span class='icon_allstate_tier'>" + filteredAgentsForCluster[i]['tier_allstate'] + "</span> &nbsp; <span class='icon_ivantage_tier'>" + filteredAgentsForCluster[i]['tier_ivantage'] + "</span> &nbsp; " + " &nbsp; " + (filteredAgentsForCluster[i]['tenure'] == '0-2' ? '<img src="/assets/tenure-02.png" style="margin-bottom:-18px;">' : (filteredAgentsForCluster[i]['tenure'] == '3-5' ? '<img src="/assets/tenure-35.png" style="margin-bottom:-18px;">' : (filteredAgentsForCluster[i]['tenure'] == '6-10' ? '<img src="/assets/tenure-610.png" style="margin-bottom:-18px;">' : '<img src="/assets/tenure-11.png" style="margin-bottom:-18px;">'))) + " &nbsp; " + (filteredAgentsForCluster[i]['pif_ivantage_hvh'] > 0 ? "<img src='/assets/House.png' width='38' style='margin-bottom:-12px;'>" : "") + "</p></div>";
+    }
+    $('#agentsDiv-' + clusterID).html(updated_agents_html);
+
+    // Redraw summary charts with filtered cluster data
+    drawSummaryCharts();
+  }
+
+  var addCluster = function(data) {
+    var dataHash = JSON.parse(data);
+    var mapNum = dataHash.map.toString();
+    var zipList = dataHash.zipList.toString();
+    var zipArray = zipList.split(",");
+    var clusterIndex = parseInt(amplify.store.sessionStorage('map' + mapNum + '_clusters'));
+    var clusterLabel = cluster_labels[clusterIndex];
+    var clusterID = 'cluster-' + mapNum + '-' + clusterLabel;
+    zip_clusters[clusterID] = zipList;
+    zip_clusters_mapping[clusterID] = clusterID;
+    the_agents[clusterID] = {};
+
+    // Tab Title - - - - - - - -
+    var newClusterTab = '<li id="tab-' + clusterID + '" class="unselected cluster-tab" ><a class="unselectedLink" href="javascript:void(0);" onClick="animate_2R_tabs(this);"><input class="clusterTabInput" onchange="updateClusterName(this)" value="Cluster ' + mapNum + '-' + clusterLabel + '"></input></a><span class="ui-icon ui-icon-delete ui-icon-shadow" onclick="removeCluster(this, \'' + clusterID +'\');">&nbsp;</span></li>';
+    $('#cluster-tab-menu').append(newClusterTab);
+
+    // Tab Content - - - - - - - -
+    var newClusterContent = '<div id="tab-' + clusterID + '-content" class="tab-content-panel" style="height:1250px; display:block; overflow:hidden;"><h2 style="text-align:center;font-size:36px;">Selected Zips for <span id="tab-content-title-' + clusterID + '"">Cluster ' + mapNum + '-' + clusterLabel + '</span>: <span>' + zipList.replace(/,/g, ', ') + '</span></h2><div data-role="content" id="agentsDiv-' + clusterID + '" class="ui-grid-c" style="height:800px; overflow:scroll;">';
+
+    amplify.request("getAgentsForZips", {
+      clusterID : clusterID,
+      zips : zipList
+    },
+    function(results) {
+      // Add cluster agents to the_agents hash
+      the_agents[results.clusterID]['allAgents'] = results.agents;
+      the_agents[results.clusterID]['filteredAgents'] = results.agents;
+
+      // Calculate & store initial summary chart values
+      the_agents[results.clusterID]['summaryChartVals'] = {};
+      the_agents[results.clusterID]['summaryChartVals']['agentCount'] = results.agents.length;
+
+      var ivantagePIF = 0;
+      var allstatePIF = 0;
+      var hvhPIF = 0;
+
+      for(var i=0;i<results.agents.length;i++) {
+        ivantagePIF += results.agents[i].pif_ivantage_total;
+        allstatePIF += results.agents[i].pif_allstate_total;
+        hvhPIF += results.agents[i].pif_ivantage_hvh;
+      }
+
+      the_agents[results.clusterID]['summaryChartVals']['avgIvantagePIF'] = Math.round(ivantagePIF / results.agents.length);
+      the_agents[results.clusterID]['summaryChartVals']['avgAllstatePIF'] = Math.round(allstatePIF / results.agents.length);
+      the_agents[results.clusterID]['summaryChartVals']['avgHVHPIF'] = Math.round(hvhPIF / results.agents.length * 10) / 10;
+
+      // Draw Summary Charts
+      drawSummaryCharts();
+
+      // Add the Agents
+      for (i=0; i<results.agents.length; i++) {
+        newClusterContent += "<div data-role='content' class='ui-block-" + (i%2 == 0 ? "a" : "c") + " agentPicture' style='width:10%;'><a href='#popupDialog' data-rel='popup' data-position-to='window' data-transition='pop' data-inline='true' data-theme='b' id='Agent " + results.agents[i]['agent_name'] + "' onclick='changeAgentInfo(" + results.agents[i]['agent_id'] + ");'><img src='/assets/profile.png'></a></div> <div data-role='content' class='ui-block-" + (i%2 == 0 ? "b" : "d") + " agentCaption' style='width:40%;'><span class='agentTitle'>" + results.agents[i]['agent_name'] + "</span><p><span class='icon_allstate_tier'>" + results.agents[i]['tier_allstate'] + "</span> &nbsp; <span class='icon_ivantage_tier'>" + results.agents[i]['tier_ivantage'] + "</span> &nbsp; " + (results.agents[i]['tenure'] == '0-2' ? '<img src="/assets/tenure-02.png" style="margin-bottom:-18px;">' : (results.agents[i]['tenure'] == '3-5' ? '<img src="/assets/tenure-35.png" style="margin-bottom:-18px;">' : (results.agents[i]['tenure'] == '6-10' ? '<img src="/assets/tenure-610.png" style="margin-bottom:-18px;">' : '<img src="/assets/tenure-11.png" style="margin-bottom:-18px;">'))) + " &nbsp; " + (results.agents[i]['pif_ivantage_hvh'] > 0 ? "<img src='/assets/House.png' width='38' style='margin-bottom:-12px;'>" : "") + "</p></div>";
+      }
+      newClusterContent += "</div>";
+
+      // Agent Filters
+      newClusterContent += "<div data-role='content' class='ui-grid-solo' style='height: 440px; border-top: 5px solid #7D7D7D;'><h2 style='text-align:center;height:40px;font-size:36px;'>Agent Filters</h2><form style='height:80%;' id='agentFiltersForm-" + clusterID + "' class='agentFiltersForm'>";
+        // - Ivantage Tier
+        newClusterContent += "<div data-role='fieldcontain' style='height:40px;'><fieldset data-role='controlgroup' data-iconpos='right' data-type='horizontal' id='ivantageTier-" + clusterID + "'><table class='agent_filter_table'><tr><td width='350'><legend class='filterLabel'>Employee Rank <img src='/assets/Ivantage_Square_Mini-01.png'></legend></td><td>";
+        for (i=5; i>0; i--) {
+          newClusterContent += "<input type='checkbox' name='ivantageTier" + i.toString() + "' id='ivantageTier" + i.toString() + "' checked='checked' value='" + i.toString() + "' onChange='drawClusterAgents(\"" + clusterID + "\");'><label for='ivantageTier" + i.toString() + ((i==1) ? "' style='border-top-right-radius:.6em;border-bottom-right-radius:.6em;)'" : ((i==5) ? "' style='border-top-left-radius:.6em;border-bottom-left-radius:.6em;'" : "'")) + ">" + i.toString() + "</label>";
+        }
+        newClusterContent += "</td></tr></table></fieldset></div>";
+        // - Allstate Tier
+        newClusterContent += "<div data-role='fieldcontain' style= 'height:40px;'><fieldset data-role='controlgroup' data-iconpos='right' data-type='horizontal' id='allstateTier-" + clusterID + "'><table class='agent_filter_table'><tr><td width='350'><legend class='filterLabel'># LSPs <img src='/assets/Allstate_Circle_Mini-01.png'></legend></td><td>";
+        for (i=1; i<=5; i++) {
+          newClusterContent += "<input type='checkbox' name='AllstateTier" + ((i==5) ? '5+' : i.toString()) + "' id='AllstateTier" + ((i==5) ? '5+' : i.toString()) + "' checked='checked' value='" + ((i==0) ? 'S' : i.toString()) + "' onChange='drawClusterAgents(\"" + clusterID + "\");'><label for='AllstateTier" + ((i==5) ? '5+' : i.toString()) + ((i==1) ? "' style='border-top-left-radius:.6em;border-bottom-left-radius:.6em;)'" : ((i==5) ? "' style='border-top-right-radius:.6em;border-bottom-right-radius:.6em;'" : "'")) + ">" + ((i==5) ? '5+' : i.toString()) + "</label>";
+        }
+        newClusterContent += "</td></tr></table></fieldset></div>";
+        // - Tenure Levels
+        newClusterContent += "<div data-role='fieldcontain' style= 'height:40px;'><fieldset data-role='controlgroup' data-iconpos='right' data-type='horizontal' id='tenure-" + clusterID + "'><table class='agent_filter_table'><tr><td width='350'><legend class='filterLabel'>Tenure </legend></td><td>";
+        for (i=1; i<5; i++) {
+          newClusterContent += "<input type='checkbox' name='tenure" + i.toString() + "' id='tenure" + i.toString() + "' checked='checked' value='" + i.toString() + "' onChange='drawClusterAgents(\"" + clusterID + "\");'><label for='tenure" + i.toString() + ((i==1) ? "' style='border-top-left-radius:.6em;border-bottom-left-radius:.6em;)'" : ((i==4) ? "' style='border-top-right-radius:.6em;border-bottom-right-radius:.6em;'" : "'")) + ">" + ((i==1) ? "0-2" : ((i==2) ? "3-5" : ((i==3) ? "6-10" : "11+"))) + " years</label>";
+        }
+        newClusterContent += "</td></tr></table></fieldset></div>";
+        // - High Value Homes History
+        newClusterContent += "<div data-role='fieldcontain' style='height:40px;'><fieldset data-role='controlgroup' data-type='horizontal' id='hvhFilter-" + clusterID + "'><table class='agent_filter_table'><tr><td width='350'><legend for='HVHexp' class='filterLabel'>Prior Experience</legend></td><td width='900' style='padding-left:5px;'><input type='checkbox' name='radio-choice-h-2' id='radio-choice-h-2c' value='0' checked='checked' onChange='drawClusterAgents(\"" + clusterID + "\");'><label for='radio-choice-h-2c' style='border-top-left-radius:.6em;border-bottom-left-radius:.6em;'>No Policies in Force</label><input type='checkbox' name='radio-choice-h-2' id='radio-choice-h-2b' value='1' checked='checked' onChange='drawClusterAgents(\"" + clusterID + "\");'><label for='radio-choice-h-2b' style='border-top-right-radius:.6em;border-bottom-right-radius:.6em;'>1+ Policies in Force</label></td></tr></table></fieldset></div>";
+        newClusterContent += "</form></div>";
+        newClusterContent += "</div>";
+        $('#tab-content').append(newClusterContent);
+        $('.agentFiltersForm input[type="checkbox"]').checkboxradio();
+        $('.agentFiltersForm input[type="radio"]').checkboxradio();
+        $('.agentFiltersForm fieldset[data-role="controlgroup"]').controlgroup();
+      }
+    );
+
+    amplify.store.sessionStorage('map' + mapNum + '_clusters', (clusterIndex + 1).toString());
+  };
+
+  // WebSocket Variables and Methods Hash
+  var ws = new WebSocket('ws://<%= $serverURL %>:5555');
+  var methods = {
+    "addCluster" : addCluster,
+    "statusMessage" : statusMessage // found in websockets.js
+  };
+
+  $(document).ready(function(){
+    amplify.store.sessionStorage('screenID', 'screen2R');
+    amplify.store.sessionStorage('map1_clusters', '0');
+    amplify.store.sessionStorage('map2_clusters', '0');
+    setupWebSocket();
+    drawSummaryCharts();
+  });
+</script>
+
+
+<div data-role="page">
+  <!-- Summary Section -->
+  <div data-role="content" style="height:30%" class="summaryWell">
+    <h2 style="text-align:center;margin:10px 0px;font-size:36px;">Summary</h2>
+    <div id="summaryWell_chart_container" class="ui-grid-c" style="height:85%;">
+      <div class="ui-block-a" style="height:100%;">
+        <div id="summaryChart1" style="height:80%;">
+          <svg></svg>
+        </div>
+        <div style="height:20%;text-align:center;">
+          <h3 style="margin:0px;">Count of Agents</h3>
+        </div>
+      </div>
+      <div class="ui-block-c" style="height:100%;">
+        <div id="summaryChart2" style="height:80%;">
+          <svg></svg>
+        </div>
+        <div style="height:20%;text-align:center;">
+          <h3 style="margin:0px;">Policy Count</h3>
+        </div>
+      </div>
+      <div class="ui-block-b" style="height:100%;">
+        <div id="summaryChart3" style="height:80%;">
+          <svg></svg>
+        </div>
+        <div style="height:20%;text-align:center;">
+          <h3 style="margin:0px;">Average Policies per Agent</h3>
+        </div>
+      </div>
+      <div class="ui-block-d" style="height:100%;">
+        <div id="summaryChart4" style="height:80%;">
+          <svg></svg>
+        </div>
+        <div style="height:20%;text-align:center;">
+          <h3 style="margin:0px;">Average $ per Agent</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cluster Tab Menu -->
+  <div data-role= "content" id="tab-menu" style="height: auto;">
+    <ul id="cluster-tab-menu"></ul>
+  </div>
+
+  <!-- Cluster Tab Contents -->
+  <div id="tab-content" data-role="content" style="height:1250px;">
+  </div>
+
+  <!-- Next Button -->
+  <div data-role="content" style="height:4%;padding-top:1%;" id="nextButton">
+    <div class="zip-cluster ui-btn ui-shadow ui-btn-corner-all ui-btn-inline ui-btn-up-c" style="float:right;" onclick="sendClusters();">
+      <span>Next</span>
+      <span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span>
+    </div>
+  </div>
+
+  <!-- Agent Modal -->
+  <%= render "agentsModal.html.erb" %>
+</div>

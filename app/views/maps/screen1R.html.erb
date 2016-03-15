@@ -1,8 +1,32 @@
-<script src="//www.google.com/jsapi?key=ABQIAAAA5El50zA4PeDTEMlv-sXFfRSsTL4WIgxhMZ0ZK_kHjwHeQuOD4xTdBhxbkZWuzyYTVeclkwYHpb17ZQ"></script>
-
+<!-- <script src="//www.google.com/jsapi?key=ABQIAAAA5El50zA4PeDTEMlv-sXFfRSsTL4WIgxhMZ0ZK_kHjwHeQuOD4xTdBhxbkZWuzyYTVeclkwYHpb17ZQ"></script> -->
+<div id="map3d"></div>
+<style>
+    #map3d {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        overflow: hidden;
+        padding: 0;
+        font-family: sans-serif;
+    }
+</style>
 <script type="text/javascript">
+  // Cesium implementation
+  var viewer = new Cesium.Viewer('map3d', {
+    geocoder: false,
+    homeButton: false,
+    sceneModePicker: false,
+    baseLayerPicker: false,
+    navigationHelpButton: false,
+    animation: false
+  });
+  drawLayer();
+
   // Set up Google Earth
-  setupGE();
+  // setupGE();
   // Initialize map will be called after GE is ready...put anything here that you want to happen the first time the plugin loads
   function initializeMap() {
     // add controls (navigation / zoom)
@@ -12,34 +36,38 @@
 
   function drawLayer(MPstring, APstring, CAstring, CDstring, FilterString) {
     // define / link 3-digit ZIP code KML
-    var USA_link = ge.createLink('');
+    // var USA_link = ge.createLink('');
     if (MPstring && APstring && CAstring && CDstring && FilterString) {
       var temp = "http://<%= $serverURL %>:3000/variables/<%= params.has_key?(:colors_array) ? params[:colors_array] : "0" %>/get_map_KML_DB/" + MPstring + "/" + APstring + "/" + CAstring + "/" + CDstring + "/" + FilterString + "/";
       var USA_href = temp;
     } else {
       var USA_href = "http://<%= $serverURL %>:3000/variables/<%= params.has_key?(:colors_array) ? params[:colors_array] : "0" %>/get_map_KML_DB.kml";
     }
-    var USA_networkLink = ge.createNetworkLink('');
-    USA_link.setHref(USA_href);
-    USA_networkLink.set(USA_link, true, true); // Sets the link, refreshVisibility, and flyToView.
-    ge.getFeatures().appendChild(USA_networkLink);
 
-    //set a click listener that affects all placemarks
-    google.earth.addEventListener(
-      ge.getGlobe(), 'click', function(event) {
-      var obj = event.getTarget();
-      if (obj.getType() == 'KmlPlacemark'){
-        // event.preventDefault();
-        var placemark = obj;
-        // var placemark_desc_active = placemark.getBalloonHtmlUnsafe();
-        var balloon = ge.createHtmlStringBalloon('');
-        // balloon.setContentString(placemark_desc_active);
-        ge.setBalloon(balloon);
-        // ge.setBalloon(null);
-      }
-
-
+    viewer.dataSources.add(Cesium.KmlDataSource.load(USA_href))
+    .then(function(dataSource) {
+        viewer.flyTo(dataSource.entities);
     });
+
+    // var USA_networkLink = ge.createNetworkLink('');
+    // USA_link.setHref(USA_href);
+    // USA_networkLink.set(USA_link, true, true); // Sets the link, refreshVisibility, and flyToView.
+    // ge.getFeatures().appendChild(USA_networkLink);
+
+    // //set a click listener that affects all placemarks
+    // google.earth.addEventListener(
+    //   ge.getGlobe(), 'click', function(event) {
+    //   var obj = event.getTarget();
+    //   if (obj.getType() == 'KmlPlacemark'){
+    //     // event.preventDefault();
+    //     var placemark = obj;
+    //     // var placemark_desc_active = placemark.getBalloonHtmlUnsafe();
+    //     var balloon = ge.createHtmlStringBalloon('');
+    //     // balloon.setContentString(placemark_desc_active);
+    //     ge.setBalloon(balloon);
+    //     // ge.setBalloon(null);
+    //   }
+    // });
   }
 
   // WebSocket Variables and Methods Hash
@@ -54,5 +82,3 @@
     setupWebSocket();
   });
 </script>
-
-<div id="map3d" style="height: 100%; width: 100%;"></div>

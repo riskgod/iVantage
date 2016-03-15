@@ -13,5 +13,6 @@
  *= require_tree ../../../vendor/assets/stylesheets/nvd3
  *= require_tree ../../../vendor/assets/stylesheets/jquery-ui-1.10.2
  *= require_tree ../../../vendor/assets/stylesheets/themeone
+ *= require ../../../vendor/assets/javascripts/Cesium/Widgets/widgets.css
  *= require_tree .
  */

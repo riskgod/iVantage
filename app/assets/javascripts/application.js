@@ -19,4 +19,5 @@
 //= require_tree ../../../vendor/assets/javascripts/simple-statistics
 //= require sample-charts.js
 //= require ../../../vendor/assets/javascripts/Cesium/Cesium.js
+//= require ../../../vendor/assets/javascripts/xml2json.js
 //= require_tree .

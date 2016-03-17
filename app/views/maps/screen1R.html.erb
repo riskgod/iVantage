@@ -1,4 +1,27 @@
 <div id="map3d"></div>
+<style>
+    #map3d {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        overflow: hidden;
+        padding: 0;
+        font-family: sans-serif;
+    }
+
+    #map3d .cesium-viewer-infoBoxContainer {
+        width: 60px;
+    }
+
+    #map3d .cesium-infoBox {
+        height: 14px;
+        top: 0;
+        left: 0;
+    }
+</style>
 <script type="text/javascript">
   var viewer = new Cesium.Viewer('map3d', {
     geocoder: false,
@@ -7,7 +30,8 @@
     baseLayerPicker: false,
     navigationHelpButton: false,
     animation: false,
-    timeline: false
+    timeline: false,
+    selectionIndicator: false
   });
 
   drawLayer();
@@ -41,7 +65,27 @@
         });
         viewer.flyTo(dataSource.entities);
     });
+
+    //click listener
+    function clickListener(event){
+        var handler = new Cesium.ScreenSpaceEventHandler(viewer.scene.canvas);
+        handler.setInputAction(function(click){
+            if ($(".cesium-infoBox")) {
+                $(".cesium-infoBox >div").remove();
+            };
+            //set infoBox position and add arrow to infoBox
+            var pickedObject = viewer.scene.pick(click.position);
+            if (Cesium.defined(pickedObject)) {
+                $(".cesium-viewer-infoBoxContainer").offset({ top: click.position.y-42, left: click.position.x-14 });
+                $(".cesium-infoBox-iframe").contents().find("head").append($("<style type='text/css'>  .cesium-infoBox-description{padding:0px 0px; margin-right:0px; font-size:small;}  </style>"));
+                $(".cesium-viewer-infoBoxContainer").append("<div class='arrow-down' style='position: absolute; width:0px; height:0px; border-left:28px solid transparent; border-right: 28px solid transparent; border-top: 28px solid #FFF; font-size: 0px; line-height: 0px; margin: 14px -14px;'></div>");
+            }
+        }, Cesium.ScreenSpaceEventType.LEFT_CLICK);
+    }
+
+      clickListener();
   }
+
 
   // WebSocket Variables and Methods Hash
   var ws = new WebSocket('ws://<%= $serverURL %>:5555');
@@ -54,4 +98,5 @@
     amplify.store.sessionStorage('screenID', 'screen1R');
     setupWebSocket();
   });
+
 </script>

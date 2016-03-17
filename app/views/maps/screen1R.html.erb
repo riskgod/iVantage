@@ -1,16 +1,6 @@
 <div id="map3d"></div>
 <script type="text/javascript">
-  var viewer = new Cesium.Viewer('map3d', {
-    geocoder: false,
-    homeButton: false,
-    sceneModePicker: false,
-    baseLayerPicker: false,
-    navigationHelpButton: false,
-    animation: false,
-    timeline: false
-  });
-
-  drawLayer();
+  initViewer('map3d');
 
   // Set up Google Earth
   // setupGE();
@@ -31,15 +21,26 @@
       var USA_href = "http://<%= $serverURL %>:3000/variables/<%= params.has_key?(:colors_array) ? params[:colors_array] : "0" %>/get_map_KML_DB.kml";
     }
 
-    viewer.dataSources.add(Cesium.KmlDataSource.load(USA_href), {
-         camera: viewer.scene.camera,
-         canvas: viewer.scene.canvas
-     })
-    .then(function(dataSource) {
-        $.get(USA_href, function(data) {
-            renderScreenOverlay(viewer, data);
+    // viewer.dataSources.add(Cesium.KmlDataSource.load(USA_href), {
+    //      camera: viewer.scene.camera,
+    //      canvas: viewer.scene.canvas
+    //  })
+    // .then(function(dataSource) {
+    //     viewer.flyTo(dataSource.entities);
+    //     $.get(USA_href, function(data) {
+    //         renderScreenOverlay(data);
+    //     });
+    // });
+
+    $.get(USA_href, function(data) {
+        viewer.dataSources.add(Cesium.KmlDataSource.load(data), {
+            camera: viewer.scene.camera,
+            canvas: viewer.scene.canvas
+        })
+        .then(function(dataSource) {
+            viewer.flyTo(dataSource.entities);
+            renderScreenOverlay(data);
         });
-        viewer.flyTo(dataSource.entities);
     });
   }
 

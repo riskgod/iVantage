@@ -171,7 +171,7 @@ class VariablesController < ApplicationController
 			where_clause += filters2_include_array[0]
 			where_clause += " and "
 			where_clause += filters2_exclude_array[0]
-		end 	
+		end
 		where_clause += ")"
 		print " -------------"
 		print where_clause

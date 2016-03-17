@@ -20,4 +20,5 @@
 //= require sample-charts.js
 //= require ../../../vendor/assets/javascripts/Cesium/Cesium.js
 //= require ../../../vendor/assets/javascripts/xml2json.js
+//= require ../../../vendor/assets/javascripts/togeojson.js
 //= require_tree .

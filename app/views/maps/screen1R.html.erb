@@ -11,26 +11,16 @@
   });
 
   drawLayer();
-
-  // Set up Google Earth
-  // setupGE();
-  // Initialize map will be called after GE is ready...put anything here that you want to happen the first time the plugin loads
-  function initializeMap() {
-    // add controls (navigation / zoom)
-    ge.getNavigationControl().setVisibility(ge.VISIBILITY_SHOW);
-    drawLayer();
-  }
-
+  
   function drawLayer(MPstring, APstring, CAstring, CDstring, FilterString) {
     // define / link 3-digit ZIP code KML
-    // var USA_link = ge.createLink('');
     if (MPstring && APstring && CAstring && CDstring && FilterString) {
       var temp = "http://<%= $serverURL %>:3000/variables/<%= params.has_key?(:colors_array) ? params[:colors_array] : "0" %>/get_map_KML_DB/" + MPstring + "/" + APstring + "/" + CAstring + "/" + CDstring + "/" + FilterString + "/";
       var USA_href = temp;
     } else {
       var USA_href = "http://<%= $serverURL %>:3000/variables/<%= params.has_key?(:colors_array) ? params[:colors_array] : "0" %>/get_map_KML_DB.kml";
     }
-
+    alert('USA_href-----' + USA_href);
     viewer.dataSources.add(Cesium.KmlDataSource.load(USA_href), {
          camera: viewer.scene.camera,
          canvas: viewer.scene.canvas
@@ -39,17 +29,18 @@
         $.get(USA_href, function(data) {
             renderScreenOverlay(viewer, data);
         });
-        viewer.flyTo(dataSource.entities);
+        alert('datasource----' + JSON.stringify(dataSource));
+        cesium.camera.flyTo({
+          destination : Cesium.Cartesian3.fromDegrees(-97.16, 36.71, 3600000.0)
+        });
     });
   }
-
   // WebSocket Variables and Methods Hash
   var ws = new WebSocket('ws://<%= $serverURL %>:5555');
   var methods = {
     "updateMapKML" : updateMapKML,
     "statusMessage" : statusMessage // found in websockets.js
   };
-
   $(document).ready(function(){
     amplify.store.sessionStorage('screenID', 'screen1R');
     setupWebSocket();
